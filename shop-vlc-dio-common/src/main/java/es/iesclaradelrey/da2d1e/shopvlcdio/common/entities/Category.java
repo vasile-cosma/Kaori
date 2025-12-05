@@ -1,12 +1,12 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
-@AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Category {
-    @EqualsAndHashCode.Include
+@Builder
+@Getter
+@Setter
+@ToString
+public class Category implements Entity<Long> {
     private Long id;
     private String name;
     private String description;

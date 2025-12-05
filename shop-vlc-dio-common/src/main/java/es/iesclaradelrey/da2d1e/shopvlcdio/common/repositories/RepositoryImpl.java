@@ -27,8 +27,10 @@ public class RepositoryImpl<ID, T extends Entity<ID>> implements Repository<ID, 
 
     @Override
     public void delete(T item) {
-        if (!item.containsKey(item.getID())){
+        if (!items.containsKey(item.getID())){
             throw new NoSuchElementException(String.format("No se enceuntra el elemento con id %s.\n", item.getID()));
         }
+
+        items.remove(item.getID());
     }
 }
