@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @ToString
 public class Category implements Entity<Long> {
-    private Long id;
+    private Long ID;
     private String name;
     private String description;
     private String image;
