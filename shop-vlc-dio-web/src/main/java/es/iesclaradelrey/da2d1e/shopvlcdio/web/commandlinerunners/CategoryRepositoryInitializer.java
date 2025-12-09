@@ -1,11 +1,14 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.commandlinerunners;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class CategoryRepositoryInitializer implements CommandLineRunner {
     private static final int CATEGORY_COUNT = 6;
     private static final String CATEGORY_GREEN = "Té verde";
@@ -17,7 +20,8 @@ public class CategoryRepositoryInitializer implements CommandLineRunner {
     private static final String CATEGORY_IMG_GREEN = "/images/categories/green-tea.png";
     private static final String CATEGORY_IMG_YELLOW = null;
     private static final String CATEGORY_IMG_WHITE = "/images/categories/white-tea.png";
-    private static final String CATEGORY_IMG_OOLONG = "/images/categories/oolong-tea.png";
+    // TODO asignar la ruta de la imagen de oolong
+    private static final String CATEGORY_IMG_OOLONG = null;
     private static final String CATEGORY_IMG_RED = "/images/categories/red-tea.png";
     private static final String CATEGORY_IMG_BLACK = "/images/categories/black-tea.png";
     private static final String CATEGORY_DESC_GREEN = "Fresco y vegetal, se elabora con hojas mínimamente oxidadas para preservar su color verde y sus matices herbales. Es conocido por su suavidad y su perfil ligero.";

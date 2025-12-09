@@ -7,24 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class CategoryRepositoryImpl implements CategoryRepository {
-    @Override
-    public List<Category> findAll() {
-        return List.of();
-    }
+public class CategoryRepositoryImpl extends RepositoryImpl<Long, Category> implements CategoryRepository { }
 
-    @Override
-    public Optional<Category> findById(Long aLong) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Category save(Category item) {
-        return null;
-    }
-
-    @Override
-    public void delete(Category item) {
-
-    }
-}
