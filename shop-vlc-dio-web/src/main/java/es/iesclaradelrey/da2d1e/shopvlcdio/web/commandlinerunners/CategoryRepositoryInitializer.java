@@ -1,6 +1,7 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.commandlinerunners;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import org.springframework.boot.CommandLineRunner;
 
 public class CategoryRepositoryInitializer implements CommandLineRunner {
@@ -17,11 +18,11 @@ public class CategoryRepositoryInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Category category = Category.builder()
+    /*    Category category = Category.builder()
                 .ID((long) i + 1)
                 .name(CATEGORY_GREEN)
                 .description()
-                .image()
-
+                .image().build();
+*/
     }
 }

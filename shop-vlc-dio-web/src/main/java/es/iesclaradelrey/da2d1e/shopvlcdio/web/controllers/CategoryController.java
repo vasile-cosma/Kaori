@@ -1,6 +1,7 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,14 +11,18 @@ import java.util.Optional;
 
 @Controller
 public class CategoryController {
+    private final CategoryService categoryService;
 
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @GetMapping({"/categories", "/categories/"})
     public ModelAndView index() {
         //todo: Cambiar la ubicación de las páginas en templates.
         ModelAndView mv = new ModelAndView("index");
 
-       // mv.addObject("categories", categoryService.findAll());
+       mv.addObject("categories", categoryService.findAll());
 
         return mv;
     }
