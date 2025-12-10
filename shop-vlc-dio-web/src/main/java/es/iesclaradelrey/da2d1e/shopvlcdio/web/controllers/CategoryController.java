@@ -20,13 +20,14 @@ public class CategoryController {
     @GetMapping({"/categories", "/categories/"})
     public ModelAndView index() {
         //todo: Cambiar la ubicación de las páginas en templates.
-        ModelAndView mv = new ModelAndView("index");
+        ModelAndView mv = new ModelAndView("category-grid-3-cols");
 
        mv.addObject("categories", categoryService.findAll());
 
         return mv;
     }
 
+    //TODO: PENDIENTE GET MAPPING
     public ModelAndView detail(@PathVariable(name = "id") Long categoryId){
         ModelAndView mv = new ModelAndView("detail");
 
