@@ -20,8 +20,7 @@ public class CategoryRepositoryInitializer implements CommandLineRunner {
     private static final String CATEGORY_IMG_GREEN = "/images/categories/green-tea.png";
     private static final String CATEGORY_IMG_YELLOW = null;
     private static final String CATEGORY_IMG_WHITE = "/images/categories/white-tea.png";
-    // TODO asignar la ruta de la imagen de oolong
-    private static final String CATEGORY_IMG_OOLONG = null;
+    private static final String CATEGORY_IMG_OOLONG = "/images/categories/oolong-tea.png";
     private static final String CATEGORY_IMG_RED = "/images/categories/red-tea.png";
     private static final String CATEGORY_IMG_BLACK = "/images/categories/black-tea.png";
     private static final String CATEGORY_DESC_GREEN = "Fresco y vegetal, se elabora con hojas mínimamente oxidadas para preservar su color verde y sus matices herbales. Es conocido por su suavidad y su perfil ligero.";
@@ -31,7 +30,7 @@ public class CategoryRepositoryInitializer implements CommandLineRunner {
     private static final String CATEGORY_DESC_RED = "Té fermentado tradicional de China con cuerpo terroso y profundo. Su maduración aporta un sabor cálido, robusto y ligeramente dulce.";
     private static final String CATEGORY_DESC_BLACK = "Totalmente oxidado, ofrece una taza intensa con notas malteadas, especiadas o frutales. Es el té más robusto y de sabor más definido.";
     private static final List<String> CATEGORY_NAMES = Arrays.asList(CATEGORY_GREEN, CATEGORY_YELLOW, CATEGORY_WHITE, CATEGORY_OOLONG, CATEGORY_RED, CATEGORY_BLACK);
-    private static final List<String> CATEGORY_IMAGES = Arrays.asList(CATEGORY_IMG_GREEN, CATEGORY_IMG_YELLOW, CATEGORY_IMG_WHITE, CATEGORY_OOLONG, CATEGORY_IMG_RED, CATEGORY_IMG_BLACK);
+    private static final List<String> CATEGORY_IMAGES = Arrays.asList(CATEGORY_IMG_GREEN, CATEGORY_IMG_YELLOW, CATEGORY_IMG_WHITE, CATEGORY_IMG_OOLONG, CATEGORY_IMG_RED, CATEGORY_IMG_BLACK);
     private static final List<String> CATEGORY_DESCRIPTIONS = Arrays.asList(CATEGORY_DESC_GREEN, CATEGORY_DESC_YELLOW, CATEGORY_DESC_WHITE, CATEGORY_DESC_OOLONG, CATEGORY_DESC_RED, CATEGORY_DESC_BLACK);
 
     private final CategoryService categoryService;
