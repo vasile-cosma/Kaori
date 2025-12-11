@@ -39,7 +39,7 @@
                 <div class="top-bar left">
                     <ul class="horizontal-menu">
                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>support@kaori.com</a></li>
-                        <li><a href="#">Free Shipping for all Order of $99</a></li>
+                        <li><a href="#">Envíos gratis para todo pedido de más de 90€</a></li>
                     </ul>
                 </div>
                 <div class="top-bar right">
@@ -49,39 +49,37 @@
                         <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
                     </ul>
                     <ul class="horizontal-menu">
-                        <li class="horz-menu-item currency">
+                      <!--  <li class="horz-menu-item currency">
                             <select name="currency">
                                 <option value="eur">€ EUR (Euro)</option>
                                 <option value="usd" selected>$ USD (Dollar)</option>
                                 <option value="usd">£ GBP (Pound)</option>
                                 <option value="usd">¥ JPY (Yen)</option>
                             </select>
-                        </li>
+                        </li> !-->
                         <li class="horz-menu-item lang">
                             <select name="language">
-                                <option value="fr">French (EUR)</option>
-                                <option value="en" selected>English (USD)</option>
-                                <option value="ger">Germany (GBP)</option>
-                                <option value="jp">Japan (JPY)</option>
+                                <option value="es">España</option>
+                                <option value="en">English</option>
                             </select>
                         </li>
-                        <li><a href="login.html" class="login-link"><i class="biolife-icon icon-login"></i>Login/Register</a></li>
+                        <li><a href="login.html" class="login-link"><i class="biolife-icon icon-login"></i>Inicio/Registro</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="header-middle biolife-sticky-object ">
+        <div class="header-middle biolife-sticky-object">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-md-4 col-xs-6">
-                        <a href="index.html" class="biolife-logo"><img src="/images/organic-3-green.png" alt="biolife logo" width="135" height="36"></a>
+                        <a href="index" class="biolife-logo"><img src="/images/organic-3-green.png" alt="biolife logo" width="135" height="36"></a>
                     </div>
                     <div class="col-lg-8 col-md-8 hidden-sm hidden-xs">
                         <div class="primary-menu">
                             <ul class="menu biolife-menu clone-main-menu clone-primary-menu" id="primary-menu" data-menuname="main menu">
                                 <!--<li class="menu-item"><a href="#">Home</a></li> !-->
                                <th:block th:each="category: ${categories}">
-                                   <li class="menu-item" ><a href="#" th:text="${category.getName()}">Categoría</a></li>
+                                   <li class="menu-item" ><a th:href="|categories/${category.getID()}|" href="#" th:text="${category.getName()}">Categoría</a></li>
                                </th:block>
                                <!-- <li class="menu-item menu-item-has-children has-megamenu">
                                     <a href="#" class="menu-name" data-title="Shop" >Categorías</a>
@@ -100,7 +98,7 @@
                                                </div>
                                            </div>
                                        </div>
-<!--
+
                                            <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
                                                <div class="wrap-custom-menu vertical-menu">
                                                    <h4 class="menu-title">Vegetables</h4>
@@ -308,7 +306,7 @@
                                          </div>
                                      </div>
                                  </li> !-->
-                                <li class="menu-item"><a href="contact.html">Contact</a></li>
+                                <li class="menu-item"><a href="categories">Todas las categorías</a></li>
                             </ul>
                         </div>
                     </div>
@@ -344,6 +342,7 @@
                                     </span>
                                 </a>
                             </div> !-->
+                            <div class="menu-item"><a href="contact.html">Contact</a></div>
                             <div class="minicart-block">
                                 <div class="minicart-contain">
                                     <a href="javascript:void(0)" class="link-to">
@@ -351,8 +350,8 @@
                                             <i class="icon-cart-mini biolife-icon"></i>
                                             <span class="qty">8</span>
                                         </span>
-                                        <span class="title">My Cart -</span>
-                                        <span class="sub-total">$0.00</span>
+                                        <span class="title">Mi carrito -</span>
+                                        <span class="sub-total">0.00€</span>
                                     </a>
                                     <div class="cart-content">
                                         <div class="cart-inner">
@@ -492,7 +491,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-4">
-                        <div class="vertical-menu vertical-category-block">
+                        <!--<div class="vertical-menu vertical-category-block">
                             <div class="block-title">
                                 <span class="menu-icon">
                                     <span class="line-1"></span>
@@ -755,13 +754,13 @@
                                     <li class="menu-item"><a href="#" class="menu-title"><i class="biolife-icon icon-fresh-juice"></i>Fresh Bananas & Plantains</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>!-->
                     </div>
                     <div class="col-lg-9 col-md-8 padding-top-2px">
                         <div class="header-search-bar layout-01">
                             <form action="#" class="form-search" name="desktop-seacrh" method="get">
-                                <input type="text" name="s" class="input-text" value="" placeholder="Search here...">
-                                <select name="category">
+                                <input type="text" name="s" class="input-text" value="" placeholder="Busca aquí...">
+                              <!--  <select name="category">
                                     <option value="-1" selected>All Categories</option>
                                     <option value="vegetables">Vegetables</option>
                                     <option value="fresh_berries">Fresh Berries</option>
@@ -772,13 +771,13 @@
                                     <option value="fresh_onion">Fresh Onion</option>
                                     <option value="papaya_crisps">Papaya & Crisps</option>
                                     <option value="oatmeal">Oatmeal</option>
-                                </select>
+                                </select> !-->
                                 <button type="submit" class="btn-submit"><i class="biolife-icon icon-search"></i></button>
                             </form>
                         </div>
                         <div class="live-info">
-                            <p class="telephone"><i class="fa fa-phone" aria-hidden="true"></i><b class="phone-number">(+900) 123 456 7891</b></p>
-                            <p class="working-time">Mon-Fri: 8:30am-7:30pm; Sat-Sun: 9:30am-4:30pm</p>
+                            <p class="telephone"><i class="fa fa-phone" aria-hidden="true"></i><b class="phone-number"><a style="color: rgb(127, 175, 81)" href="contact.html">Contacto</a></b></p>
+                            <p class="working-time">L-V: 8:30-19:30 | S-D: 9:30-16:30</p>
                         </div>
                     </div>
                 </div>
@@ -799,12 +798,12 @@
                         <div class="slide-contain slider-opt03__layout02 slide_animation type_02">
                             <div class="media background-geen-01"></div>
                             <div class="text-content">
-                                <i class="first-line">Pomegranate</i>
-                                <h3 class="second-line">Vegetables 100% Organic</h3>
-                                <p class="third-line">A blend of freshly squeezed green apple & fruits</p>
+                                <i class="first-line">Más natural</i>
+                                <h3 class="second-line">Los mejores tés</h3>
+                                <p class="third-line">De todos los colores y sabores</p>
                                 <p class="buttons">
-                                    <a href="#" class="btn btn-bold">Shop now</a>
-                                    <a href="#" class="btn btn-thin">View lookbook</a>
+                                    <a href="#" class="btn btn-bold">Compra ahora</a>
+                                    <a href="#" class="btn btn-thin">Echar un vistazo</a>
                                 </p>
                             </div>
                         </div>

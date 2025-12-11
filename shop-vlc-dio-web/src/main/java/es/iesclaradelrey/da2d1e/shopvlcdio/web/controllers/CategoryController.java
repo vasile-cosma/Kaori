@@ -27,11 +27,11 @@ public class CategoryController {
         return mv;
     }
 
-    //TODO: PENDIENTE GET MAPPING
-    public ModelAndView detail(@PathVariable(name = "id") Long categoryId){
-        ModelAndView mv = new ModelAndView("detail");
+    @GetMapping("/categories/{id}")
+    public ModelAndView detail(@PathVariable(name = "id") Long ID){
+        ModelAndView mv = new ModelAndView("category-list");
 
-        Optional<Category> category = categoryService.findById(categoryId);
+        Optional<Category> category = categoryService.findById(ID);
 
         mv.addObject("isPresent", category.isPresent());
         if(category.isPresent()){
