@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Biolife - Organic Food</title>
-    <link href="https://fonts.googleapis.com/css?family=Cairo:400,600,700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,700i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/animate.min.css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/nice-select.css">
-    <link rel="stylesheet" href="/css/slick.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/main-color03-green.css">
+    <link href="testhttps://fonts.googleapis.com/css?family=Cairo:400,600,700&amp;display=swap" rel="stylesheet">
+    <link href="testhttps://fonts.googleapis.com/css?family=Poppins:600&amp;display=swap" rel="stylesheet">
+    <link href="testhttps://fonts.googleapis.com/css?family=Playfair+Display:400i,700i" rel="stylesheet">
+    <link href="testhttps://fonts.googleapis.com/css?family=Ubuntu&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.png" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/animate.min.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/nice-select.css">
+    <link rel="stylesheet" href="../static/css/slick.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/main-color03-green.css">
 </head>
 
 <body class="biolife-body">
@@ -39,15 +39,16 @@
             <div class="container">
                 <div class="top-bar left">
                     <ul class="horizontal-menu">
-                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>support@kaori.com</a></li>
-                        <li><a href="#">Envíos gratis para todo pedido de más de 90€</a></li>
+                        <li><a href="../static/#"><i class="fa fa-envelope" aria-hidden="true"></i>support@kaori.com</a>
+                        </li>
+                        <li><a href="../static/#">Envíos gratis para todo pedido de más de 90€</a></li>
                     </ul>
                 </div>
                 <div class="top-bar right">
                     <ul class="social-list">
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                        <li><a href="../static/#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="../static/#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="../static/#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
                     </ul>
                     <ul class="horizontal-menu">
                         <!--  <li class="horz-menu-item currency">
@@ -64,8 +65,8 @@
                                 <option value="en">English</option>
                             </select>
                         </li>
-                        <li><a href="login.html" class="login-link"><i
-                                class="biolife-icon icon-login"></i>Inicio/Registro</a></li>
+                        <li><a href="testlogin.html" class="login-link"><i
+                                    class="biolife-icon icon-login"></i>Inicio/Registro</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,31 +75,31 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-md-4 col-xs-6">
-                        <a href="index" class="biolife-logo"><img src="/images/organic-3-green.png" alt="biolife logo"
-                                                                  width="135" height="36"></a>
+                        <a href="testindex" class="biolife-logo"><img src="../static/images/organic-3-green.png"
+                                alt="biolife logo" width="135" height="36"></a>
                     </div>
                     <div class="col-lg-8 col-md-8 hidden-sm hidden-xs">
                         <div class="primary-menu">
                             <ul class="menu biolife-menu clone-main-menu clone-primary-menu" id="primary-menu"
                                 data-menuname="main menu">
-                                <!--<li class="menu-item"><a href="#">Home</a></li> !-->
+                                <!--<li class="menu-item"><a href="../static/#">Home</a></li> !-->
                                 <th:block th:each="category: ${categories}">
-                                    <li class="menu-item"><a th:href="|/categories/${category.getID()}|"
-                                                             href="#" th:text="${category.getName()}">Categoría</a></li>
+                                    <li class="menu-item"><a th:href="test|/categories/${category.getID()}|"
+                                            href="../static/#" th:text="${category.getName()}">Categoría</a></li>
                                 </th:block>
                                 <!-- <li class="menu-item menu-item-has-children has-megamenu">
-                                    <a href="#" class="menu-name" data-title="Shop" >Categorías</a>
+                                    <a href="../static/#" class="menu-name" data-title="Shop" >Categorías</a>
                                     <div class="wrap-megamenu lg-width-900 md-width-750">
                                         <div  class="mega-content">
                                             <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
                                                 <div class="wrap-custom-menu vertical-menu">
                                                     <h4 class="menu-title" th:text="${category.getName()}">Fresh Berries</h4>
                                                      <ul class="menu">
-                                                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                                                        <li><a href="#">Mixed Fruits</a></li>
-                                                        <li><a href="#">Oranges</a></li>
-                                                        <li><a href="#">Bananas & Plantains</a></li>
-                                                        <li><a href="#">Fresh Gala Apples</a></li>
+                                                        <li><a href="../static/#">Fruit & Nut Gifts</a></li>
+                                                        <li><a href="../static/#">Mixed Fruits</a></li>
+                                                        <li><a href="../static/#">Oranges</a></li>
+                                                        <li><a href="../static/#">Bananas & Plantains</a></li>
+                                                        <li><a href="../static/#">Fresh Gala Apples</a></li>
                                                     </ul>
                                                </div>
                                            </div>
@@ -108,11 +109,11 @@
                                                <div class="wrap-custom-menu vertical-menu">
                                                    <h4 class="menu-title">Vegetables</h4>
                                                    <ul class="menu">
-                                                       <li><a href="#">Berries</a></li>
-                                                       <li><a href="#">Pears</a></li>
-                                                       <li><a href="#">Chili Peppers</a></li>
-                                                       <li><a href="#">Fresh Avocado</a></li>
-                                                       <li><a href="#">Grapes</a></li>
+                                                       <li><a href="../static/#">Berries</a></li>
+                                                       <li><a href="../static/#">Pears</a></li>
+                                                       <li><a href="../static/#">Chili Peppers</a></li>
+                                                       <li><a href="../static/#">Fresh Avocado</a></li>
+                                                       <li><a href="../static/#">Grapes</a></li>
                                                    </ul>
                                                </div>
                                            </div>
@@ -120,11 +121,11 @@
                                                <div class="wrap-custom-menu vertical-menu ">
                                                    <h4 class="menu-title">Fresh Fruits</h4>
                                                    <ul class="menu">
-                                                       <li><a href="#">Basket of apples</a></li>
-                                                       <li><a href="#">Strawberry</a></li>
-                                                       <li><a href="#">Blueberry</a></li>
-                                                       <li><a href="#">Orange</a></li>
-                                                       <li><a href="#">Pineapple</a></li>
+                                                       <li><a href="../static/#">Basket of apples</a></li>
+                                                       <li><a href="../static/#">Strawberry</a></li>
+                                                       <li><a href="../static/#">Blueberry</a></li>
+                                                       <li><a href="../static/#">Orange</a></li>
+                                                       <li><a href="../static/#">Pineapple</a></li>
                                                    </ul>
                                                </div>
                                            </div>
@@ -132,11 +133,11 @@
                                                <div class="wrap-custom-menu vertical-menu">
                                                    <h4 class="menu-title">Featured Products</h4>
                                                    <ul class="menu">
-                                                       <li><a href="#">Coffee Creamers</a></li>
-                                                       <li><a href="#">Mayonnaise</a></li>
-                                                       <li><a href="#">Almond Milk</a></li>
-                                                       <li><a href="#">Fruit Jam</a></li>
-                                                       <li><a href="#">Beverages</a></li>
+                                                       <li><a href="../static/#">Coffee Creamers</a></li>
+                                                       <li><a href="../static/#">Mayonnaise</a></li>
+                                                       <li><a href="../static/#">Almond Milk</a></li>
+                                                       <li><a href="../static/#">Fruit Jam</a></li>
+                                                       <li><a href="../static/#">Beverages</a></li>
                                                    </ul>
                                                </div>
                                            </div>
@@ -144,51 +145,51 @@
                                    </div>
                                </li>!-->
                                 <!-- <li class="menu-item menu-item-has-children has-child">
-                                     <a href="#" class="menu-name" data-title="Product">Product</a>
+                                     <a href="../static/#" class="menu-name" data-title="Product">Product</a>
                                      <ul class="sub-menu">
-                                         <li class="menu-item"><a href="#">Omelettes</a></li>
-                                         <li class="menu-item"><a href="#">Breakfast Scrambles</a></li>
-                                         <li class="menu-item menu-item-has-children has-child"><a href="#" class="menu-name" data-title="Eggs & other considerations">Eggs & other considerations</a>
+                                         <li class="menu-item"><a href="../static/#">Omelettes</a></li>
+                                         <li class="menu-item"><a href="../static/#">Breakfast Scrambles</a></li>
+                                         <li class="menu-item menu-item-has-children has-child"><a href="../static/#" class="menu-name" data-title="Eggs & other considerations">Eggs & other considerations</a>
                                              <ul class="sub-menu">
-                                                 <li class="menu-item"><a href="#">Classic Breakfast</a></li>
-                                                 <li class="menu-item"><a href="#">Huevos Rancheros</a></li>
-                                                 <li class="menu-item"><a href="#">Everything Egg Sandwich</a></li>
-                                                 <li class="menu-item"><a href="#">Egg Sandwich</a></li>
-                                                 <li class="menu-item"><a href="#">Vegan Burrito</a></li>
-                                                 <li class="menu-item"><a href="#">Biscuits and Gravy</a></li>
-                                                 <li class="menu-item"><a href="#">Bacon Avo Egg Sandwich</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Classic Breakfast</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Huevos Rancheros</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Everything Egg Sandwich</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Egg Sandwich</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Vegan Burrito</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Biscuits and Gravy</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Bacon Avo Egg Sandwich</a></li>
                                              </ul>
                                          </li>
-                                         <li class="menu-item"><a href="#">Griddle</a></li>
-                                         <li class="menu-item menu-item-has-children has-child"><a href="#" class="menu-name" data-title="Sides & Extras">Sides & Extras</a>
+                                         <li class="menu-item"><a href="../static/#">Griddle</a></li>
+                                         <li class="menu-item menu-item-has-children has-child"><a href="../static/#" class="menu-name" data-title="Sides & Extras">Sides & Extras</a>
                                              <ul class="sub-menu">
-                                                 <li class="menu-item"><a href="#">Breakfast Burrito</a></li>
-                                                 <li class="menu-item"><a href="#">Crab Cake Benedict</a></li>
-                                                 <li class="menu-item"><a href="#">Corned Beef Hash</a></li>
-                                                 <li class="menu-item"><a href="#">Steak & Eggs</a></li>
-                                                 <li class="menu-item"><a href="#">Oatmeal</a></li>
-                                                 <li class="menu-item"><a href="#">Fruit & Yogurt Parfait</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Breakfast Burrito</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Crab Cake Benedict</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Corned Beef Hash</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Steak & Eggs</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Oatmeal</a></li>
+                                                 <li class="menu-item"><a href="../static/#">Fruit & Yogurt Parfait</a></li>
                                              </ul>
                                          </li>
-                                         <li class="menu-item"><a href="#">Biscuits</a></li>
-                                         <li class="menu-item"><a href="#">Seasonal Fruit Plate</a></li>
+                                         <li class="menu-item"><a href="../static/#">Biscuits</a></li>
+                                         <li class="menu-item"><a href="../static/#">Seasonal Fruit Plate</a></li>
                                      </ul>
                                  </li>
                                  <li class="menu-item menu-item-has-children has-megamenu">
-                                     <a href="#" class="menu-name" data-title="Pages">Demo</a>
+                                     <a href="../static/#" class="menu-name" data-title="Pages">Demo</a>
                                      <div class="wrap-megamenu lg-width-800 md-width-750">
                                          <div class="mega-content">
                                              <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
                                                  <div class="wrap-custom-menu vertical-menu">
                                                      <h4 class="menu-title">Home Page</h4>
                                                      <ul class="menu">
-                                                         <li class="menu-item" ><a href="home-01.html">Home 01</a></li>
-                                                         <li class="menu-item" ><a href="home-02.html">Home 02</a></li>
-                                                         <li class="menu-item" ><a href="index-2.html">Home 03</a></li>
-                                                         <li class="menu-item" ><a href="index.html">Home 03 Green</a></li>
-                                                         <li class="menu-item" ><a href="home-04.html">Home 04</a></li>
-                                                         <li class="menu-item" ><a href="home-04-light.html">Home 04 Light</a></li>
-                                                         <li class="menu-item" ><a href="home-05.html">Home 05</a></li>
+                                                         <li class="menu-item" ><a href="testhome-01.html">Home 01</a></li>
+                                                         <li class="menu-item" ><a href="testhome-02.html">Home 02</a></li>
+                                                         <li class="menu-item" ><a href="testindex-2.html">Home 03</a></li>
+                                                         <li class="menu-item" ><a href="testindex.html">Home 03 Green</a></li>
+                                                         <li class="menu-item" ><a href="testhome-04.html">Home 04</a></li>
+                                                         <li class="menu-item" ><a href="testhome-04-light.html">Home 04 Light</a></li>
+                                                         <li class="menu-item" ><a href="testhome-05.html">Home 05</a></li>
                                                      </ul>
                                                  </div>
                                              </div>
@@ -196,16 +197,16 @@
                                                  <div class="wrap-custom-menu vertical-menu">
                                                      <h4 class="menu-title">Inner Pages</h4>
                                                      <ul class="menu">
-                                                         <li class="menu-item" ><a href="blog-post.html">Blog Single</a></li>
-                                                         <li class="menu-item" ><a href="blog-v01.html">Blog Style 01</a></li>
-                                                         <li class="menu-item" ><a href="blog-v02.html">Blog Style 02</a></li>
-                                                         <li class="menu-item" ><a href="blog-v03.html">Blog Style 03</a></li>
-                                                         <li class="menu-item" ><a href="contact.html">Contact Us</a></li>
-                                                         <li class="menu-item" ><a href="about-us.html">About Us</a></li>
-                                                         <li class="menu-item" ><a href="checkout.html">Checkout</a></li>
-                                                         <li class="menu-item" ><a href="shopping-cart.html">Shopping Cart</a></li>
-                                                         <li class="menu-item" ><a href="login.html">Login/Register</a></li>
-                                                         <li class="menu-item" ><a href="404.html">404</a></li>
+                                                         <li class="menu-item" ><a href="testblog-post.html">Blog Single</a></li>
+                                                         <li class="menu-item" ><a href="testblog-v01.html">Blog Style 01</a></li>
+                                                         <li class="menu-item" ><a href="testblog-v02.html">Blog Style 02</a></li>
+                                                         <li class="menu-item" ><a href="testblog-v03.html">Blog Style 03</a></li>
+                                                         <li class="menu-item" ><a href="testcontact.html">Contact Us</a></li>
+                                                         <li class="menu-item" ><a href="testabout-us.html">About Us</a></li>
+                                                         <li class="menu-item" ><a href="testcheckout.html">Checkout</a></li>
+                                                         <li class="menu-item" ><a href="testshopping-cart.html">Shopping Cart</a></li>
+                                                         <li class="menu-item" ><a href="testlogin.html">Login/Register</a></li>
+                                                         <li class="menu-item" ><a href="test404.html">404</a></li>
                                                      </ul>
                                                  </div>
                                              </div>
@@ -213,14 +214,14 @@
                                                  <div class="wrap-custom-menu vertical-menu">
                                                      <h4 class="menu-title">Category Pages</h4>
                                                      <ul class="menu">
-                                                         <li class="menu-item" ><a href="category-grid-3-cols.html">Grid 3 Cols</a></li>
-                                                         <li class="menu-item" ><a href="category-grid.html">Grid 4 Cols</a></li>
-                                                         <li class="menu-item" ><a href="category-grid-6-cols.html">Grid 6 Cols</a></li>
-                                                         <li class="menu-item" ><a href="category-grid-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                         <li class="menu-item" ><a href="category-grid-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                         <li class="menu-item" ><a href="category-list.html">List Full</a></li>
-                                                         <li class="menu-item" ><a href="category-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                         <li class="menu-item" ><a href="category-list-right-sidebar.html">List Right Sidebar</a></li>
+                                                         <li class="menu-item" ><a href="testcategory-grid-3-cols.html">Grid 3 Cols</a></li>
+                                                         <li class="menu-item" ><a href="testcategory-grid.html">Grid 4 Cols</a></li>
+                                                         <li class="menu-item" ><a href="testcategory-grid-6-cols.html">Grid 6 Cols</a></li>
+                                                         <li class="menu-item" ><a href="testcategory-grid-left-sidebar.html">Grid Left Sidebar</a></li>
+                                                         <li class="menu-item" ><a href="testcategory-grid-right-sidebar.html">Grid Right Sidebar</a></li>
+                                                         <li class="menu-item" ><a href="testcategory-list.html">List Full</a></li>
+                                                         <li class="menu-item" ><a href="testcategory-list-left-sidebar.html">List Left Sidebar</a></li>
+                                                         <li class="menu-item" ><a href="testcategory-list-right-sidebar.html">List Right Sidebar</a></li>
                                                      </ul>
                                                  </div>
                                              </div>
@@ -228,11 +229,11 @@
                                                  <div class="wrap-custom-menu vertical-menu">
                                                      <h4 class="menu-title">Product Types</h4>
                                                      <ul class="menu">
-                                                         <li class="menu-item" ><a href="single-product-simple.html">Simple</a></li>
-                                                         <li class="menu-item" ><a href="single-product-grouped.html">Grouped</a></li>
-                                                         <li class="menu-item" ><a href="single-product.html">Variable</a></li>
-                                                         <li class="menu-item" ><a href="single-product-external.html">External/Affiliate</a></li>
-                                                         <li class="menu-item" ><a href="single-product-onsale.html">Countdown</a></li>
+                                                         <li class="menu-item" ><a href="testsingle-product-simple.html">Simple</a></li>
+                                                         <li class="menu-item" ><a href="testsingle-product-grouped.html">Grouped</a></li>
+                                                         <li class="menu-item" ><a href="testsingle-product.html">Variable</a></li>
+                                                         <li class="menu-item" ><a href="testsingle-product-external.html">External/Affiliate</a></li>
+                                                         <li class="menu-item" ><a href="testsingle-product-onsale.html">Countdown</a></li>
                                                      </ul>
                                                  </div>
                                              </div>
@@ -240,20 +241,20 @@
                                      </div>
                                  </li>
                                  <li class="menu-item menu-item-has-children has-megamenu">
-                                     <a href="#" class="menu-name" data-title="Blog">Blog</a>
+                                     <a href="../static/#" class="menu-name" data-title="Blog">Blog</a>
                                      <div class="wrap-megamenu lg-width-800 md-width-750">
                                          <div class="mega-content">
                                              <div class="col-lg-3 col-md-3 col-xs-6">
                                                  <div class="wrap-custom-menu vertical-menu">
                                                      <h4 class="menu-title">Blog Categories</h4>
                                                      <ul class="menu">
-                                                         <li><a href="#">Beauty (30)</a></li>
-                                                         <li><a href="#">Fashion (50)</a></li>
-                                                         <li><a href="#">Food (10)</a></li>
-                                                         <li><a href="#">Life Style (60)</a></li>
-                                                         <li><a href="#">Travel (10)</a></li>
-                                                         <li><a href="#">Nutrition (35)</a></li>
-                                                         <li><a href="#">Food Decoration (45)</a></li>
+                                                         <li><a href="../static/#">Beauty (30)</a></li>
+                                                         <li><a href="../static/#">Fashion (50)</a></li>
+                                                         <li><a href="../static/#">Food (10)</a></li>
+                                                         <li><a href="../static/#">Life Style (60)</a></li>
+                                                         <li><a href="../static/#">Travel (10)</a></li>
+                                                         <li><a href="../static/#">Nutrition (35)</a></li>
+                                                         <li><a href="../static/#">Food Decoration (45)</a></li>
                                                      </ul>
                                                  </div>
                                              </div>
@@ -261,13 +262,13 @@
                                                  <div class="wrap-custom-menu vertical-menu">
                                                      <h4 class="menu-title">Featured Posts</h4>
                                                      <ul class="menu">
-                                                         <li><a href="#">Post example<sup>#1</sup></a></li>
-                                                         <li><a href="#">Post example<sup>#2</sup></a></li>
-                                                         <li><a href="#">Post example<sup>#3</sup></a></li>
-                                                         <li><a href="#">Post example<sup>#4</sup></a></li>
-                                                         <li><a href="#">Post example<sup>#5</sup></a></li>
-                                                         <li><a href="#">Post example<sup>#6</sup></a></li>
-                                                         <li><a href="#">Post example<sup>#7</sup></a></li>
+                                                         <li><a href="../static/#">Post example<sup>#1</sup></a></li>
+                                                         <li><a href="../static/#">Post example<sup>#2</sup></a></li>
+                                                         <li><a href="../static/#">Post example<sup>#3</sup></a></li>
+                                                         <li><a href="../static/#">Post example<sup>#4</sup></a></li>
+                                                         <li><a href="../static/#">Post example<sup>#5</sup></a></li>
+                                                         <li><a href="../static/#">Post example<sup>#6</sup></a></li>
+                                                         <li><a href="../static/#">Post example<sup>#7</sup></a></li>
                                                      </ul>
                                                  </div>
                                              </div>
@@ -277,9 +278,9 @@
                                                      <ul class="posts">
                                                          <li>
                                                              <div class="block-post-item">
-                                                                 <div class="thumb"><a href="#"><img src="/images/megamenu/thumb-05.jpg" width="100" height="73" alt=""></a></div>
+                                                                 <div class="thumb"><a href="../static/#"><img src="../static/images/megamenu/thumb-05.jpg" width="100" height="73" alt=""></a></div>
                                                                  <div class="left-info">
-                                                                     <h4 class="post-name"><a href="#">Ashwagandha: The #1 Herb in the World for Anxiety?</a></h4>
+                                                                     <h4 class="post-name"><a href="../static/#">Ashwagandha: The #1 Herb in the World for Anxiety?</a></h4>
                                                                      <span class="p-date">Jan 05, 2019</span>
                                                                      <span class="p-comment">2 Comments</span>
                                                                  </div>
@@ -287,9 +288,9 @@
                                                          </li>
                                                          <li>
                                                              <div class="block-post-item">
-                                                                 <div class="thumb"><a href="#"><img src="/images/megamenu/thumb-06.jpg" width="100" height="73" alt=""></a></div>
+                                                                 <div class="thumb"><a href="../static/#"><img src="../static/images/megamenu/thumb-06.jpg" width="100" height="73" alt=""></a></div>
                                                                  <div class="left-info">
-                                                                     <h4 class="post-name"><a href="#">Ashwagandha: The #1 Herb in the World for Anxiety?</a></h4>
+                                                                     <h4 class="post-name"><a href="../static/#">Ashwagandha: The #1 Herb in the World for Anxiety?</a></h4>
                                                                      <span class="p-date">May 15, 2019</span>
                                                                      <span class="p-comment">8 Comments</span>
                                                                  </div>
@@ -297,9 +298,9 @@
                                                          </li>
                                                          <li>
                                                              <div class="block-post-item">
-                                                                 <div class="thumb"><a href="#"><img src="/images/megamenu/thumb-07.jpg" width="100" height="73" alt=""></a></div>
+                                                                 <div class="thumb"><a href="../static/#"><img src="../static/images/megamenu/thumb-07.jpg" width="100" height="73" alt=""></a></div>
                                                                  <div class="left-info">
-                                                                     <h4 class="post-name"><a href="#">Ashwagandha: The #1 Herb in the World for Anxiety?</a></h4>
+                                                                     <h4 class="post-name"><a href="../static/#">Ashwagandha: The #1 Herb in the World for Anxiety?</a></h4>
                                                                      <span class="p-date">Apr 26, 2019</span>
                                                                      <span class="p-comment">10 Comments</span>
                                                                  </div>
@@ -311,17 +312,17 @@
                                          </div>
                                      </div>
                                  </li> !-->
-                                <li class="menu-item"><a href="categories">Todas las categorías</a></li>
+                                <li class="menu-item"><a href="testcategories">Todas las categorías</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2 col-md-6 col-xs-6">
                         <div class="biolife-cart-info">
                             <!-- <div class="mobile-search">
-                                <a href="javascript:void(0)" class="open-searchbox"><i class="biolife-icon icon-search"></i></a>
+                                <a href="testjavascript:void(0)" class="open-searchbox"><i class="biolife-icon icon-search"></i></a>
                                 <div class="mobile-search-content">
                                     <form action="#" class="form-search" name="mobile-seacrh" method="get">
-                                        <a href="#" class="btn-close"><span class="biolife-icon icon-close-menu"></span></a>
+                                        <a href="../static/#" class="btn-close"><span class="biolife-icon icon-close-menu"></span></a>
                                         <input type="text" name="s" class="input-text" value="" placeholder="Search here...">
                                         <select name="category">
                                             <option value="-1" selected>All Categories</option>
@@ -340,17 +341,17 @@
                                 </div>
                             </div>
                             <div class="wishlist-block hidden-sm hidden-xs">
-                                <a href="#" class="link-to">
+                                <a href="../static/#" class="link-to">
                                     <span class="icon-qty-combine">
                                         <i class="icon-heart-bold biolife-icon"></i>
                                         <span class="qty">4</span>
                                     </span>
                                 </a>
                             </div> !-->
-                            <div class="menu-item"><a href="contact.html">Contact</a></div>
+                            <div class="menu-item"><a href="testcontact.html">Contact</a></div>
                             <div class="minicart-block">
                                 <div class="minicart-contain">
-                                    <a href="javascript:void(0)" class="link-to">
+                                    <a href="testjavascript:void(0)" class="link-to">
                                         <span class="icon-qty-combine">
                                             <i class="icon-cart-mini biolife-icon"></i>
                                             <span class="qty">8</span>
@@ -364,164 +365,169 @@
                                                 <li>
                                                     <div class="minicart-item">
                                                         <div class="thumb">
-                                                            <a href="#"><img src="/images/minicart/pr-01.jpg" width="90"
-                                                                             height="90" alt="National Fresh"></a>
+                                                            <a href="../static/#"><img
+                                                                    src="../static/images/minicart/pr-01.jpg" width="90"
+                                                                    height="90" alt="National Fresh"></a>
                                                         </div>
                                                         <div class="left-info">
-                                                            <div class="product-title"><a href="#"
-                                                                                          class="product-name">National Fresh Fruit</a></div>
+                                                            <div class="product-title"><a href="../static/#"
+                                                                    class="product-name">National Fresh Fruit</a></div>
                                                             <div class="price">
                                                                 <ins><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>85.00</span></ins>
+                                                                            class="currencySymbol">£</span>85.00</span></ins>
                                                                 <del><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>95.00</span></del>
+                                                                            class="currencySymbol">£</span>95.00</span></del>
                                                             </div>
                                                             <div class="qty">
                                                                 <label for="cart[id123][qty]">Qty:</label>
                                                                 <input type="number" class="input-qty"
-                                                                       name="cart[id123][qty]" id="cart[id123][qty]"
-                                                                       value="1" disabled>
+                                                                    name="cart[id123][qty]" id="cart[id123][qty]"
+                                                                    value="1" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="action">
-                                                            <a href="#" class="edit"><i class="fa fa-pencil"
-                                                                                        aria-hidden="true"></i></a>
-                                                            <a href="#" class="remove"><i class="fa fa-trash-o"
-                                                                                          aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="edit"><i class="fa fa-pencil"
+                                                                    aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="remove"><i
+                                                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="minicart-item">
                                                         <div class="thumb">
-                                                            <a href="#"><img src="/images/minicart/pr-02.jpg" width="90"
-                                                                             height="90" alt="National Fresh"></a>
+                                                            <a href="../static/#"><img
+                                                                    src="../static/images/minicart/pr-02.jpg" width="90"
+                                                                    height="90" alt="National Fresh"></a>
                                                         </div>
                                                         <div class="left-info">
-                                                            <div class="product-title"><a href="#"
-                                                                                          class="product-name">National Fresh Fruit</a></div>
+                                                            <div class="product-title"><a href="../static/#"
+                                                                    class="product-name">National Fresh Fruit</a></div>
                                                             <div class="price">
                                                                 <ins><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>85.00</span></ins>
+                                                                            class="currencySymbol">£</span>85.00</span></ins>
                                                                 <del><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>95.00</span></del>
+                                                                            class="currencySymbol">£</span>95.00</span></del>
                                                             </div>
                                                             <div class="qty">
                                                                 <label for="cart[id124][qty]">Qty:</label>
                                                                 <input type="number" class="input-qty"
-                                                                       name="cart[id124][qty]" id="cart[id124][qty]"
-                                                                       value="1" disabled>
+                                                                    name="cart[id124][qty]" id="cart[id124][qty]"
+                                                                    value="1" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="action">
-                                                            <a href="#" class="edit"><i class="fa fa-pencil"
-                                                                                        aria-hidden="true"></i></a>
-                                                            <a href="#" class="remove"><i class="fa fa-trash-o"
-                                                                                          aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="edit"><i class="fa fa-pencil"
+                                                                    aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="remove"><i
+                                                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="minicart-item">
                                                         <div class="thumb">
-                                                            <a href="#"><img src="/images/minicart/pr-03.jpg" width="90"
-                                                                             height="90" alt="National Fresh"></a>
+                                                            <a href="../static/#"><img
+                                                                    src="../static/images/minicart/pr-03.jpg" width="90"
+                                                                    height="90" alt="National Fresh"></a>
                                                         </div>
                                                         <div class="left-info">
-                                                            <div class="product-title"><a href="#"
-                                                                                          class="product-name">National Fresh Fruit</a></div>
+                                                            <div class="product-title"><a href="../static/#"
+                                                                    class="product-name">National Fresh Fruit</a></div>
                                                             <div class="price">
                                                                 <ins><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>85.00</span></ins>
+                                                                            class="currencySymbol">£</span>85.00</span></ins>
                                                                 <del><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>95.00</span></del>
+                                                                            class="currencySymbol">£</span>95.00</span></del>
                                                             </div>
                                                             <div class="qty">
                                                                 <label for="cart[id125][qty]">Qty:</label>
                                                                 <input type="number" class="input-qty"
-                                                                       name="cart[id125][qty]" id="cart[id125][qty]"
-                                                                       value="1" disabled>
+                                                                    name="cart[id125][qty]" id="cart[id125][qty]"
+                                                                    value="1" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="action">
-                                                            <a href="#" class="edit"><i class="fa fa-pencil"
-                                                                                        aria-hidden="true"></i></a>
-                                                            <a href="#" class="remove"><i class="fa fa-trash-o"
-                                                                                          aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="edit"><i class="fa fa-pencil"
+                                                                    aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="remove"><i
+                                                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="minicart-item">
                                                         <div class="thumb">
-                                                            <a href="#"><img src="/images/minicart/pr-04.jpg" width="90"
-                                                                             height="90" alt="National Fresh"></a>
+                                                            <a href="../static/#"><img
+                                                                    src="../static/images/minicart/pr-04.jpg" width="90"
+                                                                    height="90" alt="National Fresh"></a>
                                                         </div>
                                                         <div class="left-info">
-                                                            <div class="product-title"><a href="#"
-                                                                                          class="product-name">National Fresh Fruit</a></div>
+                                                            <div class="product-title"><a href="../static/#"
+                                                                    class="product-name">National Fresh Fruit</a></div>
                                                             <div class="price">
                                                                 <ins><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>85.00</span></ins>
+                                                                            class="currencySymbol">£</span>85.00</span></ins>
                                                                 <del><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>95.00</span></del>
+                                                                            class="currencySymbol">£</span>95.00</span></del>
                                                             </div>
                                                             <div class="qty">
                                                                 <label for="cart[id126][qty]">Qty:</label>
                                                                 <input type="number" class="input-qty"
-                                                                       name="cart[id126][qty]" id="cart[id126][qty]"
-                                                                       value="1" disabled>
+                                                                    name="cart[id126][qty]" id="cart[id126][qty]"
+                                                                    value="1" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="action">
-                                                            <a href="#" class="edit"><i class="fa fa-pencil"
-                                                                                        aria-hidden="true"></i></a>
-                                                            <a href="#" class="remove"><i class="fa fa-trash-o"
-                                                                                          aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="edit"><i class="fa fa-pencil"
+                                                                    aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="remove"><i
+                                                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="minicart-item">
                                                         <div class="thumb">
-                                                            <a href="#"><img src="/images/minicart/pr-05.jpg" width="90"
-                                                                             height="90" alt="National Fresh"></a>
+                                                            <a href="../static/#"><img
+                                                                    src="../static/images/minicart/pr-05.jpg" width="90"
+                                                                    height="90" alt="National Fresh"></a>
                                                         </div>
                                                         <div class="left-info">
-                                                            <div class="product-title"><a href="#"
-                                                                                          class="product-name">National Fresh Fruit</a></div>
+                                                            <div class="product-title"><a href="../static/#"
+                                                                    class="product-name">National Fresh Fruit</a></div>
                                                             <div class="price">
                                                                 <ins><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>85.00</span></ins>
+                                                                            class="currencySymbol">£</span>85.00</span></ins>
                                                                 <del><span class="price-amount"><span
-                                                                        class="currencySymbol">£</span>95.00</span></del>
+                                                                            class="currencySymbol">£</span>95.00</span></del>
                                                             </div>
                                                             <div class="qty">
                                                                 <label for="cart[id127][qty]">Qty:</label>
                                                                 <input type="number" class="input-qty"
-                                                                       name="cart[id127][qty]" id="cart[id127][qty]"
-                                                                       value="1" disabled>
+                                                                    name="cart[id127][qty]" id="cart[id127][qty]"
+                                                                    value="1" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="action">
-                                                            <a href="#" class="edit"><i class="fa fa-pencil"
-                                                                                        aria-hidden="true"></i></a>
-                                                            <a href="#" class="remove"><i class="fa fa-trash-o"
-                                                                                          aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="edit"><i class="fa fa-pencil"
+                                                                    aria-hidden="true"></i></a>
+                                                            <a href="../static/#" class="remove"><i
+                                                                    class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                         </div>
                                                     </div>
                                                 </li>
                                             </ul>
                                             <p class="btn-control">
-                                                <a href="#" class="btn view-cart">view cart</a>
-                                                <a href="#" class="btn">checkout</a>
+                                                <a href="../static/#" class="btn view-cart">view cart</a>
+                                                <a href="../static/#" class="btn">checkout</a>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="mobile-menu-toggle">
-                                <a class="btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
+                                <a class="btn-toggle" data-object="open-mobile-menu" href="testjavascript:void(0)">
                                     <span></span>
                                     <span></span>
                                     <span></span>
@@ -549,7 +555,7 @@
                             <div class="wrap-menu">
                                 <ul class="menu clone-main-menu">
                                     <li class="menu-item menu-item-has-children has-megamenu">
-                                        <a href="#" class="menu-name" data-title="Fruit & Nut Gifts"><i class="biolife-icon icon-fruits"></i>Fruit & Nut Gifts</a>
+                                        <a href="../static/#" class="menu-name" data-title="Fruit & Nut Gifts"><i class="biolife-icon icon-fruits"></i>Fruit & Nut Gifts</a>
                                         <div class="wrap-megamenu lg-width-900 md-width-640">
                                             <div class="mega-content">
                                                 <div class="row">
@@ -557,15 +563,15 @@
                                                         <div class="wrap-custom-menu vertical-menu">
                                                             <h4 class="menu-title">Fresh Fuits</h4>
                                                             <ul class="menu">
-                                                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                                                <li><a href="#">Mixed Fruits</a></li>
-                                                                <li><a href="#">Oranges</a></li>
-                                                                <li><a href="#">Bananas & Plantains</a></li>
-                                                                <li><a href="#">Fresh Gala Apples</a></li>
-                                                                <li><a href="#">Berries</a></li>
-                                                                <li><a href="#">Pears</a></li>
-                                                                <li><a href="#">Produce</a></li>
-                                                                <li><a href="#">Snack Foods</a></li>
+                                                                <li><a href="../static/#">Fruit & Nut Gifts</a></li>
+                                                                <li><a href="../static/#">Mixed Fruits</a></li>
+                                                                <li><a href="../static/#">Oranges</a></li>
+                                                                <li><a href="../static/#">Bananas & Plantains</a></li>
+                                                                <li><a href="../static/#">Fresh Gala Apples</a></li>
+                                                                <li><a href="../static/#">Berries</a></li>
+                                                                <li><a href="../static/#">Pears</a></li>
+                                                                <li><a href="../static/#">Produce</a></li>
+                                                                <li><a href="../static/#">Snack Foods</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -573,15 +579,15 @@
                                                         <div class="wrap-custom-menu vertical-menu">
                                                             <h4 class="menu-title">Nut Gifts</h4>
                                                             <ul class="menu">
-                                                                <li><a href="#">Non-Dairy Coffee Creamers</a></li>
-                                                                <li><a href="#">Coffee Creamers</a></li>
-                                                                <li><a href="#">Mayonnaise</a></li>
-                                                                <li><a href="#">Almond Milk</a></li>
-                                                                <li><a href="#">Ghee</a></li>
-                                                                <li><a href="#">Beverages</a></li>
-                                                                <li><a href="#">Ranch Salad Dressings</a></li>
-                                                                <li><a href="#">Hemp Milk</a></li>
-                                                                <li><a href="#">Nuts & Seeds</a></li>
+                                                                <li><a href="../static/#">Non-Dairy Coffee Creamers</a></li>
+                                                                <li><a href="../static/#">Coffee Creamers</a></li>
+                                                                <li><a href="../static/#">Mayonnaise</a></li>
+                                                                <li><a href="../static/#">Almond Milk</a></li>
+                                                                <li><a href="../static/#">Ghee</a></li>
+                                                                <li><a href="../static/#">Beverages</a></li>
+                                                                <li><a href="../static/#">Ranch Salad Dressings</a></li>
+                                                                <li><a href="../static/#">Hemp Milk</a></li>
+                                                                <li><a href="../static/#">Nuts & Seeds</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -592,13 +598,13 @@
                                                                 <li class="product-item">
                                                                     <div class="contain-product none-overlay">
                                                                         <div class="product-thumb">
-                                                                            <a href="#" class="link-to-product">
-                                                                                <img src="/images/products/p-08.jpg" alt="dd" width="270" height="270" class="product-thumnail">
+                                                                            <a href="../static/#" class="link-to-product">
+                                                                                <img src="../static/images/products/p-08.jpg" alt="dd" width="270" height="270" class="product-thumnail">
                                                                             </a>
                                                                         </div>
                                                                         <div class="info">
                                                                             <b class="categories">Fresh Fruit</b>
-                                                                            <h4 class="product-title"><a href="#" class="pr-name">National Fresh Fruit</a></h4>
+                                                                            <h4 class="product-title"><a href="../static/#" class="pr-name">National Fresh Fruit</a></h4>
                                                                             <div class="price">
                                                                                 <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
                                                                                 <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
@@ -609,13 +615,13 @@
                                                                 <li class="product-item">
                                                                     <div class="contain-product none-overlay">
                                                                         <div class="product-thumb">
-                                                                            <a href="#" class="link-to-product">
-                                                                                <img src="/images/products/p-11.jpg" alt="dd" width="270" height="270" class="product-thumnail">
+                                                                            <a href="../static/#" class="link-to-product">
+                                                                                <img src="../static/images/products/p-11.jpg" alt="dd" width="270" height="270" class="product-thumnail">
                                                                             </a>
                                                                         </div>
                                                                         <div class="info">
                                                                             <b class="categories">Fresh Fruit</b>
-                                                                            <h4 class="product-title"><a href="#" class="pr-name">National Fresh Fruit</a></h4>
+                                                                            <h4 class="product-title"><a href="../static/#" class="pr-name">National Fresh Fruit</a></h4>
                                                                             <div class="price">
                                                                                 <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
                                                                                 <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
@@ -626,13 +632,13 @@
                                                                 <li class="product-item">
                                                                     <div class="contain-product none-overlay">
                                                                         <div class="product-thumb">
-                                                                            <a href="#" class="link-to-product">
-                                                                                <img src="/images/products/p-15.jpg" alt="dd" width="270" height="270" class="product-thumnail">
+                                                                            <a href="../static/#" class="link-to-product">
+                                                                                <img src="../static/images/products/p-15.jpg" alt="dd" width="270" height="270" class="product-thumnail">
                                                                             </a>
                                                                         </div>
                                                                         <div class="info">
                                                                             <b class="categories">Fresh Fruit</b>
-                                                                            <h4 class="product-title"><a href="#" class="pr-name">National Fresh Fruit</a></h4>
+                                                                            <h4 class="product-title"><a href="../static/#" class="pr-name">National Fresh Fruit</a></h4>
                                                                             <div class="price">
                                                                                 <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
                                                                                 <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
@@ -648,10 +654,10 @@
                                                     <div class="col-lg-12 col-md-12 col-sm-12 md-margin-top-9">
                                                         <div class="biolife-brand" >
                                                             <ul class="brands">
-                                                                <li><a href="#"><img src="/images/megamenu/brand-organic.png" width="161" height="136" alt="organic"></a></li>
-                                                                <li><a href="#"><img src="/images/megamenu/brand-explore.png" width="160" height="136" alt="explore"></a></li>
-                                                                <li><a href="#"><img src="/images/megamenu/brand-organic-2.png" width="99" height="136" alt="organic 2"></a></li>
-                                                                <li><a href="#"><img src="/images/megamenu/brand-eco-teas.png" width="164" height="136" alt="eco teas"></a></li>
+                                                                <li><a href="../static/#"><img src="../static/images/megamenu/brand-organic.png" width="161" height="136" alt="organic"></a></li>
+                                                                <li><a href="../static/#"><img src="../static/images/megamenu/brand-explore.png" width="160" height="136" alt="explore"></a></li>
+                                                                <li><a href="../static/#"><img src="../static/images/megamenu/brand-organic-2.png" width="99" height="136" alt="organic 2"></a></li>
+                                                                <li><a href="../static/#"><img src="../static/images/megamenu/brand-eco-teas.png" width="164" height="136" alt="eco teas"></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -660,7 +666,7 @@
                                         </div>
                                     </li>
                                     <li class="menu-item menu-item-has-children has-megamenu">
-                                        <a href="#" class="menu-name" data-title="Vegetables"><i class="biolife-icon icon-broccoli-1"></i>Vegetables</a>
+                                        <a href="../static/#" class="menu-name" data-title="Vegetables"><i class="biolife-icon icon-broccoli-1"></i>Vegetables</a>
                                         <div class="wrap-megamenu lg-width-900 md-width-640 background-mega-01">
                                             <div class="mega-content">
                                                 <div class="row">
@@ -668,15 +674,15 @@
                                                         <div class="wrap-custom-menu vertical-menu">
                                                             <h4 class="menu-title">Vegetables</h4>
                                                             <ul class="menu">
-                                                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                                                <li><a href="#">Mixed Fruits</a></li>
-                                                                <li><a href="#">Oranges</a></li>
-                                                                <li><a href="#">Bananas & Plantains</a></li>
-                                                                <li><a href="#">Fresh Gala Apples</a></li>
-                                                                <li><a href="#">Berries</a></li>
-                                                                <li><a href="#">Pears</a></li>
-                                                                <li><a href="#">Produce</a></li>
-                                                                <li><a href="#">Snack Foods</a></li>
+                                                                <li><a href="../static/#">Fruit & Nut Gifts</a></li>
+                                                                <li><a href="../static/#">Mixed Fruits</a></li>
+                                                                <li><a href="../static/#">Oranges</a></li>
+                                                                <li><a href="../static/#">Bananas & Plantains</a></li>
+                                                                <li><a href="../static/#">Fresh Gala Apples</a></li>
+                                                                <li><a href="../static/#">Berries</a></li>
+                                                                <li><a href="../static/#">Pears</a></li>
+                                                                <li><a href="../static/#">Produce</a></li>
+                                                                <li><a href="../static/#">Snack Foods</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -684,15 +690,15 @@
                                                         <div class="wrap-custom-menu vertical-menu">
                                                             <h4 class="menu-title">Gifts</h4>
                                                             <ul class="menu">
-                                                                <li><a href="#">Non-Dairy Coffee Creamers</a></li>
-                                                                <li><a href="#">Coffee Creamers</a></li>
-                                                                <li><a href="#">Mayonnaise</a></li>
-                                                                <li><a href="#">Almond Milk</a></li>
-                                                                <li><a href="#">Ghee</a></li>
-                                                                <li><a href="#">Beverages</a></li>
-                                                                <li><a href="#">Ranch Salad Dressings</a></li>
-                                                                <li><a href="#">Hemp Milk</a></li>
-                                                                <li><a href="#">Nuts & Seeds</a></li>
+                                                                <li><a href="../static/#">Non-Dairy Coffee Creamers</a></li>
+                                                                <li><a href="../static/#">Coffee Creamers</a></li>
+                                                                <li><a href="../static/#">Mayonnaise</a></li>
+                                                                <li><a href="../static/#">Almond Milk</a></li>
+                                                                <li><a href="../static/#">Ghee</a></li>
+                                                                <li><a href="../static/#">Beverages</a></li>
+                                                                <li><a href="../static/#">Ranch Salad Dressings</a></li>
+                                                                <li><a href="../static/#">Hemp Milk</a></li>
+                                                                <li><a href="../static/#">Nuts & Seeds</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -700,10 +706,10 @@
                                                         <div class="biolife-brand vertical md-boder-left-30">
                                                             <h4 class="menu-title">Hot Brand</h4>
                                                             <ul class="brands">
-                                                                <li><a href="#"><img src="/images/megamenu/v-brand-organic.png" width="167" height="74" alt="organic"></a></li>
-                                                                <li><a href="#"><img src="/images/megamenu/v-brand-explore.png" width="167" height="72" alt="explore"></a></li>
-                                                                <li><a href="#"><img src="/images/megamenu/v-brand-organic-2.png" width="167" height="99" alt="organic 2"></a></li>
-                                                                <li><a href="#"><img src="/images/megamenu/v-brand-eco-teas.png" width="167" height="67" alt="eco teas"></a></li>
+                                                                <li><a href="../static/#"><img src="../static/images/megamenu/v-brand-organic.png" width="167" height="74" alt="organic"></a></li>
+                                                                <li><a href="../static/#"><img src="../static/images/megamenu/v-brand-explore.png" width="167" height="72" alt="explore"></a></li>
+                                                                <li><a href="../static/#"><img src="../static/images/megamenu/v-brand-organic-2.png" width="167" height="99" alt="organic 2"></a></li>
+                                                                <li><a href="../static/#"><img src="../static/images/megamenu/v-brand-eco-teas.png" width="167" height="67" alt="eco teas"></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -712,7 +718,7 @@
                                         </div>
                                     </li>
                                     <li class="menu-item menu-item-has-children has-megamenu">
-                                        <a href="#" class="menu-name" data-title="Fresh Berries"><i class="biolife-icon icon-grape"></i>Fresh Berries</a>
+                                        <a href="../static/#" class="menu-name" data-title="Fresh Berries"><i class="biolife-icon icon-grape"></i>Fresh Berries</a>
                                         <div class="wrap-megamenu lg-width-900 md-width-640 background-mega-02">
                                             <div class="mega-content">
                                                 <div class="row">
@@ -720,15 +726,15 @@
                                                         <div class="wrap-custom-menu vertical-menu">
                                                             <h4 class="menu-title">Fresh Berries</h4>
                                                             <ul class="menu">
-                                                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                                                <li><a href="#">Mixed Fruits</a></li>
-                                                                <li><a href="#">Oranges</a></li>
-                                                                <li><a href="#">Bananas & Plantains</a></li>
-                                                                <li><a href="#">Fresh Gala Apples</a></li>
-                                                                <li><a href="#">Berries</a></li>
-                                                                <li><a href="#">Pears</a></li>
-                                                                <li><a href="#">Produce</a></li>
-                                                                <li><a href="#">Snack Foods</a></li>
+                                                                <li><a href="../static/#">Fruit & Nut Gifts</a></li>
+                                                                <li><a href="../static/#">Mixed Fruits</a></li>
+                                                                <li><a href="../static/#">Oranges</a></li>
+                                                                <li><a href="../static/#">Bananas & Plantains</a></li>
+                                                                <li><a href="../static/#">Fresh Gala Apples</a></li>
+                                                                <li><a href="../static/#">Berries</a></li>
+                                                                <li><a href="../static/#">Pears</a></li>
+                                                                <li><a href="../static/#">Produce</a></li>
+                                                                <li><a href="../static/#">Snack Foods</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -736,15 +742,15 @@
                                                         <div class="wrap-custom-menu vertical-menu">
                                                             <h4 class="menu-title">Gifts</h4>
                                                             <ul class="menu">
-                                                                <li><a href="#">Non-Dairy Coffee Creamers</a></li>
-                                                                <li><a href="#">Coffee Creamers</a></li>
-                                                                <li><a href="#">Mayonnaise</a></li>
-                                                                <li><a href="#">Almond Milk</a></li>
-                                                                <li><a href="#">Ghee</a></li>
-                                                                <li><a href="#">Beverages</a></li>
-                                                                <li><a href="#">Ranch Salad Dressings</a></li>
-                                                                <li><a href="#">Hemp Milk</a></li>
-                                                                <li><a href="#">Nuts & Seeds</a></li>
+                                                                <li><a href="../static/#">Non-Dairy Coffee Creamers</a></li>
+                                                                <li><a href="../static/#">Coffee Creamers</a></li>
+                                                                <li><a href="../static/#">Mayonnaise</a></li>
+                                                                <li><a href="../static/#">Almond Milk</a></li>
+                                                                <li><a href="../static/#">Ghee</a></li>
+                                                                <li><a href="../static/#">Beverages</a></li>
+                                                                <li><a href="../static/#">Ranch Salad Dressings</a></li>
+                                                                <li><a href="../static/#">Hemp Milk</a></li>
+                                                                <li><a href="../static/#">Nuts & Seeds</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -759,44 +765,44 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="menu-item"><a href="#" class="menu-name" data-title="Ocean Foods"><i class="biolife-icon icon-fish"></i>Ocean Foods</a></li>
+                                    <li class="menu-item"><a href="../static/#" class="menu-name" data-title="Ocean Foods"><i class="biolife-icon icon-fish"></i>Ocean Foods</a></li>
                                     <li class="menu-item menu-item-has-children has-child">
-                                        <a href="#" class="menu-name" data-title="Butter & Eggs"><i class="biolife-icon icon-honey"></i>Butter & Eggs</a>
+                                        <a href="../static/#" class="menu-name" data-title="Butter & Eggs"><i class="biolife-icon icon-honey"></i>Butter & Eggs</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item"><a href="#">Omelettes</a></li>
-                                            <li class="menu-item"><a href="#">Breakfast Scrambles</a></li>
-                                            <li class="menu-item menu-item-has-children has-child"><a href="#" class="menu-name" data-title="Eggs & other considerations">Eggs & other considerations</a>
+                                            <li class="menu-item"><a href="../static/#">Omelettes</a></li>
+                                            <li class="menu-item"><a href="../static/#">Breakfast Scrambles</a></li>
+                                            <li class="menu-item menu-item-has-children has-child"><a href="../static/#" class="menu-name" data-title="Eggs & other considerations">Eggs & other considerations</a>
                                                 <ul class="sub-menu">
-                                                    <li class="menu-item"><a href="#">Classic Breakfast</a></li>
-                                                    <li class="menu-item"><a href="#">Huevos Rancheros</a></li>
-                                                    <li class="menu-item"><a href="#">Everything Egg Sandwich</a></li>
-                                                    <li class="menu-item"><a href="#">Egg Sandwich</a></li>
-                                                    <li class="menu-item"><a href="#">Vegan Burrito</a></li>
-                                                    <li class="menu-item"><a href="#">Biscuits and Gravy</a></li>
-                                                    <li class="menu-item"><a href="#">Bacon Avo Egg Sandwich</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Classic Breakfast</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Huevos Rancheros</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Everything Egg Sandwich</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Egg Sandwich</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Vegan Burrito</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Biscuits and Gravy</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Bacon Avo Egg Sandwich</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="menu-item"><a href="#">Griddle</a></li>
-                                            <li class="menu-item menu-item-has-children has-child"><a href="#" class="menu-name" data-title="Sides & Extras">Sides & Extras</a>
+                                            <li class="menu-item"><a href="../static/#">Griddle</a></li>
+                                            <li class="menu-item menu-item-has-children has-child"><a href="../static/#" class="menu-name" data-title="Sides & Extras">Sides & Extras</a>
                                                 <ul class="sub-menu">
-                                                    <li class="menu-item"><a href="#">Breakfast Burrito</a></li>
-                                                    <li class="menu-item"><a href="#">Crab Cake Benedict</a></li>
-                                                    <li class="menu-item"><a href="#">Corned Beef Hash</a></li>
-                                                    <li class="menu-item"><a href="#">Steak & Eggs</a></li>
-                                                    <li class="menu-item"><a href="#">Oatmeal</a></li>
-                                                    <li class="menu-item"><a href="#">Fruit & Yogurt Parfait</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Breakfast Burrito</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Crab Cake Benedict</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Corned Beef Hash</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Steak & Eggs</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Oatmeal</a></li>
+                                                    <li class="menu-item"><a href="../static/#">Fruit & Yogurt Parfait</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="menu-item"><a href="#">Biscuits</a></li>
-                                            <li class="menu-item"><a href="#">Seasonal Fruit Plate</a></li>
+                                            <li class="menu-item"><a href="../static/#">Biscuits</a></li>
+                                            <li class="menu-item"><a href="../static/#">Seasonal Fruit Plate</a></li>
                                         </ul>
                                     </li>
-                                    <li class="menu-item"><a href="#" class="menu-title"><i class="biolife-icon icon-fast-food"></i>Fastfood</a></li>
-                                    <li class="menu-item"><a href="#" class="menu-title"><i class="biolife-icon icon-beef"></i>Fresh Meat</a></li>
-                                    <li class="menu-item"><a href="#" class="menu-title"><i class="biolife-icon icon-onions"></i>Fresh Onion</a></li>
-                                    <li class="menu-item"><a href="#" class="menu-title"><i class="biolife-icon icon-avocado"></i>Papaya & Crisps</a></li>
-                                    <li class="menu-item"><a href="#" class="menu-title"><i class="biolife-icon icon-contain"></i>Oatmeal</a></li>
-                                    <li class="menu-item"><a href="#" class="menu-title"><i class="biolife-icon icon-fresh-juice"></i>Fresh Bananas & Plantains</a></li>
+                                    <li class="menu-item"><a href="../static/#" class="menu-title"><i class="biolife-icon icon-fast-food"></i>Fastfood</a></li>
+                                    <li class="menu-item"><a href="../static/#" class="menu-title"><i class="biolife-icon icon-beef"></i>Fresh Meat</a></li>
+                                    <li class="menu-item"><a href="../static/#" class="menu-title"><i class="biolife-icon icon-onions"></i>Fresh Onion</a></li>
+                                    <li class="menu-item"><a href="../static/#" class="menu-title"><i class="biolife-icon icon-avocado"></i>Papaya & Crisps</a></li>
+                                    <li class="menu-item"><a href="../static/#" class="menu-title"><i class="biolife-icon icon-contain"></i>Oatmeal</a></li>
+                                    <li class="menu-item"><a href="../static/#" class="menu-title"><i class="biolife-icon icon-fresh-juice"></i>Fresh Bananas & Plantains</a></li>
                                 </ul>
                             </div>
                         </div>!-->
@@ -824,7 +830,7 @@
                         <div class="live-info">
                             <p class="telephone"><i class="fa fa-phone" aria-hidden="true"></i><b
                                     class="phone-number"><a style="color: rgb(127, 175, 81)"
-                                                            href="contact.html">Contacto</a></b></p>
+                                        href="testcontact.html">Contacto</a></b></p>
                             <p class="working-time">L-V: 8:30-19:30 | S-D: 9:30-16:30</p>
                         </div>
                     </div>
@@ -842,7 +848,7 @@
     <div class="container">
         <nav class="biolife-nav">
             <ul>
-                <li class="nav-item"><a href="../templates/index-2.html" class="permal-link">Home</a></li>
+                <li class="nav-item"><a href="test../static/templates/index-2.html" class="permal-link">Home</a></li>
                 <li class="nav-item"><span class="current-page">About us</span></li>
             </ul>
         </nav>
@@ -857,12 +863,16 @@
                 <div class="container">
                     <h4 class="title">¡Bienvenidos a la tienda de Kaori!</h4>
                     <div class="text-wraper">
-                        <p class="text-info">En Kaori te invitamos a descubrir el arte del té a través de aromas que envuelven,
+                        <p class="text-info">En Kaori te invitamos a descubrir el arte del té a través de aromas que
+                            envuelven,
                             sabores que reconfortan y momentos que inspiran calma. Cada una de nuestras mezclas ha sido
-                            cuidadosamente seleccionada para ofrecerte una experiencia sensorial única, donde la tradición
-                            y la armonía se encuentran en cada taza. Déjate guiar por los aromas, explora nuevas sensaciones
+                            cuidadosamente seleccionada para ofrecerte una experiencia sensorial única, donde la
+                            tradición
+                            y la armonía se encuentran en cada taza. Déjate guiar por los aromas, explora nuevas
+                            sensaciones
                             y regálate un instante de bienestar.
-                            En Kaori, el té no es solo una bebida, es un ritual para disfrutar con los sentidos y el corazón.
+                            En Kaori, el té no es solo una bebida, es un ritual para disfrutar con los sentidos y el
+                            corazón.
 
                             Gracias por visitarnos. Siéntete en casa y disfruta el viaje del té.,</p>
                         <p class="qt-text">“Aromas que cuentan historias, sabores que crean recuerdos.”</p>
@@ -873,7 +883,8 @@
             <div class="why-choose-us-block">
                 <div class="container">
                     <h4 class="box-title">¿Por qué escogernos?</h4>
-                    <b class="subtitle">Elegir Kaori es elegir una experiencia pensada con intención y cuidado en cada detalle.</b>
+                    <b class="subtitle">Elegir Kaori es elegir una experiencia pensada con intención y cuidado en cada
+                        detalle.</b>
                     <div class="showcase">
                         <div class="sc-child sc-left-position">
                             <ul class="sc-list">
@@ -883,7 +894,8 @@
                                         <div class="txt-content">
                                             <span class="number">01</span>
                                             <b class="title">Selección cuidadosa</b>
-                                            <p class="desc">Elegimos hojas y mezclas de alta calidad, priorizando aroma, sabor y equilibrio en cada infusión.</p>
+                                            <p class="desc">Elegimos hojas y mezclas de alta calidad, priorizando aroma,
+                                                sabor y equilibrio en cada infusión.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -893,7 +905,8 @@
                                         <div class="txt-content">
                                             <span class="number">02</span>
                                             <b class="title">Bienestar general</b>
-                                            <p class="desc">Muchos de nuestros tés e infusiones ayudan a la digestión, la relajación, la energía natural o la hidratación diaria.</p>
+                                            <p class="desc">Muchos de nuestros tés e infusiones ayudan a la digestión,
+                                                la relajación, la energía natural o la hidratación diaria.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -903,14 +916,17 @@
                                         <div class="txt-content">
                                             <span class="number">03</span>
                                             <b class="title">Compromiso medioambiental</b>
-                                            <p class="desc">Usamos paquetes reciclables y promovemos prácticas sostenibles con nuestros proveedores, cuidando la tierra de donde provienen nuestros tés.</p>
+                                            <p class="desc">Usamos paquetes reciclables y promovemos prácticas
+                                                sostenibles con nuestros proveedores, cuidando la tierra de donde
+                                                provienen nuestros tés.</p>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="sc-child sc-center-position">
-                            <figure><img src="/images/about-us/bn04.jpg" alt="" width="622" height="656"></figure>
+                            <figure><img src="../static/images/about-us/bn04.jpg" alt="" width="622" height="656">
+                            </figure>
                         </div>
                         <div class="sc-child sc-right-position">
                             <ul class="sc-list">
@@ -920,7 +936,8 @@
                                         <div class="txt-content">
                                             <span class="number">04</span>
                                             <b class="title">Identidad propia</b>
-                                            <p class="desc">Creamos combinaciones únicas que cuentan una historia en cada taza</p>
+                                            <p class="desc">Creamos combinaciones únicas que cuentan una historia en
+                                                cada taza</p>
                                         </div>
                                     </div>
                                 </li>
@@ -930,7 +947,8 @@
                                         <div class="txt-content">
                                             <span class="number">05</span>
                                             <b class="title">Salud cardiovascular</b>
-                                            <p class="desc">Nuestras mezclas con té verde, hibisco y otras hierbas favorecen la circulación y ayudan a mantener arterias saludables</p>
+                                            <p class="desc">Nuestras mezclas con té verde, hibisco y otras hierbas
+                                                favorecen la circulación y ayudan a mantener arterias saludables</p>
                                         </div>
                                     </div>
                                 </li>
@@ -940,7 +958,8 @@
                                         <div class="txt-content">
                                             <span class="number">06</span>
                                             <b class="title">Calidad excepcional</b>
-                                            <p class="desc">Seleccionamos solo tés y hierbas de primera, cuidando cada detalle desde su origen hasta tu taza</p>
+                                            <p class="desc">Seleccionamos solo tés y hierbas de primera, cuidando cada
+                                                detalle desde su origen hasta tu taza</p>
                                         </div>
                                     </div>
                                 </li>
@@ -958,10 +977,15 @@
                         <li>
                             <div class="testml-elem">
                                 <div class="avata">
-                                    <figure><img src="/images/about-us/author-01.png" alt="" width="217" height="217">
+                                    <figure><img src="../static/images/about-us/author-01.png" alt="" width="217"
+                                            height="217">
                                     </figure>
                                 </div>
-                                <p class="desc">Es el hombre más apuesto y confiable que uno pueda conocer. Su carisma natural y su sonrisa hacen que todos se sientan cómodos a su lado, mientras que su responsabilidad y honestidad lo convierten en alguien en quien siempre se puede confiar. Diego combina atractivo físico con integridad, logrando un equilibrio que lo hace memorable y admirado por quienes lo conocen.</p>
+                                <p class="desc">Es el hombre más apuesto y confiable que uno pueda conocer. Su carisma
+                                    natural y su sonrisa hacen que todos se sientan cómodos a su lado, mientras que su
+                                    responsabilidad y honestidad lo convierten en alguien en quien siempre se puede
+                                    confiar. Diego combina atractivo físico con integridad, logrando un equilibrio que
+                                    lo hace memorable y admirado por quienes lo conocen.</p>
                                 <b class="name">Diego Isla</b>
                                 <b class="title">CO CEO</b>
                                 <div class="rating">
@@ -972,10 +996,16 @@
                         <li>
                             <div class="testml-elem">
                                 <div class="avata">
-                                    <figure><img src="/images/about-us/author-02.png" alt="" width="217" height="217">
+                                    <figure><img src="../static/images/about-us/author-02.png" alt="" width="217"
+                                            height="217">
                                     </figure>
                                 </div>
-                                <p class="desc">Hombre trabajador y disciplinado, Vasile destaca por su constancia y profesionalismo en todo lo que hace. Cada proyecto o tarea que asume recibe su máxima atención y dedicación, lo que hace que sus clientes nunca queden indiferentes: siempre se sorprenden con su eficiencia, compromiso y calidad de servicio. Su presencia transmite seguridad y confianza, y su ética de trabajo inspira a quienes lo rodean.</p>
+                                <p class="desc">Hombre trabajador y disciplinado, Vasile destaca por su constancia y
+                                    profesionalismo en todo lo que hace. Cada proyecto o tarea que asume recibe su
+                                    máxima atención y dedicación, lo que hace que sus clientes nunca queden
+                                    indiferentes: siempre se sorprenden con su eficiencia, compromiso y calidad de
+                                    servicio. Su presencia transmite seguridad y confianza, y su ética de trabajo
+                                    inspira a quienes lo rodean.</p>
                                 <b class="name">Vasile L.Cosma</b>
                                 <b class="title">CO CEO</b>
                                 <div class="rating">
@@ -997,8 +1027,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-9">
                         <section class="footer-item">
-                            <a href="#" class="logo footer-logo"><img src="/images/organic-3.png" alt="biolife logo"
-                                    width="135" height="34"></a>
+                            <a href="../static/#" class="logo footer-logo"><img src="../static/images/organic-3.png"
+                                    alt="biolife logo" width="135" height="34"></a>
                             <div class="footer-phone-info">
                                 <i class="biolife-icon icon-head-phone"></i>
                                 <p class="r-info">
@@ -1025,24 +1055,24 @@
                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                     <div class="wrap-custom-menu vertical-menu-2">
                                         <ul class="menu">
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">About Our Shop</a></li>
-                                            <li><a href="#">Secure Shopping</a></li>
-                                            <li><a href="#">Delivery infomation</a></li>
-                                            <li><a href="#">Privacy Policy</a></li>
-                                            <li><a href="#">Our Sitemap</a></li>
+                                            <li><a href="../static/#">About Us</a></li>
+                                            <li><a href="../static/#">About Our Shop</a></li>
+                                            <li><a href="../static/#">Secure Shopping</a></li>
+                                            <li><a href="../static/#">Delivery infomation</a></li>
+                                            <li><a href="../static/#">Privacy Policy</a></li>
+                                            <li><a href="../static/#">Our Sitemap</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                     <div class="wrap-custom-menu vertical-menu-2">
                                         <ul class="menu">
-                                            <li><a href="#">Who We Are</a></li>
-                                            <li><a href="#">Our Services</a></li>
-                                            <li><a href="#">Projects</a></li>
-                                            <li><a href="#">Contacts Us</a></li>
-                                            <li><a href="#">Innovation</a></li>
-                                            <li><a href="#">Testimonials</a></li>
+                                            <li><a href="../static/#">Who We Are</a></li>
+                                            <li><a href="../static/#">Our Services</a></li>
+                                            <li><a href="../static/#">Projects</a></li>
+                                            <li><a href="../static/#">Contacts Us</a></li>
+                                            <li><a href="../static/#">Innovation</a></li>
+                                            <li><a href="../static/#">Testimonials</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1083,16 +1113,16 @@
                             </div>
                             <div class="biolife-social inline">
                                 <ul class="socials">
-                                    <li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter"
-                                                aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook"
-                                                aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest"
-                                                aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube"
-                                                aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="instagram" class="socail-btn"><i class="fa fa-instagram"
-                                                aria-hidden="true"></i></a></li>
+                                    <li><a href="../static/#" title="twitter" class="socail-btn"><i
+                                                class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="../static/#" title="facebook" class="socail-btn"><i
+                                                class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="../static/#" title="pinterest" class="socail-btn"><i
+                                                class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                    <li><a href="../static/#" title="youtube" class="socail-btn"><i
+                                                class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                    <li><a href="../static/#" title="instagram" class="socail-btn"><i
+                                                class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
                         </section>
@@ -1104,22 +1134,22 @@
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-12">
                         <div class="copy-right-text">
-                            <p><a href="templateshub.net">Templates Hub</a></p>
+                            <p><a href="testtemplateshub.net">Templates Hub</a></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-xs-12">
                         <div class="payment-methods">
                             <ul>
-                                <li><a href="#" class="payment-link"><img src="/images/card1.jpg" width="51" height="36"
-                                            alt=""></a></li>
-                                <li><a href="#" class="payment-link"><img src="/images/card2.jpg" width="51" height="36"
-                                            alt=""></a></li>
-                                <li><a href="#" class="payment-link"><img src="/images/card3.jpg" width="51" height="36"
-                                            alt=""></a></li>
-                                <li><a href="#" class="payment-link"><img src="/images/card4.jpg" width="51" height="36"
-                                            alt=""></a></li>
-                                <li><a href="#" class="payment-link"><img src="/images/card5.jpg" width="51" height="36"
-                                            alt=""></a></li>
+                                <li><a href="../static/#" class="payment-link"><img src="../static/images/card1.jpg"
+                                            width="51" height="36" alt=""></a></li>
+                                <li><a href="../static/#" class="payment-link"><img src="../static/images/card2.jpg"
+                                            width="51" height="36" alt=""></a></li>
+                                <li><a href="../static/#" class="payment-link"><img src="../static/images/card3.jpg"
+                                            width="51" height="36" alt=""></a></li>
+                                <li><a href="../static/#" class="payment-link"><img src="../static/images/card4.jpg"
+                                            width="51" height="36" alt=""></a></li>
+                                <li><a href="../static/#" class="payment-link"><img src="../static/images/card5.jpg"
+                                            width="51" height="36" alt=""></a></li>
                             </ul>
                         </div>
                     </div>
@@ -1132,26 +1162,27 @@
     <div class="mobile-footer">
         <div class="mobile-footer-inner">
             <div class="mobile-block block-menu-main">
-                <a class="menu-bar menu-toggle btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
+                <a class="menu-bar menu-toggle btn-toggle" data-object="open-mobile-menu" href="testjavascript:void(0)">
                     <span class="fa fa-bars"></span>
                     <span class="text">Menu</span>
                 </a>
             </div>
             <div class="mobile-block block-sidebar">
-                <a class="menu-bar filter-toggle btn-toggle" data-object="open-mobile-filter" href="javascript:void(0)">
+                <a class="menu-bar filter-toggle btn-toggle" data-object="open-mobile-filter"
+                    href="testjavascript:void(0)">
                     <i class="fa fa-sliders" aria-hidden="true"></i>
                     <span class="text">Sidebar</span>
                 </a>
             </div>
             <div class="mobile-block block-minicart">
-                <a class="link-to-cart" href="#">
+                <a class="link-to-cart" href="../static/#">
                     <span class="fa fa-shopping-bag" aria-hidden="true"></span>
                     <span class="text">Cart</span>
                 </a>
             </div>
             <div class="mobile-block block-global">
                 <a class="menu-bar myaccount-toggle btn-toggle" data-object="global-panel-opened"
-                    href="javascript:void(0)">
+                    href="testjavascript:void(0)">
                     <span class="fa fa-globe"></span>
                     <span class="text">Global</span>
                 </a>
@@ -1162,37 +1193,37 @@
     <div class="mobile-block-global">
         <div class="biolife-mobile-panels">
             <span class="biolife-current-panel-title">Global</span>
-            <a class="biolife-close-btn" data-object="global-panel-opened" href="#">&times;</a>
+            <a class="biolife-close-btn" data-object="global-panel-opened" href="../static/#">&times;</a>
         </div>
         <div class="block-global-contain">
             <div class="glb-item my-account">
                 <b class="title">My Account</b>
                 <ul class="list">
-                    <li class="list-item"><a href="#">Login/register</a></li>
-                    <li class="list-item"><a href="#">Wishlist <span class="index">(8)</span></a></li>
-                    <li class="list-item"><a href="#">Checkout</a></li>
+                    <li class="list-item"><a href="../static/#">Login/register</a></li>
+                    <li class="list-item"><a href="../static/#">Wishlist <span class="index">(8)</span></a></li>
+                    <li class="list-item"><a href="../static/#">Checkout</a></li>
                 </ul>
             </div>
             <div class="glb-item currency">
                 <b class="title">Currency</b>
                 <ul class="list">
-                    <li class="list-item"><a href="#">€ EUR (Euro)</a></li>
-                    <li class="list-item"><a href="#">$ USD (Dollar)</a></li>
-                    <li class="list-item"><a href="#">£ GBP (Pound)</a></li>
-                    <li class="list-item"><a href="#">¥ JPY (Yen)</a></li>
+                    <li class="list-item"><a href="../static/#">€ EUR (Euro)</a></li>
+                    <li class="list-item"><a href="../static/#">$ USD (Dollar)</a></li>
+                    <li class="list-item"><a href="../static/#">£ GBP (Pound)</a></li>
+                    <li class="list-item"><a href="../static/#">¥ JPY (Yen)</a></li>
                 </ul>
             </div>
             <div class="glb-item languages">
                 <b class="title">Language</b>
                 <ul class="list inline">
-                    <li class="list-item"><a href="#"><img src="/images/languages/us.jpg" alt="flag" width="24"
-                                height="18"></a></li>
-                    <li class="list-item"><a href="#"><img src="/images/languages/fr.jpg" alt="flag" width="24"
-                                height="18"></a></li>
-                    <li class="list-item"><a href="#"><img src="/images/languages/ger.jpg" alt="flag" width="24"
-                                height="18"></a></li>
-                    <li class="list-item"><a href="#"><img src="/images/languages/jap.jpg" alt="flag" width="24"
-                                height="18"></a></li>
+                    <li class="list-item"><a href="../static/#"><img src="../static/images/languages/us.jpg" alt="flag"
+                                width="24" height="18"></a></li>
+                    <li class="list-item"><a href="../static/#"><img src="../static/images/languages/fr.jpg" alt="flag"
+                                width="24" height="18"></a></li>
+                    <li class="list-item"><a href="../static/#"><img src="../static/images/languages/ger.jpg" alt="flag"
+                                width="24" height="18"></a></li>
+                    <li class="list-item"><a href="../static/#"><img src="../static/images/languages/jap.jpg" alt="flag"
+                                width="24" height="18"></a></li>
                 </ul>
             </div>
         </div>
@@ -1201,14 +1232,14 @@
     <!-- Scroll Top Button -->
     <a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
 
-    <script src="/js/jquery-3.4.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.countdown.min.js"></script>
-    <script src="/js/jquery.nice-select.min.js"></script>
-    <script src="/js/jquery.nicescroll.min.js"></script>
-    <script src="/js/slick.min.js"></script>
-    <script src="/js/biolife.framework.js"></script>
-    <script src="/js/functions.js"></script>
+    <script src="../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.countdown.min.js"></script>
+    <script src="../static/js/jquery.nice-select.min.js"></script>
+    <script src="../static/js/jquery.nicescroll.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/biolife.framework.js"></script>
+    <script src="../static/js/functions.js"></script>
 </body>
 
 </html>

@@ -31,7 +31,7 @@ public class CategoryController {
         ModelAndView mv = new ModelAndView("category-list");
 
         Optional<Category> category = categoryService.findById(ID);
-
+        mv.addObject("categories", categoryService.findAll());
         mv.addObject("isPresent", category.isPresent());
         if(category.isPresent()){
             mv.addObject("category", category.orElseThrow());

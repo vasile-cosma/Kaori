@@ -11,6 +11,12 @@ import java.util.List;
 @Component
 public class CategoryRepositoryInitializer implements CommandLineRunner {
     private static final int CATEGORY_COUNT = 6;
+    private static final String CATEGORY_ALT_GREEN = "imagen té verde";
+    private static final String CATEGORY_ALT_YELLOW = "imagen té amarillo";
+    private static final String CATEGORY_ALT_WHITE = "imagen té blanco";
+    private static final String CATEGORY_ALT_OOLONG = "imagen té oolong";
+    private static final String CATEGORY_ALT_RED = "imagen té rojo";
+    private static final String CATEGORY_ALT_BLACK = "imagen té negro";
     private static final String CATEGORY_GREEN = "Té verde";
     private static final String CATEGORY_YELLOW = "Té amarillo";
     private static final String CATEGORY_WHITE = "Té blanco";
@@ -32,6 +38,7 @@ public class CategoryRepositoryInitializer implements CommandLineRunner {
     private static final List<String> CATEGORY_NAMES = Arrays.asList(CATEGORY_GREEN, CATEGORY_YELLOW, CATEGORY_WHITE, CATEGORY_OOLONG, CATEGORY_RED, CATEGORY_BLACK);
     private static final List<String> CATEGORY_IMAGES = Arrays.asList(CATEGORY_IMG_GREEN, CATEGORY_IMG_YELLOW, CATEGORY_IMG_WHITE, CATEGORY_IMG_OOLONG, CATEGORY_IMG_RED, CATEGORY_IMG_BLACK);
     private static final List<String> CATEGORY_DESCRIPTIONS = Arrays.asList(CATEGORY_DESC_GREEN, CATEGORY_DESC_YELLOW, CATEGORY_DESC_WHITE, CATEGORY_DESC_OOLONG, CATEGORY_DESC_RED, CATEGORY_DESC_BLACK);
+    private static final List<String> CATEGORY_ALTS = Arrays.asList(CATEGORY_ALT_GREEN, CATEGORY_ALT_YELLOW, CATEGORY_ALT_WHITE, CATEGORY_ALT_OOLONG, CATEGORY_ALT_RED, CATEGORY_ALT_BLACK);
 
     private final CategoryService categoryService;
 
@@ -46,6 +53,7 @@ public class CategoryRepositoryInitializer implements CommandLineRunner {
                     .name(CATEGORY_NAMES.get(i))
                     .description(CATEGORY_DESCRIPTIONS.get(i))
                     .image(CATEGORY_IMAGES.get(i))
+                    .imageDescription(CATEGORY_DESCRIPTIONS.get(i))
                     .build();
 
             categoryService.save(category);

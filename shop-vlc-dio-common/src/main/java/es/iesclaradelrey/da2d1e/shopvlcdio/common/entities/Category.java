@@ -11,4 +11,5 @@ public class Category implements Entity<Long> {
     private String name;
     private String description;
     private String image;
+    private String imageDescription;
 }
