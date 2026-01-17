@@ -27,10 +27,10 @@ public class CategoryController {
     }
 
     @GetMapping("/categories/{id}")
-    public ModelAndView detail(@PathVariable(name = "id") Long ID){
+    public ModelAndView detail(@PathVariable(name = "id") Integer id){
         ModelAndView mv = new ModelAndView("category-list");
 
-        Optional<Category> category = categoryService.findById(ID);
+        Optional<Category> category = categoryService.findById(id);
         mv.addObject("categories", categoryService.findAll());
         mv.addObject("isPresent", category.isPresent());
         if(category.isPresent()){

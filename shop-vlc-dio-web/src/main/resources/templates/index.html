@@ -76,7 +76,7 @@
                                 data-menuname="main menu">
                                 <th:block th:each="category: ${categories}">
                                 <li class="menu-item">
-                                    <a th:href="@{/categories/{id}(id=${category.getID()})}"
+                                    <a th:href="@{/categories/{id}(id=${category.id})}"
                                                          th:text="${category.getName()}">Categoría</a>
                                 </li>
                                 </th:block>

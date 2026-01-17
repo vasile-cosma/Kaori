@@ -13,7 +13,7 @@ public class HomeController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping({"/index", "/index/"})
+    @GetMapping({"/", "/index", "/index"})
     public ModelAndView index() {
         //todo: Cambiar la ubicación de las páginas en templates.
         ModelAndView mv = new ModelAndView("index");

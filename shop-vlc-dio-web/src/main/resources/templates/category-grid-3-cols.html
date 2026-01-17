@@ -76,7 +76,7 @@
                                 data-menuname="main menu">
                                 <!--<li class="menu-item"><a th:href="@{#}">Home</a></li> !-->
                                 <th:block th:each="category: ${categories}">
-                                    <li class="menu-item"><a th:href="@{/categories/{id}(id=${category.getID()})}"
+                                    <li class="menu-item"><a th:href="@{/categories/{id}(id=${category.getId()})}"
                                             th:text="${category.getName()}">Categoría</a></li>
                                 </th:block>
                                 <li class="menu-item"><a th:href="@{/categories}">Todas las categorías</a></li>
@@ -318,11 +318,11 @@
                                 <li class="product-item col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                     <div class="contain-product layout-default">
                                         <div class="product-thumb">
-                                            <a th:href="@{/categories/{id}(id=${category.getID()})}" class="link-to-product">
-                                                <img th:if="${category.getImage() == null}"
-                                                    th:src="@{/images/categories/not-available.webp}">
-                                                <img th:unless="${category.getImage() == null}"
-                                                    th:src="@{${category.getImage()}}">
+                                            <a th:href="@{/categories/{id}(id=${category.getId()})}" class="link-to-product">
+                                                <img class="nuestrasImg" th:if="${category.getImage() == null}"
+                                                    th:src="@{/images/categories/not-available.webp}" th:alt="${category.name}">
+                                                <img class="nuestrasImg" id="imgNuestra" th:unless="${category.getImage() == null}"
+                                                    th:src="@{${category.getImage()}}" th:alt="${category.name}">
                                             </a>
                                         </div>
                                         <div class="info">
