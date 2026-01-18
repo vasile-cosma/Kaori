@@ -321,8 +321,11 @@
                                             <a th:href="@{/categories/{id}(id=${category.getId()})}" class="link-to-product">
                                                 <img class="nuestrasImg" th:if="${category.getImage() == null}"
                                                     th:src="@{/images/categories/not-available.webp}" th:alt="${category.name}">
-                                                <img class="nuestrasImg" id="imgNuestra" th:unless="${category.getImage() == null}"
-                                                    th:src="@{${category.getImage()}}" th:alt="${category.name}">
+                                                <img class="nuestrasImg" th:unless="${category.getImage() == null}"
+                                                    th:src="@{'/images/categories/' + ${category.getImage()}}"
+                                                    th:data-original="@{'/images/categories/' + ${category.getImage()}}"
+                                                    th:data-hover="@{'/images/categories/' + ${#strings.replace(category.getImage(), '.png', '-hover.png')}}"
+                                                     th:alt="${category.name}">
                                             </a>
                                         </div>
                                         <div class="info">
@@ -639,6 +642,7 @@
     <script th:src="@{/js/slick.min.js}"></script>
     <script th:src="@{/js/biolife.framework.js}"></script>
     <script th:src="@{/js/functions.js}"></script>
+    <script th:src="@{/js/imagenes.js}"></script>
 </body>
 
 </html>
