@@ -316,7 +316,7 @@
             <img th:if="${category.getImage() == null}"
                  th:src="@{/images/categories/not-available.webp}" th:alt="${category.getName()}">
             <img th:unless="${category.getImage() == null}"
-                 th:src="@{${category.getImage()}}" th:alt="${category.name}">
+                 th:src="@{'/images/categories/' + ${category.getImage()}}" th:alt="${category.name}">
         </nav>
     </div>
 
