@@ -24,7 +24,7 @@ INSERT INTO product
 VALUES
     ('Yamato Tea','4006381333931',
      'Té verde japonés Sencha de alta calidad, cultivado en pequeñas plantaciones donde se controla cada fase del crecimiento. Su sabor es fresco, vegetal y ligeramente dulce, ideal para el consumo diario por sus propiedades antioxidantes y su bajo contenido en cafeína.',
-     10,'https://example.com/img/te-sencha.jpg','Té Verde Sencha Premium',6.50),
+     10,'sencha.png','Té Verde Sencha Premium',6.50),
 
     ('Royal Assam','9780201379624',
      'Té negro procedente de la región de Assam en la India. De cuerpo intenso y sabor robusto, es perfecto para el desayuno. Su infusión oscura y aromática combina muy bien con leche o bebidas vegetales.',

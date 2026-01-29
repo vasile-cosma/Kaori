@@ -1,11 +1,14 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Optional;
 
 @Controller
 public class ProductController {
@@ -26,10 +29,15 @@ public class ProductController {
         return mv;
     }
 
-    @GetMapping({"/products/{id}/{name}"})
-    public ModelAndView detail(@PathVariable(name = "id") Integer id, @PathVariable String name){
-        ModelAndView mv = new ModelAndView("");
-        mv.addObject("product", productService.findById(id));
+    @GetMapping({"/products/{id}"})
+    public ModelAndView detail(@PathVariable Integer id){
+        ModelAndView mv = new ModelAndView("single-product");
+        Optional<Product> product = productService.findById(id);
+        mv.addObject("products", productService.findAll());
+        mv.addObject("isPresent", product.isPresent());
+        if(product.isPresent()){
+            mv.addObject("product", product.orElseThrow());
+        }
         return mv;
     }
 }
