@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "es.iesclaradelrey.da2d1e.shopvlcdio.common",
         "es.iesclaradelrey.da2d1e.shopvlcdio.web"})
 // Añadidas por mi
-@EntityScan("es.iesclaradelrey.da2d1e.shopvlcdio.common.entities")
-@EnableJpaRepositories("es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories")
+@EntityScan("es.iesclaradelrey.da2d1e.shopvlcdio.common")
+@EnableJpaRepositories("es.iesclaradelrey.da2d1e.shopvlcdio.common")
 public class ShopVlcDioWebApplication {
 
     public static void main(String[] args) {

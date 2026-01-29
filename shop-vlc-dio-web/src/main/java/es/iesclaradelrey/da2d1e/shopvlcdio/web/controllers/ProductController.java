@@ -4,6 +4,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -22,6 +23,13 @@ public class ProductController {
         ModelAndView mv = new ModelAndView("product-grid-6-cols");
         mv.addObject("products", productService.findAll());
         mv.addObject("categories", categoryService.findAll());
+        return mv;
+    }
+
+    @GetMapping({"/products/{id}/{name}"})
+    public ModelAndView detail(@PathVariable(name = "id") Integer id, @PathVariable String name){
+        ModelAndView mv = new ModelAndView("");
+        mv.addObject("product", productService.findById(id));
         return mv;
     }
 }
