@@ -321,18 +321,21 @@
                                 <div class="contain-product layout-02">
                                     <div class="product-thumb">
                                         <a href="#" class="link-to-product">
-                                            <img th:src="@{/images/products/not-available.webp}" th:alt="${product.getProductCode()}" width="270" height="270" class="product-thumnail">
+                                            <img th:if="${product.getProductImage() == null}"
+                                                 th:src="@{/images/products/not-available.webp}" th:alt="${product.getProductCode()}"  width="270" height="270" class="product-thumnail">
+                                            <img th:unless="${product.getProductImage() == null}"
+                                                 th:src="@{'/images/products/' + ${product.getProductImage()}}" th:alt="${product.getProductCode()}"  width="270" height="270" class="product-thumnail">
                                         </a>
                                     </div>
                                     <div class="info">
                                         <b class="categories">Té</b>
                                         <h4 class="product-title"><a href="#" class="pr-name" th:text="${product.getProductName()}">Nombre producto</a></h4>
                                         <div class="price" th:if="${product.calculatePrice()} != ${product.getProductPrice()}">
-                                            <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">00.00</span></ins>
+                                            <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
                                             <del><span class="price-amount" th:text="${product.getProductPrice()} + '€'">00.00</span></del>>
                                         </div>
                                         <div class="price" th:unless="${product.calculatePrice()} != ${product.getProductPrice()}">
-                                            <ins><span class="price-amount" th:text="${product.getProductPrice()}">00.00<span class="currencySymbol">€</span></span></ins>
+                                            <ins><span class="price-amount"  th:text="${product.getProductPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
                                         </div>
                                     </div>
                                 </div>
