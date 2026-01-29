@@ -314,27 +314,30 @@
 
                 <!-- Main content -->
                 <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
                     <div class="block-item recently-products-cat md-margin-bottom-39">
-                        <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 3}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}'
-                        th:each="product : ${products}">
+                        <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 3}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}' >
+                            <th:block th:each="product : ${products}">
                             <li class="product-item">
                                 <div class="contain-product layout-02">
                                     <div class="product-thumb">
                                         <a href="#" class="link-to-product">
-                                            <img th:src="'@{/images/' + '${product.getProductImage()}'" th:alt="${product.getProductCode()}" width="270" height="270" class="product-thumnail">
+                                            <img th:src="@{/images/products/not-available.webp}" th:alt="${product.getProductCode()}" width="270" height="270" class="product-thumnail">
                                         </a>
                                     </div>
                                     <div class="info">
                                         <b class="categories">Té</b>
                                         <h4 class="product-title"><a href="#" class="pr-name" th:text="${product.getProductName()}">Nombre producto</a></h4>
-                                        <div class="price">
+                                        <div class="price" th:if="${product.calculatePrice()} != ${product.getProductPrice()}">
                                             <ins><span class="price-amount" th:text="${product.calculatePrice()}">00.00<span class="currencySymbol">€</span></span></ins>
                                             <del><span class="price-amount" th:text="${product.getProductPrice()}">00.00<span class="currencySymbol">€</span></span></del>
+                                        </div>
+                                        <div class="price" th:unless="${product.calculatePrice()} != ${product.getProductPrice()}">
+                                            <ins><span class="price-amount" th:text="${product.getProductPrice()}">00.00<span class="currencySymbol">€</span></span></ins>
                                         </div>
                                     </div>
                                 </div>
                             </li>
+                            </th:block>
                         </ul>
                     </div>
 

@@ -35,6 +35,7 @@ public class Product {
     private Integer productDiscount;
 
     public Double calculatePrice() {
-        return productPrice * productDiscount/100;
+        Double discount = productPrice * productDiscount/100;
+        return productPrice - discount;
     }
 }
