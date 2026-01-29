@@ -328,8 +328,8 @@
                                         <b class="categories">Té</b>
                                         <h4 class="product-title"><a href="#" class="pr-name" th:text="${product.getProductName()}">Nombre producto</a></h4>
                                         <div class="price" th:if="${product.calculatePrice()} != ${product.getProductPrice()}">
-                                            <ins><span class="price-amount" th:text="${product.calculatePrice()}">00.00<span class="currencySymbol">€</span></span></ins>
-                                            <del><span class="price-amount" th:text="${product.getProductPrice()}">00.00<span class="currencySymbol">€</span></span></del>
+                                            <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">00.00</span></ins>
+                                            <del><span class="price-amount" th:text="${product.getProductPrice()} + '€'">00.00</span></del>>
                                         </div>
                                         <div class="price" th:unless="${product.calculatePrice()} != ${product.getProductPrice()}">
                                             <ins><span class="price-amount" th:text="${product.getProductPrice()}">00.00<span class="currencySymbol">€</span></span></ins>
