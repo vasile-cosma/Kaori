@@ -29,8 +29,9 @@ public class ProductController {
         return mv;
     }
 
-    @GetMapping({"/products/{id}/{name:.+}"})
-    public ModelAndView detail(@PathVariable Integer id){
+    @GetMapping({"/products/{id}/{*nombre}"})
+    public ModelAndView detail(@PathVariable Integer id,
+                               @PathVariable("nombre") String nombre){
         ModelAndView mv = new ModelAndView("single-product");
         Optional<Product> product = productService.findById(id);
         mv.addObject("isPresent", product.isPresent());

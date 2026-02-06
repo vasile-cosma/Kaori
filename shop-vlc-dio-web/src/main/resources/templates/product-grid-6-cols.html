@@ -320,22 +320,22 @@
                             <li class="product-item">
                                 <div class="contain-product layout-02">
                                     <div class="product-thumb">
-                                        <a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getProductName()})}" class="link-to-product">
-                                            <img th:if="${product.getProductImage() == null}"
+                                        <a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="link-to-product">
+                                            <img th:if="${product.getImg() == null}"
                                                  th:src="@{/images/products/not-available.webp}" alt=""  width="270" height="270" class="product-thumnail">
-                                            <img th:unless="${product.getProductImage() == null}"
-                                                 th:src="@{'/images/products/' + ${product.getProductImage()}}" th:alt="|Imagen de ${product.getProductName()}|"  width="270" height="270" class="product-thumnail">
+                                            <img th:unless="${product.getImg() == null}"
+                                                 th:src="@{'/images/products/' + ${product.getImg()}}" th:alt="|Imagen de ${product.getName()}|" width="270" height="270" class="product-thumnail">
                                         </a>
                                     </div>
                                     <div class="info">
                                         <b class="categories">Té</b>
-                                        <h4 class="product-title"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getProductName()})}" class="pr-name" th:text="${product.getProductName()}">Nombre producto</a></h4>
-                                        <div class="price" th:if="${product.calculatePrice()} != ${product.getProductPrice()}">
+                                        <h4 class="product-title"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="pr-name" th:text="${product.getName()}">Nombre producto</a></h4>
+                                        <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                                             <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
-                                            <del><span class="price-amount" th:text="${product.getProductPrice()} + '€'">00.00</span></del>>
+                                            <del><span class="price-amount" th:text="${product.getPrice()} + '€'">00.00</span></del>>
                                         </div>
-                                        <div class="price" th:unless="${product.calculatePrice()} != ${product.getProductPrice()}">
-                                            <ins><span class="price-amount"  th:text="${product.getProductPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
+                                        <div class="price" th:unless="${product.calculatePrice()} != ${product.getPrice()}">
+                                            <ins><span class="price-amount"  th:text="${product.getPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
                                         </div>
                                     </div>
                                 </div>
@@ -406,32 +406,32 @@
                                     <li class="product-item col-lg-2 col-md-3 col-sm-4 col-xs-6">
                                         <div class="contain-product layout-default">
                                             <div class="product-thumb">
-                                                <a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getProductName()})}" class="link-to-product">
-                                                    <img th:if="${product.getProductImage() == null}"
+                                                <a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="link-to-product">
+                                                    <img th:if="${product.getImg() == null}"
                                                          th:src="@{/images/products/not-available.webp}" alt=""  width="270" height="270" class="product-thumnail">
-                                                    <img th:unless="${product.getProductImage() == null}"
-                                                         th:src="@{'/images/products/' + ${product.getProductImage()}}" th:alt="|Imagen de ${product.getProductName()}|"  width="270" height="270" class="product-thumnail">
+                                                    <img th:unless="${product.getImg() == null}"
+                                                         th:src="@{'/images/products/' + ${product.getImg()}}" th:alt="|Imagen de ${product.getName()}|" width="270" height="270" class="product-thumnail">
                                                 </a>
-                                                <span th:if="${product.getProductDiscount() != 0}" class="position-absolute top-0 start-60 translate-middle badge rounded-5 mt-4 p-2" style="background-color: #7faf51" th:text="|${product.productDiscount}%|">
+                                                <span th:if="${product.getDiscount() != 0}" class="position-absolute top-0 start-60 translate-middle badge rounded-5 mt-4 p-2" style="background-color: #7faf51" th:text="|${product.getDiscount}%|">
                                                     Descuento
                                                 </span>
                                             </div>
                                             <div class="info">
                                                 <b class="categories">Categoría</b>
-                                                <h4 class="product-title" style="min-height: 37.5px"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getProductName()})}" class="pr-name" th:text="${product.getProductName()}">Producto</a></h4>
-                                                <div class="price" th:if="${product.calculatePrice()} != ${product.getProductPrice()}">
+                                                <h4 class="product-title" style="min-height: 37.5px"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="pr-name" th:text="${product.getName()}">Producto</a></h4>
+                                                <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                                                     <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
-                                                    <del><span class="price-amount" th:text="${product.getProductPrice()} + '€'">00.00</span></del>>
+                                                    <del><span class="price-amount" th:text="${product.getPrice()} + '€'">00.00</span></del>>
                                                 </div>
-                                                <div class="price" th:unless="${product.calculatePrice()} != ${product.getProductPrice()}">
-                                                    <ins><span class="price-amount"  th:text="${product.getProductPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
+                                                <div class="price" th:unless="${product.calculatePrice()} != ${product.getPrice()}">
+                                                    <ins><span class="price-amount"  th:text="${product.getPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
                                                 </div>
                                                 <div class="shipping-info">
                                                     <p class="shipping-day">3-Day Shipping</p>
                                                     <p class="for-today">Pree Pickup Today</p>
                                                 </div>
                                                 <div class="slide-down-box">
-                                                    <p class="message" th:text="${#strings.abbreviate(product.getProductDescription(), 200)}">Descripción del producto</p>
+                                                    <p class="message" th:text="${#strings.abbreviate(product.getDesc(), 200)}">Descripción del producto</p>
                                                     <div class="buttons">
                                                         <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
                                                         <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>add to cart</a>
