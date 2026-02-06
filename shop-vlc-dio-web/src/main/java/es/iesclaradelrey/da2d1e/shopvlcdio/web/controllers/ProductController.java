@@ -29,15 +29,16 @@ public class ProductController {
         return mv;
     }
 
-    @GetMapping({"/products/{id}/{*nombre}"})
-    public ModelAndView detail(@PathVariable Integer id,
-                               @PathVariable("nombre") String nombre){
+    @GetMapping({"/products/{id}/{*}"})
+    public ModelAndView detail(@PathVariable Integer id){
+        System.out.println("En el controlador");
         ModelAndView mv = new ModelAndView("single-product");
         Optional<Product> product = productService.findById(id);
         mv.addObject("isPresent", product.isPresent());
         if (product.isPresent()){
             mv.addObject("product", product.orElseThrow());
         }
+        System.out.println("Antes de salir");
         return mv;
     }
 }

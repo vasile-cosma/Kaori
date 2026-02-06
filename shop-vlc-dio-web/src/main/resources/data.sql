@@ -123,7 +123,7 @@ VALUES
      'Té Oolong con notas naturalmente cremosas que recuerdan a la leche. Muy apreciado por su suavidad y textura sedosa en boca.',
      0,'oolong-tea-1.png','Té Oolong Leche',8.40),
 
-    (14,'2345678901236',
+    (NULL,'2345678901236',
      'Té negro aromatizado con cacao que ofrece una experiencia intensa y reconfortante. Ideal para los amantes de sabores profundos.',
      10,'black-tea-5.png','Té Negro Chocolate',6.80),
 
@@ -139,3 +139,7 @@ VALUES
      'Té negro aromatizado con caramelo que ofrece una infusión dulce y reconfortante, perfecta para disfrutar en cualquier momento del día.',
      5,NULL,'Té Negro Caramelo',5.60);
 
+
+-- INSERT INTO product_category (product_id, category_id)
+-- VALUES
+--     (1,1),(5,1),(1),(1),(1),(1),(1),(1),

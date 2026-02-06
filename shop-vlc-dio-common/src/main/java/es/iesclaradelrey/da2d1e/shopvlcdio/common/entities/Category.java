@@ -3,6 +3,9 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.common.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -20,5 +23,8 @@ public class Category{
     private String description;
     @Column(length = 500)
     private String image;
+
+    @ManyToMany(mappedBy = "categories")
+    private Set<Product> products = new HashSet<>();
 
 }
