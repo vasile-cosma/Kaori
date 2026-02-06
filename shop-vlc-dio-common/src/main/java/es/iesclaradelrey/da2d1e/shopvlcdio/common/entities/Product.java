@@ -1,11 +1,10 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.processing.Pattern;
+import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -19,23 +18,33 @@ public class Product {
     private Integer id;
     @Column(unique = true, nullable = false, length = 13)
     //Todo Añadir validación
-    private String productCode;
+    private String code;
     @Column(length = 200, nullable = false)
-    private String productName;
-    @Column(length = 50)
-    private String productBrand;
+    private String name;
     @Column(length = 4000, nullable = false)
-    private String productDescription;
+    private String desc;
     @Column(length = 500)
-    private String productImage;
+    private String img;
     @Column(nullable = false)
-    private Double productPrice;
+    private Double price;
     //Todo Añadir validación
     @Column(nullable = false, length = 99)
-    private Integer productDiscount;
+    private Integer discount;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+    @ManyToMany
+    @JoinTable(
+            name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories = new HashSet<>();
 
     public Double calculatePrice() {
-        Double discount = productPrice * productDiscount/100;
-        return productPrice - discount;
+        Double productDiscount = price * discount/100;
+        return price - productDiscount;
     }
 }

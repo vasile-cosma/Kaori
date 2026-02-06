@@ -6,25 +6,23 @@ import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
+@Table
 @Getter
 @Setter
 @ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category{
+public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true, nullable = false,  length = 100)
+    @Column(unique = true, length = 150)
     private String name;
-    @Column(nullable = false,  length = 2000)
-    private String description;
-    @Column(length = 500)
-    private String image;
 
-    @ManyToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "brand")
     private Set<Product> products = new HashSet<>();
 
 }
