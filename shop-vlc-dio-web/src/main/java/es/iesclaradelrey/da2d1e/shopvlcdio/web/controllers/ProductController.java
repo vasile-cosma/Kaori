@@ -29,7 +29,7 @@ public class ProductController {
         return mv;
     }
 
-    @GetMapping({"/products/{id}/{name:.+}"})
+    @GetMapping({"/products/{id}/{*}"})
     public ModelAndView detail(@PathVariable Integer id){
         ModelAndView mv = new ModelAndView("single-product");
         Optional<Product> product = productService.findById(id);
