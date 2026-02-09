@@ -1,22 +1,22 @@
 
 
 insert into category (description, image, name) values
-    ('fresco y vegetal, se elabora con hojas mínimamente oxidadas para preservar su color verde y sus matices herbales. es conocido por su suavidad y su perfil ligero.', 'green-tea.png', 'té verde');
+    ('fresco y vegetal, se elabora con hojas mínimamente oxidadas para preservar su color verde y sus matices herbales. es conocido por su suavidad y su perfil ligero.', 'green-tea.png', 'Té verde');
 
 insert into category (description, image, name) values
-    ('raro y delicado, se somete a una ligera fermentación controlada que suaviza su sabor. ofrece notas dulces y un aroma cálido y aterciopelado.', 'yellow-tea.png', 'té amarillo');
+    ('raro y delicado, se somete a una ligera fermentación controlada que suaviza su sabor. ofrece notas dulces y un aroma cálido y aterciopelado.', 'yellow-tea.png', 'Té amarillo');
 
 insert into category (description, image, name) values
-    ('el menos procesado de todos. sus brotes tiernos dan una infusión sutil, dulce y floral, con una textura muy suave y refinada.', 'white-tea.png', 'té blanco');
+    ('el menos procesado de todos. sus brotes tiernos dan una infusión sutil, dulce y floral, con una textura muy suave y refinada.', 'white-tea.png', 'Té blanco');
 
 insert into category (description, image, name) values
-    ('semioxidado, combina características del té verde y negro. presenta sabores complejos que van de florales a tostados, con un aroma rico y elegante.', 'oolong-tea.png', 'té oolong');
+    ('semioxidado, combina características del té verde y negro. presenta sabores complejos que van de florales a tostados, con un aroma rico y elegante.', 'oolong-tea.png', 'Té oolong');
 
 insert into category (description, image, name) values
-    ('té fermentado tradicional de china con cuerpo terroso y profundo. su maduración aporta un sabor cálido, robusto y ligeramente dulce.', 'red-tea.png', 'té rojo');
+    ('té fermentado tradicional de china con cuerpo terroso y profundo. su maduración aporta un sabor cálido, robusto y ligeramente dulce.', 'red-tea.png', 'Té rojo');
 
 insert into category (description, image, name) values
-    ('totalmente oxidado, ofrece una taza intensa con notas malteadas, especiadas o frutales. es el té más robusto y de sabor más definido.', 'black-tea.png', 'té negro');
+    ('totalmente oxidado, ofrece una taza intensa con notas malteadas, especiadas o frutales. es el té más robusto y de sabor más definido.', 'black-tea.png', 'Té negro');
 
 
 INSERT INTO brand (name) VALUES
@@ -99,9 +99,9 @@ VALUES
      'Té verde aromatizado con limón y jengibre, diseñado para aportar frescura y vitalidad. Ideal para consumir caliente o frío.',
      0,'green-tea-7.png','Té Verde Limón y Jengibre',5.40),
 
-    (10,'1234567890128',
-     'Variante de té rojo Pu Erh combinada con cáscara de naranja natural que suaviza su sabor intenso y aporta un aroma cítrico muy agradable.',
-     10,'red-tea-3.png','Té Rojo Pu Erh Naranja',7.90),
+    (11,'1234567890128',
+     'Té Oolong semifermentado de sabor equilibrado, con notas florales y tostadas que combinan suavidad y carácter, ideal para disfrutar en cualquier momento del día.',
+     10,'oolong-tea-4.png','Té Oolong Clásico',8.50),
 
     (11,'5601234567895',
      'Té japonés elaborado principalmente con tallos y ramas del té verde. Presenta un sabor suave y bajo contenido en cafeína, ideal para el consumo diario.',
@@ -140,6 +140,11 @@ VALUES
      5,NULL,'Té Negro Caramelo',5.60);
 
 
--- INSERT INTO product_category (product_id, category_id)
--- VALUES
---     (1,1),(5,1),(1),(1),(1),(1),(1),(1),
+ INSERT INTO product_category (product_id, category_id)
+ VALUES
+    (1, 1),(5, 1),(10, 1),(13, 1),(15, 1),(20, 1),(23, 1),(7, 1), (17, 1),
+    (3,3),(11,3),(18,3),(24,3),
+    (21, 4), (6, 4), (9,4),(16, 4),(10, 4),
+    (4, 5),
+    (2, 6), (8, 6), (25, 6), (12, 6), (14, 6), (19, 6), (22, 6), (20, 6);
+

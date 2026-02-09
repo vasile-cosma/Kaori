@@ -160,7 +160,12 @@
                                                 </span>
                                             </div>
                                             <div class="info">
-                                                <b class="categories">Categoría</b>
+                                                <div class="categories" th:each=" category : ${product.getCategories()}">
+                                                    <span th:unless="${product.getCategories().size() > 1}" th:text="${category.getName()}">category</span>
+                                                    <ul th:if="${product.getCategories().size() > 1}" class="list-group list-group-horizontal">
+                                                    </ul>
+                                                </div>
+
                                                 <h4 class="product-title" style="min-height: 37.5px"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="pr-name" th:text="${product.getName()}">Producto</a></h4>
                                                 <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                                                     <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
@@ -170,8 +175,8 @@
                                                     <ins><span class="price-amount"  th:text="${product.getPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
                                                 </div>
                                                 <div class="shipping-info">
-                                                    <p class="shipping-day">3-Day Shipping</p>
-                                                    <p class="for-today">Pree Pickup Today</p>
+                                                    <p th:if="${product.getBrand() != null}" class="shipping-day" th:text="${product.getBrand().name}">marca</p>
+                                                    <p th:unless="${product.getBrand() != null}" class="for-today"></p>
                                                 </div>
                                                 <div class="slide-down-box">
                                                     <p class="message" th:text="${#strings.abbreviate(product.getDesc(), 200)}">Descripción del producto</p>
