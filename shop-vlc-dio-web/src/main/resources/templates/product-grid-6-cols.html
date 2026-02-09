@@ -159,13 +159,22 @@
                                                     Descuento
                                                 </span>
                                             </div>
-                                            <div class="info">
-                                                <div class="categories" th:each=" category : ${product.getCategories()}">
-                                                    <span th:unless="${product.getCategories().size() > 1}" th:text="${category.getName()}">category</span>
-                                                    <ul th:if="${product.getCategories().size() > 1}" class="list-group list-group-horizontal">
-                                                    </ul>
+                                            <div class="info" >
+                                                <div th:with="cats=${product.categories}" th:if="${not #sets.isEmpty(cats)}">
+                                                    <th:block th:unless="${cats.size() > 1}">
+                                                        <div class="categories" th:each=" category : ${cats}">
+                                                            <span  th:text="${category.getName()}">category</span>
+                                                        </div>
+                                                    </th:block>
+                                                    <th:block th:if="${cats.size() > 1}">
+                                                        <b class="categories">
+                                                      <span th:each="category, pos : ${cats}">
+                                                        <span th:text="${category.name}"></span>
+                                                        <span th:if="${!pos.last}">, </span>
+                                                      </span>
+                                                        </b>
+                                                    </th:block>
                                                 </div>
-
                                                 <h4 class="product-title" style="min-height: 37.5px"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="pr-name" th:text="${product.getName()}">Producto</a></h4>
                                                 <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                                                     <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
