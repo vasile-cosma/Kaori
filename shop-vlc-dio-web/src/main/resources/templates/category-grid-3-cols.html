@@ -34,7 +34,7 @@
     </div>
 
     <!-- HEADER -->
-   <header th:replace="fragments/header::header"></header>
+   <header th:replace="~{fragments/header::header}"></header>
 
     <!--Hero Section-->
     <div class="hero-section hero-background">
@@ -81,12 +81,12 @@
     </div>
 
     <!-- FOOTER -->
-    <div th:replace="fragments/footer::footer"></div>
+    <div th:replace="~{fragments/footer::footer}"></div>
 
     <!-- Scroll Top Button -->
     <a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
 
-    <div th:replace="fragments/scripts::scripts"></div>
+    <div th:replace="~{fragments/scripts::scripts}"></div>
     <script th:src="@{/js/imagenes.js}"></script>
 </body>
 
