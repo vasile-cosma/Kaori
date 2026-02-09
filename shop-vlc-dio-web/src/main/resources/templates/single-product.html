@@ -78,6 +78,22 @@
                         </div>
                         -->
                         <span class="sku" th:text="${product.getCode()}">EAN-13</span>
+                        <div th:if="${not #sets.isEmpty(product.categories)}" class="mt-2">
+                            <div th:if="${product.categories.size()>1}">
+                                <div>
+                                    <h3 class="title">Categorías</h3>
+                                    <ul>
+                                        <li th:each="category: ${product.categories}" th:text="${category.name}"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div th:if="${product.categories.size()==1}">
+                                <div>
+                                    <h3 class="title">Categoría</h3>
+                                        <div th:each="category: ${product.categories}" th:text="${category.name}"></div>
+                                </div>
+                            </div>
+                        </div>
                         <p class="excerpt" th:text="${product.getDesc()}">Descripción del producto</p>
                         <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                             <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">Precio</span></ins>
@@ -111,24 +127,6 @@
                         </div>
                         <div class="buttons">
                             <a href="#" class="btn add-to-cart-btn">Agregar al carrito</a>
-                            <div th:if="${not #sets.isEmpty(product.categories())}">
-                                <div th:if="${product.categories().size()>1}">
-                                <p class="pull-row">
-                                    <div>CATEGORÍAS</div>
-                                    <ul>
-                                        <li th:each="category: ${product.categories()}" th:text="${category}"></li>
-                                    </ul>
-                                </p>
-                                </div>
-                                <div th:if="${product.categories().size()==1}">
-                                    <div class="pull-row">
-                                    <div>CATEGORÍA</div>
-                                    <ul>
-                                        <li th:each="category: ${product.categories()}" th:text="${category}"></li>
-                                    </ul>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="location-shipping-to">
                             <span class="title">Enviar a:</span>
@@ -151,6 +149,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Tab info -->
                 <div class="product-tabs single-layout biolife-tab-contain">
