@@ -1,10 +1,14 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -28,4 +32,8 @@ public class HomeController {
         return new ModelAndView("about-us");
     }
 
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories(){
+        return categoryService.findAll();
+    }
 }

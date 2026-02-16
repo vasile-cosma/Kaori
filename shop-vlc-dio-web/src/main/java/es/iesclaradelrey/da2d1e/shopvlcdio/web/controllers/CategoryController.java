@@ -4,9 +4,11 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -31,12 +33,16 @@ public class CategoryController {
         ModelAndView mv = new ModelAndView("category-list");
 
         Optional<Category> category = categoryService.findById(id);
-        mv.addObject("categories", categoryService.findAll());
         mv.addObject("isPresent", category.isPresent());
         if(category.isPresent()){
             mv.addObject("category", category.orElseThrow());
         }
 
         return mv;
+    }
+
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories(){
+        return categoryService.findAll();
     }
 }

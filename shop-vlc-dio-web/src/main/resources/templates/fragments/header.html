@@ -28,7 +28,7 @@
                                 <option value="en">English</option>
                             </select>
                         </li>
-                        <li><a href="login.html" class="login-link"><i
+                        <li><a href="#" class="login-link"><i
                                 class="biolife-icon icon-login"></i>Inicio/Registro</a></li>
                     </ul>
                 </div>
@@ -45,13 +45,15 @@
                         <div class="primary-menu">
                             <ul class="menu biolife-menu clone-main-menu clone-primary-menu" id="primary-menu"
                                 data-menuname="main menu">
-                                <th:block th:each="category: ${categories}">
-                                    <li class="menu-item">
-                                        <a th:href="@{/categories/{id}(id=${category.id})}"
-                                           th:text="${category.getName()}">Categoría</a>
-                                    </li>
-                                </th:block>
-                                <li class="menu-item"><a th:href="@{/categories}">Todas las categorías</a></li>
+                                <li class="menu-item menu-item-has-children has-child">
+                                    <a th:href="@{/categories}" class="menu-name" data-title="Product">Categorías</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item" th:each="category: ${categories}">
+                                            <a th:text="${category.name}" th:href="@{/categories/{id}(id=${category.id})}"></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a th:href="@{/products}">Productos</a></li>
                             </ul>
                         </div>
                     </div>
