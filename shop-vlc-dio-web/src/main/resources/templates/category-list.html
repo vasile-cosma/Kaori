@@ -52,11 +52,167 @@
             <div class="container text-justify-center pt-0 mt-0 pb-3">
                 <h3 style="color: black" th:text="${category.getDescription()}">Descripción</h3>
             </div>
-            <img th:if="${category.getImage() == null}"
-                 th:src="@{/images/categories/not-available.webp}" th:alt="${category.getName()}">
-            <img th:unless="${category.getImage() == null}"
-                 th:src="@{'/images/categories/' + ${category.getImage()}}" th:alt="${category.name}">
+
         </nav>
+    </div>
+
+    <div class="page-contain category-page no-sidebar">
+        <div class="container">
+            <div class="row">
+                <div style="text-align: center;">
+
+                    <img th:if="${category.getImage() == null}"
+                         th:src="@{/images/categories/not-available.webp}"
+                         th:alt="${category.getName()}"
+                         style="max-width:500px; max-height:500px; width:auto; height:auto; display:block; margin:0 auto;">
+
+                    <img th:unless="${category.getImage() == null}"
+                         th:src="@{'/images/categories/' + ${category.getImage()}}"
+                         th:alt="${category.name}"
+                         style="max-width:500px; max-height:500px; width:auto; height:auto; display:block; margin:0 auto;">
+                </div>
+
+                <!-- Main content -->
+                <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="product-category grid-style">
+
+                        <div id="top-functions-area" class="top-functions-area" >
+                            <div class="flt-item to-left group-on-mobile">
+                                <span class="flt-title">Refine</span>
+                                <a href="#" class="icon-for-mobile">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <div class="wrap-selectors">
+                                    <form action="#" name="frm-refine" method="get">
+                                        <span class="title-for-mobile">Refine Products By</span>
+                                        <div data-title="Price:" class="selector-item">
+                                            <select name="price" class="selector">
+                                                <option value="all">Price</option>
+                                                <option value="class-1st">Less than 5$</option>
+                                                <option value="class-2nd">$5-10$</option>
+                                                <option value="class-3rd">$10-20$</option>
+                                                <option value="class-4th">$20-45$</option>
+                                                <option value="class-5th">$45-100$</option>
+                                                <option value="class-6th">$100-150$</option>
+                                                <option value="class-7th">More than 150$</option>
+                                            </select>
+                                        </div>
+                                        <div data-title="Brand:" class="selector-item">
+                                            <select name="brad" class="selector">
+                                                <option value="all">Top brands</option>
+                                                <option value="br2">Brand first</option>
+                                                <option value="br3">Brand second</option>
+                                                <option value="br4">Brand third</option>
+                                                <option value="br5">Brand fourth</option>
+                                                <option value="br6">Brand fiveth</option>
+                                            </select>
+                                        </div>
+                                        <p class="btn-for-mobile"><button type="submit" class="btn-submit">Go</button></p>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="flt-item to-right">
+                                <span class="flt-title">Sort</span>
+                                <div class="wrap-selectors">
+                                    <div class="selector-item orderby-selector">
+                                        <select name="orderby" class="orderby" aria-label="Shop order">
+                                            <option value="menu_order" selected="selected">Default sorting</option>
+                                            <option value="popularity">popularity</option>
+                                            <option value="rating">average rating</option>
+                                            <option value="date">newness</option>
+                                            <option value="price">price: low to high</option>
+                                            <option value="price-desc">price: high to low</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <ul class="products-list">
+                                <th:block th:each="product : ${products}" th:if="${product.getCategories().contains(category)}">
+                                    <li class="product-item col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                                        <div class="contain-product layout-default">
+                                            <div class="product-thumb">
+                                                <a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="link-to-product">
+                                                    <img th:if="${product.getImg() == null}"
+                                                         th:src="@{/images/products/not-available.webp}" alt=""  width="270" height="270" class="product-thumnail">
+                                                    <img th:unless="${product.getImg() == null}"
+                                                         th:src="@{'/images/products/' + ${product.getImg()}}" th:alt="|Imagen de ${product.getName()}|" width="270" height="270" class="product-thumnail">
+                                                </a>
+                                                <span th:if="${product.getDiscount() != 0}" class="position-absolute top-0 start-60 translate-middle badge rounded-5 mt-4 p-2" style="background-color: #7faf51" th:text="|${product.getDiscount}%|">
+                                                    Descuento
+                                                </span>
+                                            </div>
+                                            <div class="info" >
+                                                <div th:with="cats=${product.categories}" th:if="${not #lists.isEmpty(product.categories)}">
+                                                    <th:block th:if="${cats.size() > 1}">
+                                                        <b class="categories">
+                                                      <span th:each="category, pos : ${cats}">
+                                                        <span th:text="${category.name}"></span>
+                                                        <span th:if="${!pos.last}">, </span>
+                                                      </span>
+                                                        </b>
+                                                    </th:block>
+                                                    <th:block th:unless="${cats.size() > 1}">
+                                                        <div class="categories" th:each=" category : ${cats}">
+                                                            <span  th:text="${category.getName()}">category</span>
+                                                        </div>
+                                                    </th:block>
+                                                </div>
+                                                <div th:unless="${not #lists.isEmpty(product.categories)}">
+                                                    <b class="categories">
+                                                      <span>
+                                                        <span></span>
+                                                      </span>
+                                                    </b>
+                                                </div>
+                                                <h4 class="product-title" style="min-height: 37.5px"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="pr-name" th:text="${product.getName()}">Producto</a></h4>
+                                                <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
+                                                    <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
+                                                    <del><span class="price-amount" th:text="${product.getPrice()} + '€'">00.00</span></del>>
+                                                </div>
+                                                <div class="price" th:unless="${product.calculatePrice()} != ${product.getPrice()}">
+                                                    <ins><span class="price-amount"  th:text="${product.getPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
+                                                </div>
+                                                <div class="shipping-info">
+                                                    <p th:if="${product.getBrand() != null}" class="shipping-day" th:text="${product.getBrand().name}">marca</p>
+                                                    <p th:unless="${product.getBrand() != null}" class="for-today"></p>
+                                                </div>
+                                                <div class="slide-down-box">
+                                                    <p class="message" th:text="${#strings.abbreviate(product.getDesc(), 200)}">Descripción del producto</p>
+                                                    <div class="buttons">
+                                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>add to cart</a>
+                                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </th:block>
+                            </ul>
+                        </div>
+
+                        <div class="biolife-panigations-block">
+                            <ul class="panigation-contain">
+                                <li><span class="current-page">1</span></li>
+                                <li><a href="#" class="link-page">2</a></li>
+                                <li><a href="#" class="link-page">3</a></li>
+                                <li><span class="sep">....</span></li>
+                                <li><a href="#" class="link-page">20</a></li>
+                                <li><a href="#" class="link-page next"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </div>
 
 

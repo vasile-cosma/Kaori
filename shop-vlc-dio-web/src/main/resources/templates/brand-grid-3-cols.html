@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Biolife - Organic Food</title>
+    <link href="https://fonts.googleapis.com/css?family=Cairo:400,600,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.png}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/css/slick.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/main-color03-green.css}">
+</head>
+
+<body class="biolife-body">
+
+    <!-- Preloader -->
+    <div id="biof-loading">
+        <div class="biof-loading-center">
+            <div class="biof-loading-center-absolute">
+                <div class="dot dot-one"></div>
+                <div class="dot dot-two"></div>
+                <div class="dot dot-three"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+   <header th:replace="~{fragments/header::header}"></header>
+
+    <!--Hero Section-->
+    <div class="hero-section hero-background">
+        <h1 class="page-title">MARCAS</h1>
+    </div>
+
+    <div class="page-contain category-page no-sidebar">
+        <div class="container">
+            <div class="row">
+
+                <!-- Main content -->
+                <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="product-category grid-style">
+                        <div class="row">
+                            <ul th:each="brand: ${brands}" class="products-list">
+                                <li class="product-item col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                    <div class="contain-product layout-default">
+                                        <div class="product-thumb">
+                                            <a th:href="@{/brands/{id}(id=${brand.getId()})}" class="link-to-product">
+                                                <img class="nuestrasImg" th:if="${brand.getImage() == null}"
+                                                    th:src="@{/images/categories/not-available.webp}" th:alt="${brand.name}">
+                                                <img class="nuestrasImg" th:unless="${brand.getImage() == null}"
+                                                    th:src="@{'/images/brands/' + ${brand.getImage()}}">
+                                            </a>
+                                        </div>
+                                        <div class="info">
+                                            <h4 th:text="${brand.getName()}" class="product-title"><a th:href="@{/brands/{id}(id=${brand.getId()})}"
+                                                    class="pr-name">Marca aquí</a></h4>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div th:replace="~{fragments/footer::footer}"></div>
+
+    <!-- Scroll Top Button -->
+    <a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
+
+    <div th:replace="~{fragments/scripts::scripts}"></div>
+</body>
+
+</html>

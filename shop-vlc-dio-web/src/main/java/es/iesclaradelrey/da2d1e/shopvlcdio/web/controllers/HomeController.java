@@ -1,6 +1,8 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +14,15 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+    private final BrandService brandService;
     CategoryService categoryService;
 
-    public HomeController(CategoryService categoryService) {
+    public HomeController(CategoryService categoryService, BrandService brandService) {
         this.categoryService = categoryService;
+        this.brandService = brandService;
     }
 
-    @GetMapping({"/", "/index", "/index"})
+    @GetMapping({"/", "/index"})
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("index");
 
@@ -36,4 +40,11 @@ public class HomeController {
     public List<Category> getAllCategories(){
         return categoryService.findAll();
     }
+
+    @ModelAttribute("brands")
+    public List<Brand> getAllBrands(){
+        return brandService.findAll();
+    }
+
+
 }

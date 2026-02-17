@@ -1,7 +1,11 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,9 +18,13 @@ import java.util.Optional;
 @Controller
 public class CategoryController {
     private final CategoryService categoryService;
+    private final ProductService productService;
+    private final BrandService brandService;
 
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService, ProductService productService, BrandService brandService) {
         this.categoryService = categoryService;
+        this.productService = productService;
+        this.brandService = brandService;
     }
 
     @GetMapping({"/categories", "/categories/"})
@@ -44,5 +52,15 @@ public class CategoryController {
     @ModelAttribute("categories")
     public List<Category> getAllCategories(){
         return categoryService.findAll();
+    }
+
+    @ModelAttribute("products")
+    public List<Product> getAllProducts(){
+        return productService.findAll();
+    }
+
+    @ModelAttribute("brands")
+    public List<Brand> getAllBrands(){
+        return brandService.findAll();
     }
 }

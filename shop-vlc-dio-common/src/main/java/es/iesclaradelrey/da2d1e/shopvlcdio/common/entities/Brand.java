@@ -21,6 +21,8 @@ public class Brand {
     private Integer id;
     @Column(unique = true, length = 150)
     private String name;
+    @Column(length = 500)
+    private String image;
 
     @OneToMany(mappedBy = "brand")
     private Set<Product> products = new HashSet<>();

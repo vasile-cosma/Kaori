@@ -53,6 +53,14 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="menu-item menu-item-has-children has-child">
+                                    <a th:href="@{/brands}" class="menu-name" data-title="Product">Marcas</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item" th:each="brand: ${brands}">
+                                            <a th:text="${brand.name}" th:href="@{/brands/{id}(id=${brand.id})}"></a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="menu-item"><a th:href="@{/products}">Productos</a></li>
                             </ul>
                         </div>

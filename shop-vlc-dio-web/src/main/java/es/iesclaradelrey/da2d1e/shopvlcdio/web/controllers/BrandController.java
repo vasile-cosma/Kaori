@@ -16,35 +16,32 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class ProductController {
-
-    private final ProductService productService;
+public class BrandController {
     private final CategoryService categoryService;
     private final BrandService brandService;
+    private final ProductService productService;
 
-    public ProductController(ProductService productService, CategoryService categoryService, BrandService brandService) {
-        this.productService = productService;
+    public BrandController(CategoryService categoryService, BrandService brandService, ProductService productService) {
         this.categoryService = categoryService;
         this.brandService = brandService;
+        this.productService = productService;
     }
 
-    @GetMapping({"/products", "/products/"})
-    public ModelAndView index(){
-        ModelAndView mv = new ModelAndView("product-grid-6-cols");
-        mv.addObject("products", productService.findAll());
-        return mv;
+    @GetMapping({"/brands", "/brands/"})
+    public ModelAndView index() {
+        return new ModelAndView("brand-grid-3-cols");
     }
 
-    @GetMapping({"/products/{id}/{*}"})
-    public ModelAndView detail(@PathVariable Integer id){
-        System.out.println("En el controlador");
-        ModelAndView mv = new ModelAndView("single-product");
-        Optional<Product> product = productService.findById(id);
-        mv.addObject("isPresent", product.isPresent());
-        if (product.isPresent()){
-            mv.addObject("product", product.orElseThrow());
+    @GetMapping("/brands/{id}")
+    public ModelAndView detail(@PathVariable(name = "id") Integer id){
+        ModelAndView mv = new ModelAndView("brand-list");
+
+        Optional<Brand> brand = brandService.findById(id);
+        mv.addObject("isPresent", brand.isPresent());
+        if(brand.isPresent()){
+            mv.addObject("brand", brand.orElseThrow());
         }
-        System.out.println("Antes de salir");
+
         return mv;
     }
 

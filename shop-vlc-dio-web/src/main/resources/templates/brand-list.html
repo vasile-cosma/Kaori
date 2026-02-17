@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kaori - Todos los productos</title>
+    <title>Biolife - Organic Food</title>
     <link href="https://fonts.googleapis.com/css?family=Cairo:400,600,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,700i" rel="stylesheet">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/main-color03-green.css}">
 </head>
+
 <body class="biolife-body">
 
     <!-- Preloader -->
@@ -37,16 +38,16 @@
     <header th:replace="~{fragments/header::header}"></header>
 
     <!--Hero Section-->
-    <div class="hero-section hero-background">
-        <h1 class="page-title">PRODUCTOS</h1>
-    </div>
+    <div th:replace="~{fragments/hero::hero(${brand.getName()})}"></div>
+
+
 
     <!--Navigation section-->
     <div class="container">
         <nav class="biolife-nav">
             <ul>
                 <li class="nav-item"><a th:href="@{/index}" class="permal-link">Home</a></li>
-                <li class="nav-item"><a href="#" class="permal-link">Todos los productos</a></li>
+                <li class="nav-item"><a th:href="@{/brands/{id}(id=${brand.getId()})}" class="permal-link" th:text="${brand.getName()}">marca</a></li>
             </ul>
         </nav>
     </div>
@@ -54,53 +55,21 @@
     <div class="page-contain category-page no-sidebar">
         <div class="container">
             <div class="row">
+                <div style="text-align: center;">
+
+                    <img th:if="${brand.getImage() == null}"
+                         th:src="@{/images/categories/not-available.webp}"
+                         th:alt="${brand.getName()}"
+                         style="max-width:500px; max-height:500px; width:auto; height:auto; display:block; margin:0 auto;">
+
+                    <img th:unless="${brand.getImage() == null}"
+                         th:src="@{'/images/brands/' + ${brand.getImage()}}"
+                         th:alt="${brand.name}"
+                         style="max-width:500px; max-height:500px; width:auto; height:auto; display:block; margin:0 auto;">
+                </div>
 
                 <!-- Main content -->
                 <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="block-item recently-products-cat md-margin-bottom-39">
-                        <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 3}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}' >
-                            <th:block th:each="product : ${products}">
-                            <li class="product-item">
-                                <div class="contain-product layout-02">
-                                    <div class="product-thumb">
-                                        <a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="link-to-product">
-                                            <img th:if="${product.getImg() == null}"
-                                                 th:src="@{/images/products/not-available.webp}" alt=""  width="270" height="270" class="product-thumnail">
-                                            <img th:unless="${product.getImg() == null}"
-                                                 th:src="@{'/images/products/' + ${product.getImg()}}" th:alt="|Imagen de ${product.getName()}|" width="270" height="270" class="product-thumnail">
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <div th:with="cats=${product.categories}" th:if="${not #sets.isEmpty(product.categories)}">
-                                            <th:block th:if="${cats.size() > 1}">
-                                                <b class="categories">
-                                                      <span th:each="category, pos : ${cats}">
-                                                        <span th:text="${category.name}"></span>
-                                                        <span th:if="${!pos.last}">, </span>
-                                                      </span>
-                                                </b>
-                                            </th:block>
-                                            <th:block th:unless="${cats.size() > 1}">
-                                                <div class="categories" th:each=" category : ${cats}">
-                                                    <span  th:text="${category.getName()}">category</span>
-                                                </div>
-                                            </th:block>
-                                        </div>
-                                        <h4 class="product-title"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="pr-name" th:text="${product.getName()}">Nombre producto</a></h4>
-                                        <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
-                                            <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
-                                            <del><span class="price-amount" th:text="${product.getPrice()} + '€'">00.00</span></del>>
-                                        </div>
-                                        <div class="price" th:unless="${product.calculatePrice()} != ${product.getPrice()}">
-                                            <ins><span class="price-amount"  th:text="${product.getPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            </th:block>
-                        </ul>
-                    </div>
-
                     <div class="product-category grid-style">
 
                         <div id="top-functions-area" class="top-functions-area" >
@@ -159,7 +128,7 @@
 
                         <div class="row">
                             <ul class="products-list">
-                                <th:block th:each="product : ${products}">
+                                <th:block th:each="product : ${products}" th:if="${product.getBrand() == brand}">
                                     <li class="product-item col-lg-2 col-md-3 col-sm-4 col-xs-6">
                                         <div class="contain-product layout-default">
                                             <div class="product-thumb">
@@ -235,11 +204,14 @@
         </div>
     </div>
 
+
+
     <!-- FOOTER -->
     <div th:replace="~{fragments/footer::footer}"></div>
-
     <!-- Scroll Top Button -->
     <a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
+
+
 
     <div th:replace="~{fragments/scripts::scripts}"></div>
 </body>

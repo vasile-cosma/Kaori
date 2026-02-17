@@ -68,7 +68,7 @@
                         </ul>
                     </div>
                     <div class="product-attribute">
-                        <h3 class="title" th:text="${product.getName()}">Nombre del product</h3>
+                        <h3 class="title" th:text="${product.getName()}">Nombre del producto</h3>
                         <!--
                         <div class="rating">
                             <p class="star-rating"><span class="width-80percent"></span></p>
@@ -83,17 +83,37 @@
                                 <div>
                                     <h3 class="title">Categorías</h3>
                                     <ul>
-                                        <li th:each="category: ${product.categories}" th:text="${category.name}"></li>
+                                        <li class="nav-item" th:each="category: ${product.categories}" ><a th:href="@{/categories/{id}(id= ${category.id})}" th:text="${category.name}" class="permal-link" style="color: #7faf51">Categoría</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div th:if="${product.categories.size()==1}">
                                 <div>
                                     <h3 class="title">Categoría</h3>
-                                        <div th:each="category: ${product.categories}" th:text="${category.name}"></div>
+                                        <div class="nav-item" th:each="category: ${product.categories}"><a th:href="@{/categories/{id}(id= ${category.id})}" th:text="${category.name}" class="permal-link" style="color: #7faf51">Categoría</a></div>
                                 </div>
                             </div>
                         </div>
+
+                        <div th:if="${product.brand != null}" class="mt-2">
+                            <div>
+                                <h3 class="title">Marca</h3>
+                                <div class="nav-item"><a href="#" th:text="${product.brand.getName()}" class="permal-link" style="color: #7faf51">Marca</a></div>
+                            </div>
+                        </div>
+                        <p class="excerpt" th:text="${product.getDesc()}">Descripción del producto</p>
+                        <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
+                            <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">Precio</span></ins>
+                            <del><span class="price-amount" th:text="${product.getPrice()} + '€'">Precio</span></del>
+                        </div>
+                        <div class="price" th:unless="${product.calculatePrice()} != ${product.getPrice()}">
+                            <ins><span class="price-amount" th:text="${product.getPrice() + '€'}"><span class="currencySymbol">£</span>85.00</span></ins>
+                        </div>
+                        <div class="shipping-info">
+                            <p class="shipping-day">Envío rápido en 3 días</p>
+                            <p class="for-today">Recogida en tienda hoy</p>
+                        </div>
+                    </div>
                         <p class="excerpt" th:text="${product.getDesc()}">Descripción del producto</p>
                         <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                             <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">Precio</span></ins>
