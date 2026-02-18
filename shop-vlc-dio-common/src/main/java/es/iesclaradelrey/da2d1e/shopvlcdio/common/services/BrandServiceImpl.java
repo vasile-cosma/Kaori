@@ -2,6 +2,7 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.BrandRepository;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,12 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public void delete(Brand item) {
         brandRepository.delete(item);
+    }
+
+    @Override
+    public Brand createNew(NewBrandDto newBrandDto) {
+        return Brand.builder()
+                .name(newBrandDto.getName())
+                .build();
     }
 }

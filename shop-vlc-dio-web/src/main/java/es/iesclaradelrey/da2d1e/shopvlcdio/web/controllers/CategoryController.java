@@ -1,7 +1,11 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

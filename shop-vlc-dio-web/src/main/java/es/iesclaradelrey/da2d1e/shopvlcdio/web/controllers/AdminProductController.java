@@ -1,10 +1,12 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
@@ -29,7 +31,7 @@ public class AdminProductController {
 
     @GetMapping
     public ModelAndView adminProducts(){
-        return new ModelAndView("admin-products");
+        return new ModelAndView("admin/products/products");
     }
 
     @ModelAttribute("products")
@@ -39,7 +41,15 @@ public class AdminProductController {
 
     @GetMapping("/new")
     public String newProductGet(Model model){
-        model.addAttribute("product", newProductDto)
+        model.addAttribute("product",new  NewProductDto());
+        return "/admin/products/products";
+    }
+
+    @PostMapping("/new")
+    public String newProductPost(@ModelAttribute("product") NewProductDto newProductDto){
+        productService.createNew(newProductDto);
+        System.out.printf("Producto agregada:\n%s\n", newProductDto);
+        return "/admin/products/new";
     }
 
 }
