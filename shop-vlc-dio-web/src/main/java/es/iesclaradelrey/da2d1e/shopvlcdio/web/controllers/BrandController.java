@@ -53,11 +53,6 @@ public class BrandController {
         return categoryService.findAll();
     }
 
-    @ModelAttribute("products")
-    public List<Product> getAllProducts(){
-        return productService.findAll();
-    }
-
     @ModelAttribute("brands")
     public List<Brand> getAllBrands(){
         return brandService.findAll();
