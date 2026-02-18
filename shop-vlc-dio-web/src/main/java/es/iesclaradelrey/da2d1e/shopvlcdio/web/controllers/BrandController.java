@@ -35,6 +35,9 @@ public class BrandController {
     @GetMapping("/brands/{id}")
     public ModelAndView detail(@PathVariable(name = "id") Integer id){
         ModelAndView mv = new ModelAndView("brand-list");
+        List<Product> products = productService.findAll();
+        products.sort((a, b) -> a.getName().compareTo(b.getName()));
+        mv.addObject("products", products);
 
         Optional<Brand> brand = brandService.findById(id);
         mv.addObject("isPresent", brand.isPresent());
@@ -48,11 +51,6 @@ public class BrandController {
     @ModelAttribute("categories")
     public List<Category> getAllCategories(){
         return categoryService.findAll();
-    }
-
-    @ModelAttribute("products")
-    public List<Product> getAllProducts(){
-        return productService.findAll();
     }
 
     @ModelAttribute("brands")

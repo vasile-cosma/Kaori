@@ -58,9 +58,9 @@
                 <!-- Main content -->
                 <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="block-item recently-products-cat md-margin-bottom-39">
-                        <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 3}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}' >
+                        <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile none-float" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 3}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}' >
                             <th:block th:each="product : ${products}">
-                            <li class="product-item">
+                            <li class="product-item none-float">
                                 <div class="contain-product layout-02">
                                     <div class="product-thumb">
                                         <a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="link-to-product">

@@ -31,7 +31,10 @@ public class ProductController {
     @GetMapping({"/products", "/products/"})
     public ModelAndView index(){
         ModelAndView mv = new ModelAndView("product-grid-6-cols");
-        mv.addObject("products", productService.findAll());
+        List<Product> products = productService.findAll();
+        products.sort((a, b) -> a.getName().compareTo(b.getName()));
+
+        mv.addObject("products", products);
         return mv;
     }
 
@@ -53,10 +56,6 @@ public class ProductController {
         return categoryService.findAll();
     }
 
-    @ModelAttribute("products")
-    public List<Product> getAllProducts(){
-        return productService.findAll();
-    }
 
     @ModelAttribute("brands")
     public List<Brand> getAllBrands(){

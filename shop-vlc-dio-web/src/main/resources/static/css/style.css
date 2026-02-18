@@ -12501,6 +12501,7 @@ body.open-quickview-block .biolife-quickview-block{
     .product-category .products-list .product-item{
         padding: 0 7px;
     }
+
     .footer-phone-info .r-info{
         font-size: 16px;
         padding-left: 15px;
@@ -13015,6 +13016,7 @@ body.open-quickview-block .biolife-quickview-block{
         border-bottom: 1px solid #666;
         margin-bottom: 40px;
     }
+
     .pr-detail-layout .info .buttons .btn:not(.add-to-cart-btn){
         display: none;
     }
