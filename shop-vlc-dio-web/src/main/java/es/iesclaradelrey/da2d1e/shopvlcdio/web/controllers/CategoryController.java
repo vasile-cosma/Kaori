@@ -39,6 +39,9 @@ public class CategoryController {
     @GetMapping("/categories/{id}")
     public ModelAndView detail(@PathVariable(name = "id") Integer id){
         ModelAndView mv = new ModelAndView("category-list");
+        List<Product> products = productService.findAll();
+        products.sort((a, b) -> a.getName().compareTo(b.getName()));
+        mv.addObject("products", products);
 
         Optional<Category> category = categoryService.findById(id);
         mv.addObject("isPresent", category.isPresent());

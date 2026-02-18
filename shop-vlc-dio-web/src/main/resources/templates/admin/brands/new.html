@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nueva categoría</title>
+  <link th:replace="~{fragments/styles::styles}">
+</head>
+<body>
+
+<header th:replace="~{fragments/header::header}"></header>
+<div class="mb-5">
+  <h1 th:replace="~{fragments/hero::hero('Nueva marca')}"></h1>
+</div>
+<form>
+  <div class="container">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn text-light" style="background-color: #7faf51">Submit</button>
+    <a type="submit" class="btn btn-danger" th:href="@{/admin/brands}">Volver</a>
+  </div>
+</form>
+<div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
+<div th:replace="~{fragments/scripts::scripts}"></div>
+</body>
+</html>
