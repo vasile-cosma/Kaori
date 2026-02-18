@@ -10,6 +10,7 @@ import java.util.Set;
 @Table
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
