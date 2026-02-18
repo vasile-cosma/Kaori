@@ -19,22 +19,22 @@ insert into category (description, image, name) values
     ('totalmente oxidado, ofrece una taza intensa con notas malteadas, especiadas o frutales. es el té más robusto y de sabor más definido.', 'black-tea.png', 'Té negro');
 
 
-INSERT INTO brand (name) VALUES
-                             ('Yamato Tea'),
-                             ('Royal Assam'),
-                             ('Matcha House'),
-                             ('Dragon Leaf'),
-                             ('Golden Lotus'),
-                             ('Cape Nature'),
-                             ('White Leaf'),
-                             ('Spice Route'),
-                             ('Himalayan Tea'),
-                             ('Orient Tea'),
-                             ('Zen Garden'),
-                             ('Ceylon Gold'),
-                             ('Moroccan Style'),
-                             ('Sweet Leaf'),
-                             ('Calm Nature');
+INSERT INTO brand (name, image) VALUES
+                             ('Twinings', 'brand-01.png'),
+                             ('Tetley', 'brand-02.png'),
+                             ('Tazo', 'brand-03.png'),
+                             ('Harney & Sons', 'brand-04.png'),
+                             ('Dilmah', 'brand-05.png'),
+                             ('Bigelow', 'brand-06.png'),
+                             ('Yogi Tea', 'brand-07.png'),
+                             ('Pukka Herbs', 'brand-08.png'),
+                             ('Mariage Frères', 'brand-09.png'),
+                             ('Kusmi Tea', 'brand-10.png'),
+                             ('Fortnum & Mason', 'brand-11.png'),
+                             ('The Republic of Tea', 'brand-12.png'),
+                             ('Teavana', 'brand-13.png'),
+                             ('Hornimans', 'brand-14.png'),
+                             ('Pompadour', 'brand-15.png');
 
 INSERT INTO product
 (brand_id, code, desc, discount, img, name, price)

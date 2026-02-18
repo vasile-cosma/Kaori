@@ -1,7 +1,11 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,34 +16,30 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class CategoryController {
+public class BrandController {
     private final CategoryService categoryService;
-    private final ProductService productService;
     private final BrandService brandService;
+    private final ProductService productService;
 
-    public CategoryController(CategoryService categoryService, ProductService productService, BrandService brandService) {
+    public BrandController(CategoryService categoryService, BrandService brandService, ProductService productService) {
         this.categoryService = categoryService;
-        this.productService = productService;
         this.brandService = brandService;
+        this.productService = productService;
     }
 
-    @GetMapping({"/categories", "/categories/"})
+    @GetMapping({"/brands", "/brands/"})
     public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("category-grid-3-cols");
-
-       mv.addObject("categories", categoryService.findAll());
-
-        return mv;
+        return new ModelAndView("brand-grid-3-cols");
     }
 
-    @GetMapping("/categories/{id}")
+    @GetMapping("/brands/{id}")
     public ModelAndView detail(@PathVariable(name = "id") Integer id){
-        ModelAndView mv = new ModelAndView("category-list");
+        ModelAndView mv = new ModelAndView("brand-list");
 
-        Optional<Category> category = categoryService.findById(id);
-        mv.addObject("isPresent", category.isPresent());
-        if(category.isPresent()){
-            mv.addObject("category", category.orElseThrow());
+        Optional<Brand> brand = brandService.findById(id);
+        mv.addObject("isPresent", brand.isPresent());
+        if(brand.isPresent()){
+            mv.addObject("brand", brand.orElseThrow());
         }
 
         return mv;
