@@ -36,8 +36,8 @@
                 <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-category grid-style">
                         <div class="row">
-                            <ul th:each="category: ${categories}" class="products-list">
-                                <li class="product-item col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <ul class="products-list">
+                                <li th:each="category: ${categories}" class="product-item col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                     <div class="contain-product layout-default">
                                         <div class="product-thumb">
                                             <a th:href="@{/categories/{id}(id=${category.getId()})}" class="link-to-product">
