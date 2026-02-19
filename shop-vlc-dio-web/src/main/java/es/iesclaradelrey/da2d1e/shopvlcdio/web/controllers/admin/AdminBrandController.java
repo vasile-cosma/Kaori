@@ -1,4 +1,4 @@
-package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
+package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
 import org.springframework.ui.Model;
@@ -41,11 +41,19 @@ public class AdminBrandController {
     }
 
     @PostMapping("/new")
-    public String newBrandPost(@ModelAttribute("brand") NewBrandDto newBrandDto) {
-        Brand newBrand = brandService.createNew(newBrandDto);
-        brandService.save(newBrand);
-        System.out.printf("Marca agregada:\n%s\n", newBrandDto);
+    public String newBrandPost(@ModelAttribute("brand") NewBrandDto newBrandDto, Model model) {
+        try {
+            brandService.createNew(newBrandDto);
+        } catch (Exception e) {
+            model.addAttribute("error", String.format("Se ha producido un error: %s", e.getMessage()));
+            return "admin/brands/new";
+        }
         return "redirect:/admin/brands";
     }
+    
+
+
+
+
 
 }

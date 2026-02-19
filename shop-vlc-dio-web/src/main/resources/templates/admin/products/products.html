@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Administración</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
 <h1 class="display-1 text-center"><a th:href="@{/admin}" style="text-decoration:none;" class="text-dark">Administración</a></h1>
@@ -30,8 +31,8 @@
             <td th:text="${product.name}">Nombre</td>
             <td th:text="${product.price}">Precio</td>
             <td th:text="${product.discount}">Descuento</td>
-            <td>ICONO PENDIENTE</td>
-            <td>ICONO PENDIENTE</td>
+            <td><a th:href="@{/products/edit}"><i class="bi bi-pencil-fill"></i></a></td>
+            <td><a th:href="@{/admin/products/delete}"><i class="bi bi-trash3-fill"></i></a></td>
         </tr>
         </tbody>
         <tfoot>

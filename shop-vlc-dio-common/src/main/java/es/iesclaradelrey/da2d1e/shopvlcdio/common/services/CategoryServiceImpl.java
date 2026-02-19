@@ -1,6 +1,9 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.mappers.BrandMapper;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.mappers.CategoryMapper;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCategoryDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
@@ -33,14 +36,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void delete(Category item) {
-            categoryRepository.delete(item);
+        categoryRepository.delete(item);
     }
 
     @Override
     public Category createNew(NewCategoryDto newCategoryDto) {
-        return Category.builder()
-                .name(newCategoryDto.getName())
-                .description(newCategoryDto.getDescription())
-                .build();
+        Category category = CategoryMapper.map(newCategoryDto);
+        return categoryRepository.save(category);
     }
 }
