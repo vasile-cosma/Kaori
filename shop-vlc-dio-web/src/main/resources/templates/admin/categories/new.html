@@ -11,24 +11,37 @@
 <div class="mb-5">
     <h1 th:replace="~{fragments/hero::hero('Nueva categoría')}"></h1>
 </div>
-<form>
-
+<form method="post" th:object="${category}">
     <div class="container">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
         </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
+        <!--
+        <fieldset>
+            <legend>Módulos en los que se matricula</legend>
+
+            <div class="form-check" th:each="module: ${modules}">
+                <input class="form-check-input" type="checkbox"
+                       id="module-check"
+                       th:field="*{modules}"
+                       th:id="|'module-check'${module.moduleId}|">
+                <label class="form-check-label"
+                       for="module-check"
+                       th:for="|modyloe-check${module.moduleId}|"
+                       th:text="${module.name}">
+                    Nombre del módulo
+                </label>
+            </div>
+
+        </fieldset>
+        -->
         <button type="submit" class="btn text-light" style="background-color: #7faf51">Submit</button>
-        <a type="submit" class="btn btn-danger" th:href="@{/admin/brands}">Volver</a>
+        <a type="submit" class="btn btn-danger" th:href="@{/admin/categories}">Volver</a>
     </div>
 </form>
 <div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>

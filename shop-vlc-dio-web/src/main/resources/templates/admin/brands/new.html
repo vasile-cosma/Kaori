@@ -11,12 +11,23 @@
 <div class="mb-5">
   <h1 th:replace="~{fragments/hero::hero('Nueva marca')}"></h1>
 </div>
-<form>
+<form method="post" th:object="${brand}">
   <div class="container">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Nombre</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
     </div>
+    <!--
+    <div class="mb-3">
+      <label for="department-id" class="form-label">Departamento</label>
+      <select class="form-select" id="department-id">
+        <option value="">Seleccione departamento</option>
+        <option th:each="department: ${departments}"
+                th:value="${department.departmentId}"
+                th:text="${department.name}">Departamento</option>
+      </select>
+    </div>
+    -->
     <button type="submit" class="btn text-light" style="background-color: #7faf51">Submit</button>
     <a type="submit" class="btn btn-danger" th:href="@{/admin/brands}">Volver</a>
   </div>

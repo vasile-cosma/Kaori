@@ -42,14 +42,15 @@ public class AdminProductController {
     @GetMapping("/new")
     public String newProductGet(Model model){
         model.addAttribute("product",new  NewProductDto());
-        return "/admin/products/products";
+        return "/admin/products/new";
     }
 
     @PostMapping("/new")
     public String newProductPost(@ModelAttribute("product") NewProductDto newProductDto){
-        productService.createNew(newProductDto);
-        System.out.printf("Producto agregada:\n%s\n", newProductDto);
-        return "/admin/products/new";
+        Product newProduct = productService.createNew(newProductDto);
+        productService.save(newProduct);
+        System.out.printf("Producto agregado:\n%s\n", newProductDto);
+        return "redirect:/admin/products";
     }
 
 }
