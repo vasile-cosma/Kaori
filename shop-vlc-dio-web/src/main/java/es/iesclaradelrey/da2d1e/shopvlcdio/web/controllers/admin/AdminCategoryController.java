@@ -44,10 +44,13 @@ public class AdminCategoryController {
     }
 
     @PostMapping("/new")
-    public String newCategoryPost(@ModelAttribute("category") NewCategoryDto newCategoryDto){
-        Category newCategory = categoryService.createNew(newCategoryDto);
-        categoryService.save(newCategory);
-        System.out.printf("Producto agregado:\n%s\n", newCategoryDto);
+    public String newCategoryPost(@ModelAttribute("category") NewCategoryDto newCategoryDto, Model model){
+        try {
+            categoryService.createNew(newCategoryDto);
+        } catch (Exception e) {
+            model.addAttribute("error", String.format("Se ha producido un error: %s", e.getMessage()));
+            return "admin/categories/new";
+        }
         return "redirect:/admin/categories";
     }
 
