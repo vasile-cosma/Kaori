@@ -1,4 +1,4 @@
-package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
+package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCategoryDto;

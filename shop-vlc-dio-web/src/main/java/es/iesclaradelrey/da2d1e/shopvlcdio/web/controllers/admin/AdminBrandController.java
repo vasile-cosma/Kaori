@@ -1,4 +1,4 @@
-package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
+package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
 import org.springframework.ui.Model;
@@ -47,5 +47,7 @@ public class AdminBrandController {
         System.out.printf("Marca agregada:\n%s\n", newBrandDto);
         return "redirect:/admin/brands";
     }
+
+
 
 }

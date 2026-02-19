@@ -1,7 +1,7 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.mappers.ProductMapper;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -33,14 +33,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product createNew(NewProductDto newProductDto) {
-        return Product.builder()
-                .code(newProductDto.getCode())
-                .name(newProductDto.getName())
-                .desc(newProductDto.getDescription())
-                .price(newProductDto.getPrice())
-                .discount(newProductDto.getDiscount())
-                .build();
+    public void createNew(NewProductDto newProductDto) {
+        Product product = ProductMapper.map(newProductDto);
+
+        productRepository.save(product);
     }
 
 }

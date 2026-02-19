@@ -1,6 +1,5 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,5 +16,5 @@ public interface ProductService {
 
     void delete(Product item);
 
-    Product createNew(NewProductDto newProductDto);
+    void createNew(NewProductDto newProductDto);
 }

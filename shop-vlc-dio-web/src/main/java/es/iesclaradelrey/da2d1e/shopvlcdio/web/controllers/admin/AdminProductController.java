@@ -1,4 +1,4 @@
-package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
+package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
@@ -46,10 +46,13 @@ public class AdminProductController {
     }
 
     @PostMapping("/new")
-    public String newProductPost(@ModelAttribute("product") NewProductDto newProductDto){
-        Product newProduct = productService.createNew(newProductDto);
-        productService.save(newProduct);
-        System.out.printf("Producto agregado:\n%s\n", newProductDto);
+    public String newProductPost(@ModelAttribute("product") NewProductDto newProductDto, Model model){
+        try {
+            productService.createNew(newProductDto);
+        } catch (Exception e) {
+            model.addAttribute("error", String.format("Se ha producido un error: %s", e.getMessage()));
+            return "admin/products/new";
+        }
         return "redirect:/admin/products";
     }
 

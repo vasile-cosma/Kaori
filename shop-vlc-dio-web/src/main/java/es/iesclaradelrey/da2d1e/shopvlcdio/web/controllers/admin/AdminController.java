@@ -1,4 +1,4 @@
-package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
+package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
