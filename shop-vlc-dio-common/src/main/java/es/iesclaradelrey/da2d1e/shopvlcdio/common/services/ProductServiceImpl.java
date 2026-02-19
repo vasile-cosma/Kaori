@@ -1,5 +1,6 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository;
@@ -21,6 +22,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<Product> findById(Integer id) { return productRepository.findById(id); }
+
+    @Override
+    public Product save(Product item) { return productRepository.save(item);
+    }
+
+    @Override
+    public void delete(Product item) {
+        productRepository.delete(item);
+    }
 
     @Override
     public Product createNew(NewProductDto newProductDto) {

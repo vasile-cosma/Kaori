@@ -42,9 +42,10 @@ public class AdminBrandController {
 
     @PostMapping("/new")
     public String newBrandPost(@ModelAttribute("brand") NewBrandDto newBrandDto) {
-        brandService.createNew(newBrandDto);
+        Brand newBrand = brandService.createNew(newBrandDto);
+        brandService.save(newBrand);
         System.out.printf("Marca agregada:\n%s\n", newBrandDto);
-        return "/admin/brands/brands";
+        return "redirect:/admin/brands";
     }
 
 }

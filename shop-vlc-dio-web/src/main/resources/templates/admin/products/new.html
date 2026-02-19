@@ -9,10 +9,14 @@
 
 <header th:replace="~{fragments/header::header}"></header>
 <div class="mb-5">
-    <h1 th:replace="~{fragments/hero::hero('Nueva categoría')}"></h1>
+    <h1 th:replace="~{fragments/hero::hero('Nuevo producto')}"></h1>
 </div>
-<form method="post" th:object="${category}">
+<form method="post" th:object="${product}">
     <div class="container">
+        <div class="mb-3">
+            <label for="code" class="form-label">Código de producto</label>
+            <input type="number" class="form-control" id="code" aria-describedby="textHelp" th:field="*{code}">
+        </div>
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
@@ -21,27 +25,16 @@
             <label for="description" class="form-label">Descripción</label>
             <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
         </div>
-        <!--
-        <fieldset>
-            <legend>Módulos en los que se matricula</legend>
-
-            <div class="form-check" th:each="module: ${modules}">
-                <input class="form-check-input" type="checkbox"
-                       id="module-check"
-                       th:field="*{modules}"
-                       th:id="|'module-check'${module.moduleId}|">
-                <label class="form-check-label"
-                       for="module-check"
-                       th:for="|modyloe-check${module.moduleId}|"
-                       th:text="${module.name}">
-                    Nombre del módulo
-                </label>
-            </div>
-
-        </fieldset>
-        -->
+        <div class="mb-3">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="price" aria-describedby="numberHelp" th:field="*{price}">
+        </div>
+        <div class="mb-3">
+            <label for="discount" class="form-label">Descuento</label>
+            <input type="number" class="form-control" id="discount" aria-describedby="numberHelp" th:field="*{discount}">
+        </div>
         <button type="submit" class="btn text-light" style="background-color: #7faf51">Submit</button>
-        <a type="submit" class="btn btn-danger" th:href="@{/admin/categories}">Volver</a>
+        <a type="submit" class="btn btn-danger" th:href="@{/admin/products}">Volver</a>
     </div>
 </form>
 <div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>

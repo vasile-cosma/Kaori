@@ -45,51 +45,10 @@ public class AdminCategoryController {
 
     @PostMapping("/new")
     public String newCategoryPost(@ModelAttribute("category") NewCategoryDto newCategoryDto){
+        Category newCategory = categoryService.createNew(newCategoryDto);
+        categoryService.save(newCategory);
         System.out.printf("Producto agregado:\n%s\n", newCategoryDto);
-        categoryService.createNew(newCategoryDto);
-        return "/admin/categories/categories";
-    }
-    /*
-    @GetMapping("/new")
-    public String newCategoryGet(Model model){
-        model.addAttribute("teacher", new NewTeacherModel());
-        return "teachers/new";
+        return "redirect:/admin/categories";
     }
 
-
-    @PostMapping("/new")
-    public String newStudentPost(@ModelAttribute("teacher") NewTeacherModel newTeacherModel){
-        System.out.printf("Profesor registrado:\n%s\n", newTeacherModel);
-        teacherService.createNew(newTeacherModel);
-        return "redirect:/teachers";
-    }
-
-    @GetMapping("/new")
-    public String newStudentGet(Model model){
-        model.addAttribute("student", new NewStudentModel());
-        model.addAttribute("modules", moduleService.findAll());
-        return "students/new";
-    }
-
-
-    @PostMapping("/new")
-    public String newStudentPost(@ModelAttribute("student") NewStudentModel newStudentModel,
-                                 Model model){
-
-        System.out.printf("Estudiante recibido:\n%s\n", newStudentModel);
-
-        try {
-            Student newStudent = studentService.createNew(newStudentModel);
-            return String.format("redirect:/students/%d", newStudent.getStudentId());
-        } catch (Exception e) {
-            System.out.println("Se ha producido un error");
-            model.addAttribute("modules", moduleService.findAll());
-            return "students/new";
-        }
-
-
-        //model.addAttribute("modules",moduleService.findAll());
-        //return "students/new";
-    }
- */
 }
