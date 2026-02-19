@@ -31,13 +31,10 @@
             <td th:text="${product.name}">Nombre</td>
             <td th:text="${product.price}">Precio</td>
             <td th:text="${product.discount}">Descuento</td>
-            <td><a th:href="@{/products/edit}"><i class="bi bi-pencil-fill"></i></a></td>
-            <td><a th:href="@{/admin/products/delete}"><i class="bi bi-trash3-fill"></i></a></td>
+            <td><a th:href="@{/products/edit}" aria-label="Editar producto"><i class="bi bi-pencil-fill" aria-hidden="true"></i></a></td>
+            <td><a th:href="@{/admin/products/delete}" aria-label="Eliminar producto"><i class="bi bi-trash3-fill" aria-hidden="true"></i></a></td>
         </tr>
         </tbody>
-        <tfoot>
-
-        </tfoot>
     </table>
 </div>
 </body>

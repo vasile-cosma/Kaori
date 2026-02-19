@@ -27,14 +27,10 @@
                 <td th:text="${category.id}">Identificador</td>
                 <td th:text="${category.name}">Nombre</td>
                 <td th:text="${#strings.abbreviate(category.description, 100)}">Descripción</td>
-                <td><a th:href="@{/categories/edit}"><i class="bi bi-pencil-fill"></i></a></td>
-                <td><a th:href="@{/admin/categories/delete}"><i class="bi bi-trash3-fill"></i></a></td>
+                <td><a th:href="@{/categories/edit}" aria-label="Editar categoría"><i class="bi bi-pencil-fill" aria-hidden="true"></i></a></td>
+                <td><a th:href="@{/admin/categories/delete}" aria-label="Eliminar categoría"><i class="bi bi-trash3-fill" aria-hidden="true"></i></a></td>
             </tr>
         </tbody>
-        <tfoot>
-
-        </tfoot>
-
     </table>
 </div>
 </body>
