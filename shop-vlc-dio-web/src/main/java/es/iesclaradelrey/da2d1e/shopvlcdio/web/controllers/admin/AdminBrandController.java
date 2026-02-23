@@ -5,13 +5,11 @@ import org.springframework.ui.Model;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin/brands")
@@ -50,10 +48,17 @@ public class AdminBrandController {
         }
         return "redirect:/admin/brands";
     }
-    
 
-
-
-
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteBrandGet(@PathVariable Integer id) {
+        ModelAndView mv = new ModelAndView("admin/brands/delete");
+        Optional<Brand> brand = brandService.findById(id);
+        mv.addObject("isPresent", brand.isPresent());
+        if (brand.isPresent()){
+            mv.addObject("brand", brand.orElseThrow());
+            System.out.println("He añadido la marca: " + brand);
+        }
+        return mv;
+    }
 
 }

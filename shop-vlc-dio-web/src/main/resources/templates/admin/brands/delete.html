@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Eliminar categoría</title>
+    <link th:replace="~{fragments/styles::styles}"/>
 </head>
 <body>
+<header th:replace="~{fragments/header::header}"></header>
+<div th:repalce="~{fragments/hero::hero('Borrar marca')}"></div>
+<!--
+<div class="container border p-2 card p-4 bg-light text-white align-items-center mt-5 mb-5" style="border-color: #7faf51">
+    <div class="row">
+        <h1 class="fw-bold text-center text-dark border-bottom border-2 border-secondary" th:text="|¿Seguro que desea borrar ${brand.name}?|">Prueba</h1>
+    </div>
+    <form method="post">
+        <div class="btn-group" role="group">
+            <button type="submit" name="btn" id="Desconectar" value="true"
+                    class="btn btn-outline-light btn-danger border">Sí, desconectar</button>
+            <button type="submit" name="btn" id="Volver" value="false"
+                    class="btn btn-outline-light border btn-success rounded-end-pill">No, volver a la página
+                principal</button>
+        </div>
+    </form>
+</div>
+-->
 
+<div class="card container align-items-center mb-5 mt-5" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title" th:text="|¿Seguro que desea borrar la marca ${brand.name}?|"></h5>
+        <!--
+        <h6 class="card-subtitle mb-2 text-body-secondary">Subtitulo</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+        -->
+        <button type="submit" class="btn btn-success" >Borrar</button>
+        <a class="btn btn-danger" th:href="@{/admin/brands}">No borrar</a>
+    </div>
+</div>
+<footer th:replace="~{fragments/footer::footer}"></footer>
+<script th:replace="~{fragments/scripts::scripts}"></script>
 </body>
 </html>

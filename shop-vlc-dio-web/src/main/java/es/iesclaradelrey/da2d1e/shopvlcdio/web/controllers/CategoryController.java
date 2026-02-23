@@ -37,7 +37,7 @@ public class CategoryController {
     }
 
     @GetMapping("/categories/{id}")
-    public ModelAndView detail(@PathVariable(name = "id") Integer id){
+    public ModelAndView detail(@PathVariable Integer id){
         ModelAndView mv = new ModelAndView("category-list");
         List<Product> products = productService.findAll();
         products.sort((a, b) -> a.getName().compareTo(b.getName()));
