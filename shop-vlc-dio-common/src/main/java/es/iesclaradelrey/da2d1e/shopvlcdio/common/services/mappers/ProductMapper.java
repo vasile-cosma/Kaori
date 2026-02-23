@@ -1,7 +1,10 @@
-package es.iesclaradelrey.da2d1e.shopvlcdio.common.mappers;
+package es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.BrandRepository;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CategoryRepository;
+import org.springframework.stereotype.Component;
 
 public class ProductMapper {
     private ProductMapper() {}

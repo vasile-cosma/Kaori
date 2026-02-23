@@ -61,4 +61,26 @@ public class AdminBrandController {
         return mv;
     }
 
+    @PostMapping("/delete/{id}")
+    public ModelAndView deleteBrandPost(@PathVariable Integer id){
+        ModelAndView mv = new ModelAndView("admin/brands/delete");
+        try {
+            Optional<Brand> brand = brandService.findById(id);
+            if (brand.isPresent()){
+                brandService.delete(brand.get());
+                System.out.println("He borrado la marca");
+            } else {
+                mv.addObject("error",true);
+                mv.addObject("errorMessage", "ERROR: No se encuentra la marca");
+                return mv;
+            }
+            return new ModelAndView("redirect:/admin/brands");
+        } catch(Exception e) {
+            mv.addObject("error",true);
+            mv.addObject("errorMessage", e.getMessage());
+            brandService.findById(id).ifPresent(brand -> mv.addObject("brand", brand));
+            return mv;
+        }
+    }
+
 }

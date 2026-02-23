@@ -1,7 +1,7 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.mappers.ProductMapper;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.ProductMapper;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository;
 import org.springframework.stereotype.Service;

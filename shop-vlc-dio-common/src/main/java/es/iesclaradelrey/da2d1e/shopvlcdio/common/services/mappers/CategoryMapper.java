@@ -1,4 +1,4 @@
-package es.iesclaradelrey.da2d1e.shopvlcdio.common.mappers;
+package es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
