@@ -1,7 +1,11 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +23,13 @@ public class AdminProductController {
 
 
     private final ProductService productService;
+    private final CategoryService categoryService;
+    private final BrandService brandService;
 
-    public AdminProductController(ProductService productService) {
+    public AdminProductController(ProductService productService, CategoryService categoryService, BrandService brandService) {
         this.productService = productService;
+        this.categoryService = categoryService;
+        this.brandService = brandService;
     }
 
     @GetMapping("/")
@@ -54,6 +62,17 @@ public class AdminProductController {
             return "admin/products/new";
         }
         return "redirect:/admin/products";
+    }
+
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories(){
+        return categoryService.findAll();
+    }
+
+
+    @ModelAttribute("brands")
+    public List<Brand> getAllBrands(){
+        return brandService.findAll();
     }
 
 }
