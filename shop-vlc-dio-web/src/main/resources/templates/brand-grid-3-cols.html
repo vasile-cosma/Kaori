@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Marcas</title>
     <link th:replace="~{fragments/styles::styles}">
+    <link rel="stylesheet" th:href="@{/css/animations.css}">
 </head>
 
 <body class="biolife-body">
@@ -33,7 +34,7 @@
             <div class="row">
 
                 <!-- Main content -->
-                <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="main-content" class="main-content mt-5 pt-5 mb-5 pb-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-category grid-style">
                         <div class="row">
                             <ul class="products-list">
@@ -41,9 +42,9 @@
                                     <div class="contain-product layout-default">
                                         <div class="product-thumb">
                                             <a th:href="@{/brands/{id}(id=${brand.getId()})}" class="link-to-product">
-                                                <img class="nuestrasImg" th:if="${brand.getImage() == null}"
+                                                <img class="nuestrasImg pulse" th:if="${brand.getImage() == null}"
                                                     th:src="@{/images/categories/not-available.webp}" th:alt="${brand.name}">
-                                                <img class="nuestrasImg" alt="imagen de marca" th:unless="${brand.getImage() == null}"
+                                                <img class="nuestrasImg pulse" alt="imagen de marca" th:unless="${brand.getImage() == null}"
                                                     th:src="@{'/images/brands/' + ${brand.getImage()}}">
                                             </a>
                                         </div>

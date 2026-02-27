@@ -202,13 +202,9 @@ select option{
     transform: rotate( -180deg );
 }
 .nice-select .current{
-    color: #ffffff;
+    color: black;
     display: inline-block;
     padding: 14px 0;
-}
-
-.nice-select .current-black{
-    color: black;
 }
 
 .nice-select .list{

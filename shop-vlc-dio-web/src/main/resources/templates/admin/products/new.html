@@ -96,8 +96,8 @@
         <a type="submit" class="btn btn-danger mt-3" th:href="@{/admin/products}">Volver</a>-->
         <div class="row pb-3 d-flex">
             <label for="brand-id" class="form-label ms-3">Marca</label>
-            <select class="border rounded-2 text-dark ms-4" id="brand-id" th:field="*{brandId}" th:text="">
-                <option class="current-black" value="">Marca...</option>
+            <select class="border rounded-2 text-dark ms-4" id="brand-id" th:field="*{brandId}">
+                <option class="current-black" value="">Escoge una marca...</option>
                 <option class="current-black" th:each="brand: ${brands}"
                         
                         th:value="${brand.id}"
