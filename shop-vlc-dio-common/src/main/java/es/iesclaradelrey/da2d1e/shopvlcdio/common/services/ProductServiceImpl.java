@@ -13,10 +13,13 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductMapper productMapper) {
         this.productRepository = productRepository;
+        this.productMapper = productMapper;
     }
+
     @Override
     public List<Product> findAll() { return productRepository.findAll(); }
 
@@ -34,7 +37,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void createNew(NewProductDto newProductDto) {
-        Product product = ProductMapper.map(newProductDto);
+
+        Product product = productMapper.map(newProductDto);
 
         productRepository.save(product);
     }

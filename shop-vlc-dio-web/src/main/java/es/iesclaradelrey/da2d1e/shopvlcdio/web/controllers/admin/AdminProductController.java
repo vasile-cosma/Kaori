@@ -62,7 +62,7 @@ public class AdminProductController {
         return "/admin/products/new";
     }
 
-    @PostMapping("/new")
+    @PostMapping({"/new", "/edit"})
     public String newProductPost(@ModelAttribute("product") NewProductDto newProductDto, Model model){
         try {
             productService.createNew(newProductDto);
