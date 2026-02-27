@@ -43,7 +43,7 @@
                                             <a th:href="@{/brands/{id}(id=${brand.getId()})}" class="link-to-product">
                                                 <img class="nuestrasImg" th:if="${brand.getImage() == null}"
                                                     th:src="@{/images/categories/not-available.webp}" th:alt="${brand.name}">
-                                                <img class="nuestrasImg" th:unless="${brand.getImage() == null}"
+                                                <img class="nuestrasImg" alt="imagen de marca" th:unless="${brand.getImage() == null}"
                                                     th:src="@{'/images/brands/' + ${brand.getImage()}}">
                                             </a>
                                         </div>
