@@ -32,7 +32,7 @@ public class Product {
     @Column(nullable = false, length = 99)
     private Integer discount;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "brand_id")
     private Brand brand;
 

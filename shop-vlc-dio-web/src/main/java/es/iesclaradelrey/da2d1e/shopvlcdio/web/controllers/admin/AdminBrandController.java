@@ -44,43 +44,31 @@ public class AdminBrandController {
             brandService.createNew(newBrandDto);
         } catch (Exception e) {
             model.addAttribute("error", String.format("Se ha producido un error: %s", e.getMessage()));
-            return "admin/brands/new";
+            return "/admin/brands/new";
         }
         return "redirect:/admin/brands";
     }
 
-    @GetMapping("/delete/{id}")
-    public ModelAndView deleteBrandGet(@PathVariable Integer id) {
-        ModelAndView mv = new ModelAndView("admin/brands/delete");
+    @GetMapping({"/delete/{id}", "/delete/{id}/"})
+    public String deleteBrandGet(@PathVariable Integer id, Model model) {
         Optional<Brand> brand = brandService.findById(id);
-        mv.addObject("isPresent", brand.isPresent());
-        if (brand.isPresent()){
-            mv.addObject("brand", brand.orElseThrow());
-            System.out.println("He añadido la marca: " + brand);
-        }
-        return mv;
+        model.addAttribute("brand", brand.orElseThrow());
+
+        return "/admin/brands/delete";
     }
 
-    @PostMapping("/delete/{id}")
-    public ModelAndView deleteBrandPost(@PathVariable Integer id){
-        ModelAndView mv = new ModelAndView("admin/brands/delete");
+    @PostMapping({"/delete/{id}", "/delete/{id}/"})
+    public String deleteBrandPost(@PathVariable Integer id, Model model){
+        Optional<Brand> brand = brandService.findById(id);
         try {
-            Optional<Brand> brand = brandService.findById(id);
-            if (brand.isPresent()){
-                brandService.delete(brand.get());
-                System.out.println("He borrado la marca");
-            } else {
-                mv.addObject("error",true);
-                mv.addObject("errorMessage", "ERROR: No se encuentra la marca");
-                return mv;
-            }
-            return new ModelAndView("redirect:/admin/brands");
-        } catch(Exception e) {
-            mv.addObject("error",true);
-            mv.addObject("errorMessage", e.getMessage());
-            brandService.findById(id).ifPresent(brand -> mv.addObject("brand", brand));
-            return mv;
+            brand.ifPresent(brandService::delete);
+            return "redirect:/admin/brands";
+        } catch (Exception e) {
+            model.addAttribute("error", String.format("ERROR: \n%s", e.getMessage()));
+            model.addAttribute("brand", brand.orElseThrow());
+            return "/admin/brands/delete";
         }
+
     }
 
 }

@@ -7,7 +7,7 @@
 </head>
 <body>
 <header th:replace="~{fragments/header::header}"></header>
-<div th:repalce="~{fragments/hero::hero('Borrar marca')}"></div>
+<div th:replace="~{fragments/hero::hero('Borrar marca')}"></div>
 <!--
 <div class="container border p-2 card p-4 bg-light text-white align-items-center mt-5 mb-5" style="border-color: #7faf51">
     <div class="row">
@@ -24,18 +24,20 @@
     </form>
 </div>
 -->
-
+<th:block th:if="${error}">
+<div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <div class="alert alert-danger" th:text="${error}">Error</div>
+</div>
+</th:block>
+<form method="post" th:action="@{/admin/brands/delete/{id}(id=${brand.id})}">
 <div class="card container align-items-center mb-5 mt-5" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title" th:text="|¿Seguro que desea borrar la marca ${brand.name}?|"></h5>
-        <!--
-        <h6 class="card-subtitle mb-2 text-body-secondary">Subtitulo</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        -->
         <button type="submit" class="btn btn-success" >Borrar</button>
         <a class="btn btn-danger" th:href="@{/admin/brands}">No borrar</a>
     </div>
 </div>
+</form>
 <footer th:replace="~{fragments/footer::footer}"></footer>
 <script th:replace="~{fragments/scripts::scripts}"></script>
 </body>
