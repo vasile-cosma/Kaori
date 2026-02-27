@@ -8,14 +8,12 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin/products")
@@ -30,6 +28,17 @@ public class AdminProductController {
         this.productService = productService;
         this.categoryService = categoryService;
         this.brandService = brandService;
+    }
+
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories(){
+        return categoryService.findAll();
+    }
+
+
+    @ModelAttribute("brands")
+    public List<Brand> getAllBrands(){
+        return brandService.findAll();
     }
 
     @GetMapping("/")
@@ -64,15 +73,25 @@ public class AdminProductController {
         return "redirect:/admin/products";
     }
 
-    @ModelAttribute("categories")
-    public List<Category> getAllCategories(){
-        return categoryService.findAll();
+    @GetMapping({"/delete/{id}", "/delete/{id}/"})
+    public String deleteProductGet(@PathVariable Integer id, Model model){
+        Optional<Product> product = productService.findById(id);
+        model.addAttribute("product", product.orElseThrow());
+
+        return "/admin/products/delete";
     }
 
-
-    @ModelAttribute("brands")
-    public List<Brand> getAllBrands(){
-        return brandService.findAll();
+    @PostMapping({"/delete/{id}", "/delete/{id}/"})
+    public String deleteProductPost(@PathVariable Integer id, Model model){
+        Optional<Product> product = productService.findById(id);
+        try {
+            product.ifPresent(productService::delete);
+            return "redirect:/admin/products";
+        } catch (Exception e){
+            model.addAttribute("error", String.format("ERROR: \n%s", e.getMessage()));
+            model.addAttribute("product", product.orElseThrow());
+            return "/admin/products/delete";
+        }
     }
 
 }

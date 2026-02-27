@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar categoría</title>
+    <link th:replace="~{fragments/styles::styles}"/>
+</head>
+<body>
+<header th:replace="~{fragments/header::header}"></header>
+<div th:replace="~{fragments/hero::hero('Borrar producto')}"></div>
+
+<th:block th:if="${error}">
+    <div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div class="alert alert-danger" th:text="${error}">Error</div>
+    </div>
+</th:block>
+
+<form method="post" th:action="@{/admin/products/delete/{id}(id=${product.id})}">
+    <div class="card container align-items-center mb-5 mt-5" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title" th:text="|¿Seguro que desea borrar la categoría ${product.name}?|"></h5>
+            <button type="submit" class="btn btn-success" >Borrar</button>
+            <a class="btn btn-danger" th:href="@{/admin/products}">No borrar</a>
+        </div>
+    </div>
+</form>
+<footer th:replace="~{fragments/footer::footer}"></footer>
+<script th:replace="~{fragments/scripts::scripts}"></script>
+</body>
+</html>
