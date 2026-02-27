@@ -1,10 +1,7 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.mappers.BrandMapper;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.mappers.ProductMapper;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.BrandMapper;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.BrandRepository;
 import org.springframework.stereotype.Service;
