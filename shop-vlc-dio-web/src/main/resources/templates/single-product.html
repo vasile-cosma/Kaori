@@ -102,7 +102,7 @@
                             <p class="shipping-day">Envío rápido en 3 días</p>
                             <p class="for-today">Recogida en tienda hoy</p>
                         </div>
-                    </div>
+
                         <p class="excerpt" th:text="${product.getDesc()}">Descripción del producto</p>
                         <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                             <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">Precio</span></ins>
@@ -336,7 +336,7 @@
                                                         <p class="comment-in"><span class="post-name">Una grata sorpresa</span><span class="post-date">01/04/2018</span></p>
                                                         <div class="rating"><p class="star-rating"><span class="width-80percent"></span></p></div>
                                                         <p class="author">by: <b>Javier R.</b></p>
-                                                        <p class="comment-text">Me sorprendió mucho la presentación y el cuidado en cada detalle. Pedí un té verde y llegó fresco, bien sellado y con un sabor suave pero profundo. Definitivamente volveré a comprar en Kaori.</p>
+                                                        <p class="comment-text">Me sorprendió mucho la presentación y el cuidado en cada detalle. Pedí un té verde y llegó fresco, bien sellado y con un sabor suave pero profundo. Definitivamente, volveré a comprar en Kaori.</p>
                                                     </div>
                                                     <div class="comment-review-form col-lg-3 col-lg-offset-1 col-md-3 col-sm-4 col-xs-12">
                                                         <span class="title">¿Es útil esta reseña?</span>

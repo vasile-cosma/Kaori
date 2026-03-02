@@ -18,4 +18,6 @@ public interface BrandService{
     void delete(Brand item);
 
     Brand createNew(NewBrandDto newBrandDto);
+
+    Brand update(Integer brandId, NewBrandDto newBrandDto);
 }

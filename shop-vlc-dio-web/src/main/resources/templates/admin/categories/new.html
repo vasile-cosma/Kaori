@@ -11,6 +11,13 @@
 <div class="mb-5">
     <h1 th:replace="~{fragments/hero::hero('Nueva categoría')}"></h1>
 </div>
+
+<th:block th:if="${error}">
+    <div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div class="alert alert-danger" th:text="${error}">Error</div>
+    </div>
+</th:block>
+
 <form method="post" th:object="${category}">
     <div class="container">
         <div class="mb-3">
@@ -21,30 +28,13 @@
             <label for="description" class="form-label">Descripción</label>
             <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
         </div>
-        <!--
-        <fieldset>
-            <legend>Módulos en los que se matricula</legend>
-
-            <div class="form-check" th:each="module: ${modules}">
-                <input class="form-check-input" type="checkbox"
-                       id="module-check"
-                       th:field="*{modules}"
-                       th:id="|'module-check'${module.moduleId}|">
-                <label class="form-check-label"
-                       for="module-check"
-                       th:for="|modyloe-check${module.moduleId}|"
-                       th:text="${module.name}">
-                    Nombre del módulo
-                </label>
-            </div>
-
-        </fieldset>
-        -->
-        <button type="submit" class="btn text-light" style="background-color: #7faf51">Submit</button>
-        <a type="submit" class="btn btn-danger" th:href="@{/admin/categories}">Volver</a>
+        <button type="submit" class="btn text-light" style="background-color: #7faf51">Confirmar</button>
+        <a type="submit" class="btn btn-danger" th:href="@{/admin/categories}">Cancelar</a>
     </div>
 </form>
+
 <div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
 <div th:replace="~{fragments/scripts::scripts}"></div>
+
 </body>
 </html>

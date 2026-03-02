@@ -8,10 +8,8 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.BrandRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CategoryRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class ProductMapper {
@@ -26,7 +24,11 @@ public class ProductMapper {
     public NewProductDto map(Product product) {
 
         Integer brandId = product.getBrand().getId();
-        List<Integer> categoriesIds = product.getCategories().stream().map(Category::getId).toList();
+        Set<Integer> categoriesIds =  Optional.ofNullable(product.getCategories())
+                .orElse(Collections.emptySet())
+                .stream()
+                .map(Category::getId)
+                .collect(Collectors.toSet());
 
         return NewProductDto.builder()
                 .code(product.getCode())

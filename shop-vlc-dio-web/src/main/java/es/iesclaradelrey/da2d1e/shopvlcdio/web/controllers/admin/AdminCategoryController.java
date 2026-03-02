@@ -1,8 +1,14 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCategoryDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryServiceImpl;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.BrandMapper;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CategoryMapper;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Controller
@@ -36,18 +43,21 @@ public class AdminCategoryController {
         return new ModelAndView("/admin/categories/categories");
     }
 
-    @GetMapping("/new")
+    @GetMapping({"/new", "/new/"})
     public String newCategoryGet(Model model){
         model.addAttribute("category", new NewCategoryDto());
         return "/admin/categories/new";
     }
 
-    @PostMapping("/new")
+    @PostMapping({"/new", "/new/"})
     public String newCategoryPost(@ModelAttribute("category") NewCategoryDto newCategoryDto, Model model){
         try {
+            if (newCategoryDto.getName().isBlank() || newCategoryDto.getDescription().isBlank()){
+                throw new Exception("Debe completar los campos obligatorios");
+            }
             categoryService.createNew(newCategoryDto);
         } catch (Exception e) {
-            model.addAttribute("error", String.format("Se ha producido un error: %s", e.getMessage()));
+            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
             return "/admin/categories/new";
         }
         return "redirect:/admin/categories";
@@ -56,7 +66,13 @@ public class AdminCategoryController {
     @GetMapping({"/delete/{id}", "/delete/{id}/"})
     public String deleteCategoryGet(@PathVariable Integer id, Model model){
         Optional<Category> category = categoryService.findById(id);
-        model.addAttribute("category", category.orElseThrow());
+        try {
+            model.addAttribute("category", category.orElseThrow());
+        } catch (NoSuchElementException e){
+            model.addAttribute("error", "ERROR: No se encuentra la categoría");
+        } catch (Exception e){
+            model.addAttribute("error", String.format("ERROR: \n%s", e.getMessage()));
+        }
 
         return "/admin/categories/delete";
     }
@@ -67,10 +83,38 @@ public class AdminCategoryController {
         try {
             category.ifPresent(categoryService::delete);
             return "redirect:/admin/categories";
-        } catch (Exception e){
-            model.addAttribute("error", String.format("ERROR: \n%s", e.getMessage()));
-            model.addAttribute(("category"), category.orElseThrow());
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "ERROR: Violación de una restricción de integridad referencial.");
+            model.addAttribute("category", category.orElseThrow());
             return "/admin/categories/delete";
+        } catch (Exception e) {
+            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
+            model.addAttribute("category", category.orElseThrow());
+            return "/admin/categories/delete";
+        }
+    }
+
+    @GetMapping({"/edit/{id}", "/edit/{id}/"})
+    public String editCategoryGet(@PathVariable Integer id, Model model) {
+        try {
+            Category category = categoryService.findById(id).orElseThrow();
+            NewCategoryDto newCategoryDto = CategoryMapper.map(category);
+            model.addAttribute("category", newCategoryDto);
+        } catch (Exception e){
+            model.addAttribute("Error", String.format("ERROR: %s", e.getMessage()));
+
+        }
+        return "/admin/categories/edit";
+    }
+
+    @PostMapping({"/edit/{id}", "/edit/{id}/"})
+    public String editCategoryPost(@PathVariable Integer id, Model model, @ModelAttribute NewCategoryDto newCategoryDto) {
+        try {
+            categoryService.update(id, newCategoryDto);
+            return "redirect:/admin/categories";
+        } catch (Exception e){
+            model.addAttribute("Error", String.format("ERROR: %s", e.getMessage()));
+            return "/admin/categories/new";
         }
     }
 

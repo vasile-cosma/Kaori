@@ -21,5 +21,5 @@ public class NewProductDto {
     private Double price;
     private Integer discount;
     private Integer brandId;
-    private List<Integer> categoriesIds;
+    private Set<Integer> categoriesIds;
 }

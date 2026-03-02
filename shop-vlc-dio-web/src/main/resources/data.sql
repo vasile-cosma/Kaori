@@ -123,7 +123,7 @@ VALUES
      'Té Oolong con notas naturalmente cremosas que recuerdan a la leche. Muy apreciado por su suavidad y textura sedosa en boca.',
      0,'oolong-tea-1.png','Leche',8.40),
 
-    (NULL,'2345678901236',
+    (5,'2345678901236',
      'Té negro aromatizado con cacao que ofrece una experiencia intensa y reconfortante. Ideal para los amantes de sabores profundos.',
      10,'black-tea-5.png','Chocolate',6.80),
 

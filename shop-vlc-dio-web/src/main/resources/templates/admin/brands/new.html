@@ -11,28 +11,26 @@
 <div class="mb-5">
   <h1 th:replace="~{fragments/hero::hero('Nueva marca')}"></h1>
 </div>
+
+<th:block th:if="${error}">
+  <div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <div class="alert alert-danger" th:text="${error}">Error</div>
+  </div>
+</th:block>
+
 <form method="post" th:object="${brand}">
   <div class="container">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
+      <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}" th:text="${brand.name}">
     </div>
-    <!--
-    <div class="mb-3">
-      <label for="department-id" class="form-label">Departamento</label>
-      <select class="form-select" id="department-id">
-        <option value="">Seleccione departamento</option>
-        <option th:each="department: ${departments}"
-                th:value="${department.departmentId}"
-                th:text="${department.name}">Departamento</option>
-      </select>
-    </div>
-    -->
-    <button type="submit" class="btn text-light" style="background-color: #7faf51">Submit</button>
-    <a class="btn btn-danger" th:href="@{/admin/brands}">Volver</a>
+    <button type="submit" class="btn text-light" style="background-color: #7faf51">Confirmar</button>
+    <a class="btn btn-danger" th:href="@{/admin/brands}">Cancelar</a>
   </div>
 </form>
+
 <div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
 <div th:replace="~{fragments/scripts::scripts}"></div>
+
 </body>
 </html>

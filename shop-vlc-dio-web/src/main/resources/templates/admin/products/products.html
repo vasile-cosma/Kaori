@@ -35,7 +35,7 @@
             <td th:text="${product.discount}">Descuento</td>
             <td th:text="${product.brand?.name} ?: '-' ">Marca</td>
             <td><div th:each="category: ${product.categories}" th:text="${category.name}">Categoría/s</div></td>
-            <td><a th:href="@{/products/edit/{id}(id=${product.id})}" aria-label="Editar producto"><i class="bi bi-pencil-fill" aria-hidden="true"></i></a></td>
+            <td><a th:href="@{/admin/products/edit/{id}(id=${product.id})}" aria-label="Editar producto"><i class="bi bi-pencil-fill" aria-hidden="true"></i></a></td>
             <td><a th:href="@{/admin/products/delete/{id}(id=${product.id})}" aria-label="Eliminar producto"><i class="bi bi-trash3-fill" aria-hidden="true"></i></a></td>
         </tr>
         </tbody>
