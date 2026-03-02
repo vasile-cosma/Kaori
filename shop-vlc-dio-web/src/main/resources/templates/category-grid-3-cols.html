@@ -51,8 +51,7 @@
                                             </a>
                                         </div>
                                         <div class="info">
-                                            <h4 th:text="${category.getName()}" class="product-title"><a th:href="@{#}"
-                                                    class="pr-name">Categoría aquí</a></h4>
+                                            <a th:text="${category.getName()}" class="product-title pr-name" th:href="@{/categories/{id}(id=${category.id})}" style="color: #7f7f7f">Categoría aquí</a>
                                             <b th:text="${category.getDescription()}" class="categories">Fresh Fruit</b>
                                         </div>
                                     </div>

@@ -87,10 +87,10 @@
                         <div th:if="${product.brand != null}" class="mt-2">
                             <div>
                                 <h3 class="title">Marca</h3>
-                                <div class="nav-item"><a href="#" th:text="${product.brand.getName()}" class="permal-link" style="color: #7faf51">Marca</a></div>
+                                <div class="nav-item"><a href="#" th:text="${product.brand.getName()}" class="permal-link" style="color: #7faf51" th:href="@{/brands/{id}(id=${product.brand.id})}">Marca</a></div>
                             </div>
                         </div>
-                        <p class="excerpt" th:text="${product.getDesc()}">Descripción del producto</p>
+                        <p class="excerpt" th:text="${product.description}">Descripción del producto</p>
                         <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                             <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">Precio</span></ins>
                             <del><span class="price-amount" th:text="${product.getPrice()} + '€'">Precio</span></del>
@@ -103,7 +103,7 @@
                             <p class="for-today">Recogida en tienda hoy</p>
                         </div>
 
-                        <p class="excerpt" th:text="${product.getDesc()}">Descripción del producto</p>
+                        <p class="excerpt" th:text="${product.description}">Descripción del producto</p>
                         <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                             <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">Precio</span></ins>
                             <del><span class="price-amount" th:text="${product.getPrice()} + '€'">Precio</span></del>

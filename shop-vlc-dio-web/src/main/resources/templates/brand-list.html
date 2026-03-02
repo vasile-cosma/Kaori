@@ -135,14 +135,14 @@
                                                     <th:block th:if="${cats.size() > 1}">
                                                         <b class="categories">
                                                       <span th:each="category, pos : ${cats}">
-                                                        <span th:text="${category.name}"></span>
+                                                        <a th:text="${category.name}" th:href="@{/categories/{id}(id=${category.id})}" style="color: #7f7f7f">Marca</a>
                                                         <span th:if="${!pos.last}">, </span>
                                                       </span>
                                                         </b>
                                                     </th:block>
                                                     <th:block th:unless="${cats.size() > 1}">
                                                         <div class="categories" th:each=" category : ${cats}">
-                                                            <span  th:text="${category.getName()}">category</span>
+                                                            <a th:text="${category.name}" th:href="@{/categories/{id}(id=${category.id})}" style="color: #7f7f7f">Marca</a>
                                                         </div>
                                                     </th:block>
                                                 </div>
@@ -155,11 +155,11 @@
                                                     <ins><span class="price-amount"  th:text="${product.getPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
                                                 </div>
                                                 <div class="shipping-info">
-                                                    <p th:if="${product.getBrand() != null}" class="shipping-day" th:text="${product.getBrand().name}">marca</p>
+                                                    <p th:if="${product.getBrand() != null}" class="shipping-day"><a th:text="${product.getBrand().name}" th:href="@{/brands/{id}(id =${product.brand.id})}" class="pr-name" style="color: #7FAF51FF">marca</a></p>
                                                     <p th:unless="${product.getBrand() != null}" class="for-today"></p>
                                                 </div>
                                                 <div class="slide-down-box">
-                                                    <p class="message" th:text="${#strings.abbreviate(product.getDesc(), 200)}">Descripción del producto</p>
+                                                    <p class="message" th:text="${#strings.abbreviate(product.description, 200)}">Descripción del producto</p>
                                                     <div class="buttons">
                                                         <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
                                                         <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Comprar</a>
