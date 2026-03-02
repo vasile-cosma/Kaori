@@ -124,7 +124,7 @@ public class AdminProductController {
             NewProductDto newProductDto = productMapper.map(product);
             model.addAttribute("product", newProductDto);
         } catch (Exception e){
-            model.addAttribute("Error", String.format("ERROR: %s", e.getMessage()));
+            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
 
         }
         return "/admin/products/edit";
@@ -136,8 +136,10 @@ public class AdminProductController {
             productService.update(id, newProductDto);
             return "redirect:/admin/products";
         } catch (Exception e){
-            model.addAttribute("Error", String.format("ERROR: %s", e.getMessage()));
-            return "/admin/products/new";
+            System.out.println("Entro al catch");
+            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
+            model.addAttribute("product", newProductDto);
+            return "/admin/products/edit";
         }
     }
 

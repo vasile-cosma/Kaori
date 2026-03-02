@@ -71,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
             product.setName(newProductDto.getName());
         }
         if (!newProductDto.getDescription().isBlank()){
-            product.setDesc(newProductDto.getDescription());
+            product.setDescription(newProductDto.getDescription());
         }
         if (!newProductDto.getPrice().isNaN()){
             product.setPrice(newProductDto.getPrice());

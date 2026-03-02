@@ -101,7 +101,7 @@ public class AdminCategoryController {
             NewCategoryDto newCategoryDto = CategoryMapper.map(category);
             model.addAttribute("category", newCategoryDto);
         } catch (Exception e){
-            model.addAttribute("Error", String.format("ERROR: %s", e.getMessage()));
+            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
 
         }
         return "/admin/categories/edit";
@@ -113,7 +113,7 @@ public class AdminCategoryController {
             categoryService.update(id, newCategoryDto);
             return "redirect:/admin/categories";
         } catch (Exception e){
-            model.addAttribute("Error", String.format("ERROR: %s", e.getMessage()));
+            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
             return "/admin/categories/new";
         }
     }

@@ -37,7 +37,7 @@ INSERT INTO brand (name, image) VALUES
                              ('Pompadour', 'brand-15.png');
 
 INSERT INTO product
-(brand_id, code, desc, discount, img, name, price)
+(brand_id, code, description, discount, img, name, price)
 VALUES
     (1,'4006381333931',
      'Té verde japonés Sencha de alta calidad, cultivado en pequeñas plantaciones donde se controla cada fase del crecimiento. Su sabor es fresco, vegetal y ligeramente dulce, ideal para el consumo diario por sus propiedades antioxidantes y su bajo contenido en cafeína.',

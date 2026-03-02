@@ -18,7 +18,7 @@
     </div>
 </th:block>
 
-<form method="post" id="myForm" class="needs-validation" th:object="${product}">
+<form method="post" id="myForm" class="needs-validation" th:object="${product}" novalidate>
     <div class="container">
         <div class="mb-3">
             <label for="code" class="form-label">Código de producto</label>
@@ -91,6 +91,7 @@
 <div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 
+<!--
 <script>
     // Obtener formulario y campos
     const form = document.getElementById("myForm");
@@ -123,6 +124,6 @@
             });
         }
     });
-</script>
+</script>-->
 </body>
 </html>
