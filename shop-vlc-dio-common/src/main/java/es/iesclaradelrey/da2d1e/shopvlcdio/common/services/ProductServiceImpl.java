@@ -84,6 +84,8 @@ public class ProductServiceImpl implements ProductService {
             Set<Category> categories = new HashSet<>();
             categoriesIds.forEach(x -> categories.add(categoryRepository.findById(x).orElseThrow(() -> new EntityNotFoundException(String.format("No se encuentra la categoría con id %d", x)))));
             product.setCategories(categories);
+        } else {
+            product.setCategories(new HashSet<Category>());
         }
 
         return productRepository.save(product);
