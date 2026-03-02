@@ -33,7 +33,7 @@ public class Product {
     private Integer discount;
 
     @ManyToOne
-    @JoinColumn(name = "brand_id")
+    @JoinColumn(name = "brand_id", nullable=false)
     private Brand brand;
 
     @ManyToMany

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Eliminar categoría</title>
+    <title>Eliminar marca</title>
     <link th:replace="~{fragments/styles::styles}"/>
 </head>
 <body>
@@ -30,7 +30,7 @@
 </div>
 </th:block>
 
-<form method="post" th:action="@{/admin/brands/delete/{id}(id=${brand.id})}">
+<form method="post" th:action="@{/admin/brands/delete/{id}(id=${brand.id})}" novalidate>
 <div class="card container align-items-center mb-5 mt-5" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title" th:text="|¿Seguro que desea borrar la marca ${brand.name}?|"></h5>

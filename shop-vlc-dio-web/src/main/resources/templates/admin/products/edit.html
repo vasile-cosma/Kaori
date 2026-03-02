@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Nueva categoría</title>
+    <title>Editar producto</title>
     <link th:replace="~{fragments/styles::styles}">
 </head>
 <body>
@@ -18,7 +18,7 @@
     </div>
 </th:block>
 
-<form method="post" id="myForm" class="needs-validation" th:object="${product}">
+<form method="post" id="myForm" class="needs-validation" th:object="${product}" novalidate>
     <div class="container">
         <div class="mb-3">
             <label for="code" class="form-label">Código de producto</label>
@@ -90,7 +90,7 @@
 <div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 
-<script>
+<!--<script>
     // Obtener formulario y campos
     const form = document.getElementById("myForm");
     const campos = form.querySelectorAll("input");
@@ -122,6 +122,7 @@
             });
         }
     });
-</script>
+</script>-->
+
 </body>
 </html>

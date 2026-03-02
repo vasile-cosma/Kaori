@@ -102,19 +102,6 @@
                             <p class="shipping-day">Envío rápido en 3 días</p>
                             <p class="for-today">Recogida en tienda hoy</p>
                         </div>
-
-                        <p class="excerpt" th:text="${product.description}">Descripción del producto</p>
-                        <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
-                            <ins><span class="price-amount" th:text="${product.calculatePrice()} + '€'">Precio</span></ins>
-                            <del><span class="price-amount" th:text="${product.getPrice()} + '€'">Precio</span></del>
-                        </div>
-                        <div class="price" th:unless="${product.calculatePrice()} != ${product.getPrice()}">
-                            <ins><span class="price-amount" th:text="${product.getPrice() + '€'}"><span class="currencySymbol">£</span>85.00</span></ins>
-                        </div>
-                        <div class="shipping-info">
-                            <p class="shipping-day">Envío rápido en 3 días</p>
-                            <p class="for-today">Recogida en tienda hoy</p>
-                        </div>
                     </div>
                     <div class="action-form">
                         <div class="quantity-box">

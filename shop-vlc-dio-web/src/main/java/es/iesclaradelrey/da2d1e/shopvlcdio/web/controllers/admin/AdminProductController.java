@@ -11,6 +11,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CategoryMapper;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.ProductMapper;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -75,9 +76,17 @@ public class AdminProductController {
             if (newProductDto.getName().isBlank() ||
                 newProductDto.getCode().isBlank() ||
                 newProductDto.getDescription().isBlank()){
-                throw new Exception("Debe completar los campos obligatorios");
+                throw new Exception("Debe completar los campos obligatorios con datos válidos");
             }
             productService.createNew(newProductDto);
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "ERROR: Datos inválidos");
+            System.out.println(e.getClass());
+            return "/admin/products/new";
+        } catch (InvalidDataAccessApiUsageException e) {
+            model.addAttribute("error", "ERROR: No se ha encontrado la referencia");
+            System.out.println(e.getClass());
+            return "/admin/products/new";
         } catch (Exception e) {
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
             System.out.println(e.getClass());
@@ -108,11 +117,11 @@ public class AdminProductController {
             return "redirect:/admin/products";
         } catch (DataIntegrityViolationException e) {
             model.addAttribute("error", "ERROR: Violación de una restricción de integridad referencial.");
-            model.addAttribute("brand", product.orElseThrow());
+            model.addAttribute("product", product.orElseThrow());
             return "/admin/products/delete";
         } catch (Exception e) {
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
-            model.addAttribute("brand", product.orElseThrow());
+            model.addAttribute("product", product.orElseThrow());
             return "/admin/products/delete";
         }
     }
@@ -135,8 +144,15 @@ public class AdminProductController {
         try {
             productService.update(id, newProductDto);
             return "redirect:/admin/products";
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "ERROR: Datos inválidos");
+            model.addAttribute("product", newProductDto);
+            return "/admin/products/edit";
+        } catch (InvalidDataAccessApiUsageException e) {
+            model.addAttribute("error", "ERROR: No se ha encontrado la referencia");
+            model.addAttribute("product", newProductDto);
+            return "/admin/products/edit";
         } catch (Exception e){
-            System.out.println("Entro al catch");
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
             model.addAttribute("product", newProductDto);
             return "/admin/products/edit";
