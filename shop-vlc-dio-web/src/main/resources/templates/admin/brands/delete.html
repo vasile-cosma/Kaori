@@ -29,15 +29,17 @@
     <div class="alert alert-danger" th:text="${error}">Error</div>
 </div>
 </th:block>
+
 <form method="post" th:action="@{/admin/brands/delete/{id}(id=${brand.id})}">
 <div class="card container align-items-center mb-5 mt-5" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title" th:text="|¿Seguro que desea borrar la marca ${brand.name}?|"></h5>
-        <button type="submit" class="btn btn-success" >Borrar</button>
-        <a class="btn btn-danger" th:href="@{/admin/brands}">No borrar</a>
+        <button type="submit" class="btn btn-success" >Eliminar</button>
+        <a class="btn btn-danger" th:href="@{/admin/brands}">Cancelar</a>
     </div>
 </div>
 </form>
+
 <footer th:replace="~{fragments/footer::footer}"></footer>
 <script th:replace="~{fragments/scripts::scripts}"></script>
 </body>

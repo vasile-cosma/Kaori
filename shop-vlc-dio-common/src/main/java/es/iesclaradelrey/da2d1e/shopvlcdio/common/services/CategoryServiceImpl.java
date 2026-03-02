@@ -4,6 +4,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CategoryMapper;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCategoryDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CategoryRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,6 +41,18 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category createNew(NewCategoryDto newCategoryDto) {
         Category category = CategoryMapper.map(newCategoryDto);
+        return categoryRepository.save(category);
+    }
+
+    @Override
+    public Category update(Integer categoryId, NewCategoryDto newnewCategoryDto) {
+        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException(String.format("No se encuentra la marcan con id %d", categoryId)));
+        if (!newnewCategoryDto.getName().isEmpty()){
+            category.setName(newnewCategoryDto.getName());
+        }
+        if (!newnewCategoryDto.getDescription().isEmpty()){
+            category.setDescription(newnewCategoryDto.getDescription());
+        }
         return categoryRepository.save(category);
     }
 }

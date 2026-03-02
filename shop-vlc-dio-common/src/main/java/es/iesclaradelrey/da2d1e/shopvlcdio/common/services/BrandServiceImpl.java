@@ -4,6 +4,8 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.BrandMapper;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.BrandRepository;
+import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.proxy.EntityNotFoundDelegate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,6 +43,15 @@ public class BrandServiceImpl implements BrandService {
     public Brand createNew(NewBrandDto newBrandDto) {
         Brand brand = BrandMapper.map(newBrandDto);
 
+        return brandRepository.save(brand);
+    }
+
+    @Override
+    public Brand update(Integer brandId, NewBrandDto newBrandDto) {
+        Brand brand = brandRepository.findById(brandId).orElseThrow(() -> new EntityNotFoundException(String.format("No se encuentra la marcan con id %d", brandId)));
+        if (!newBrandDto.getName().isEmpty()){
+            brand.setName(newBrandDto.getName());
+        }
         return brandRepository.save(brand);
     }
 }

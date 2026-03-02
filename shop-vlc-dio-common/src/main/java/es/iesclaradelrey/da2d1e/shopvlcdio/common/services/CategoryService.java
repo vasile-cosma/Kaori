@@ -1,7 +1,9 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCategoryDto;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -18,4 +20,6 @@ public interface CategoryService{
     void delete(Category item);
 
     Category createNew(NewCategoryDto newCategoryDto);
+
+    Category update(Integer brandId, NewCategoryDto newnewCategoryDto);
 }
