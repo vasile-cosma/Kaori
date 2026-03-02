@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva categoría</title>
+    <link th:replace="~{fragments/styles::styles}">
+</head>
+<body>
+
+<header th:replace="~{fragments/header::header}"></header>
+<div class="mb-5">
+    <h1 th:replace="~{fragments/hero::hero(|Editar ${category.name}|)}"></h1>
+</div>
+
+<th:block th:if="${error}">
+    <div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div class="alert alert-danger" th:text="${error}">Error</div>
+    </div>
+</th:block>
+
+<form method="post" th:object="${category}">
+    <div class="container">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
+        </div>
+        <button type="submit" class="btn text-light" style="background-color: #7faf51">Confirmar</button>
+        <a type="submit" class="btn btn-danger" th:href="@{/admin/categories}">Cancelar</a>
+    </div>
+</form>
+
+<div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
+<div th:replace="~{fragments/scripts::scripts}"></div>
+
+</body>
+</html>

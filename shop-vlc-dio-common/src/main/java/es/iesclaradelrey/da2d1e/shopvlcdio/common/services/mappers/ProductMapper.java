@@ -44,7 +44,10 @@ public class ProductMapper {
     public Product map(NewProductDto newProductDto) {
 
         Brand brand = brandRepository.getReferenceById(newProductDto.getBrandId());
-        Set<Category> categories = new HashSet<>(categoryRepository.findAllById(newProductDto.getCategoriesIds()));
+        Set<Category> categories = Optional.ofNullable(newProductDto.getCategoriesIds())
+                .map(ids -> new HashSet<>(categoryRepository.findAllById(ids)))
+                .orElse(new HashSet<>());
+        //new HashSet<>(categoryRepository.findAllById(newProductDto.getCategoriesIds()));
 
         return Product.builder()
                 .code(newProductDto.getCode())
