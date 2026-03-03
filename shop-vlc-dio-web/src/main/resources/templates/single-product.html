@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -52,7 +52,7 @@
                                 <img th:src="@{/images/products/not-available.webp}" alt="" width="500" height="500">
                             </li>
                             <li th:unless="${product.getImg() == null}">
-                                <img th:src="@{'/images/products/' + ${product.getImg()}}" th:alt="${product.getCode()}" width="500" height="500">
+                                <img th:src="@{'/images/products/' + ${product.getImg()}}" th:alt="|Imagen de ${product.getName()}|" width="500" height="500">
                             </li>
                         </ul>
                     </div>
