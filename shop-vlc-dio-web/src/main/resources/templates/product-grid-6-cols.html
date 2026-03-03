@@ -75,10 +75,10 @@
                                         <h4 class="product-title"><a th:href="@{/products/{id}/{name}(id=${product.getId}, name=${product.getName()})}" class="pr-name" th:text="${product.getName()}">Nombre producto</a></h4>
                                         <div class="price" th:if="${product.calculatePrice()} != ${product.getPrice()}">
                                             <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
-                                            <del><span class="price-amount" th:text="${product.getPrice()} + '€'">00.00</span></del>>
+                                            <del><span class="price-amount" th:text="${#numbers.formatDecimal(product.getPrice(), 1, 2)} + '€'">00.00</span></del>>
                                         </div>
                                         <div class="price" th:unless="${product.calculatePrice()} != ${product.getPrice()}">
-                                            <ins><span class="price-amount"  th:text="${product.getPrice()} + '€'">00.00<span class="currencySymbol">€</span></span></ins>
+                                            <ins><span class="price-amount" th:text="${#numbers.formatDecimal(product.calculatePrice(), 1, 2)} + '€'">00.00</span></ins>
                                         </div>
                                     </div>
                                 </div>
