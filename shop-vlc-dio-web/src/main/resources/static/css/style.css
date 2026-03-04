@@ -5868,7 +5868,7 @@ body.open-overlay #overlay{
     clear: both;
 }
 .welcome-us-block{
-    background: url("../images/about-us/bn01.jpg");
+    background: url("../images/about-us/bn01.webp");
     background-position: center bottom;
     /*height: 499px;*/
     height: 555px;
@@ -6068,7 +6068,7 @@ body.open-overlay #overlay{
     position: relative;
 }
 .testimonial-block .testml-elem .desc::before{
-    content: url("../images/about-us/double-quotes.png");
+    content: url("../images/about-us/double-quotes.webp");
     width: 20px;
     height: 16px;
     font-size: 0;
@@ -6918,14 +6918,14 @@ body.open-overlay #overlay{
 }
 .slider-opt03__layout02 .media{
     z-index: 10;
-    background-image: url('../images/home-03/green-slide-01.jpg');
+    background-image: url('../images/home-03/green-slide-01.webp');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     height: 560px;
 }
 .slider-opt03__layout02 .media.background-geen-02{
-    background-image: url('../images/home-03/green-slide-02.jpg');
+    background-image: url('../images/home-03/green-slide-02.webp');
 }
 .slider-opt03__layout02 .text-content{
     display: inline-block;
