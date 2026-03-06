@@ -106,8 +106,10 @@ public class AdminBrandController {
             return "redirect:/admin/brands";
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
-            return "/admin/brands/new";
+            return "/admin/brands/edit";
         }
     }
+
+
 
 }
