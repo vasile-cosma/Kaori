@@ -11,6 +11,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.text.Normalizer;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -89,6 +90,18 @@ public class ProductServiceImpl implements ProductService {
         }
 
         return productRepository.save(product);
+    }
+
+    @Override
+    public String generateSlug(String url){
+        String normalized = Normalizer.normalize(url, Normalizer.Form.NFD);
+       return normalized
+               .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
+               .toLowerCase()
+               .replaceAll("[^a-z0-9\\s]", "")
+               .trim()
+               .replaceAll("\\s+", "-");
+
     }
 
 }

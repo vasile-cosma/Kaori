@@ -31,8 +31,8 @@ public class AdminBrandController {
     }
 
     @GetMapping
-    public ModelAndView adminBrands(){
-        return new ModelAndView("/admin/brands/brands");
+    public String adminBrands(){
+        return "/admin/brands/brands";
     }
 
     @GetMapping({"/new", "/new/"})
@@ -106,7 +106,8 @@ public class AdminBrandController {
             return "redirect:/admin/brands";
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
-            return "/admin/brands/new";
+            model.addAttribute("brand", newBrandDto);
+            return "/admin/brands/edit";
         }
     }
 

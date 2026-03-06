@@ -27,6 +27,7 @@ public class Product {
     @Column(length = 500)
     private String img;
     @Column(nullable = false)
+    //columnDefinition  para campos calculados
     private Double price;
     //Todo Añadir validación
     @Column(nullable = false, length = 99)

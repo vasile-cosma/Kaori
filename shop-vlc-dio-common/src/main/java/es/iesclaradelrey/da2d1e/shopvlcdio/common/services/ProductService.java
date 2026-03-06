@@ -19,4 +19,6 @@ public interface ProductService {
     void createNew(NewProductDto newProductDto);
 
     Product update(Integer productId, NewProductDto newProductDto);
+
+    String generateSlug(String url);
 }

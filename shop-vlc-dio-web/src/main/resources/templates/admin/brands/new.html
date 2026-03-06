@@ -22,7 +22,7 @@
   <div class="container">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}" th:text="${brand.name}">
+      <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
     </div>
     <button type="submit" class="btn text-light" style="background-color: #7faf51">Confirmar</button>
     <a class="btn btn-danger" th:href="@{/admin/brands}">Cancelar</a>

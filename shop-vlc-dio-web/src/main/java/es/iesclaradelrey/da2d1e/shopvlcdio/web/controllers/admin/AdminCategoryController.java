@@ -35,12 +35,12 @@ public class AdminCategoryController {
 
     @GetMapping("/")
     public String redirectAdminCategories(){
-        return "redirect:/admin/categories/categories";
+        return "redirect:/admin/categories";
     }
 
     @GetMapping
-    public ModelAndView adminCategories(){
-        return new ModelAndView("/admin/categories/categories");
+    public String adminCategories(){
+        return "/admin/categories/categories";
     }
 
     @GetMapping({"/new", "/new/"})
@@ -114,8 +114,10 @@ public class AdminCategoryController {
             return "redirect:/admin/categories";
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
-            return "/admin/categories/new";
+            model.addAttribute("category", newCategoryDto);
+            return "/admin/categories/edit";
         }
+
     }
 
 }
