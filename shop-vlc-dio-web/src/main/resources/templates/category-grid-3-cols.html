@@ -46,7 +46,7 @@
                                                 <img class="nuestrasImg" th:unless="${category.getImage() == null}"
                                                     th:src="@{'/images/categories/' + ${category.getImage()}}"
                                                     th:data-original="@{'/images/categories/' + ${category.getImage()}}"
-                                                    th:data-hover="@{'/images/categories/' + ${#strings.replace(category.getImage(), '.png', '-hover.png')}}"
+                                                    th:data-hover="@{'/images/categories/' + ${#strings.replace(category.getImage(), '.webp', '-hover.webp')}}"
                                                      th:alt="${category.name}">
                                             </a>
                                         </div>
