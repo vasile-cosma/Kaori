@@ -22,7 +22,7 @@
     </div>
 
     <!-- HEADER -->
-    <header th:replace="~{fragments/header::header}"></header>
+    <header th:insert="~{fragments/headers::header}"></header>
 
     <!--Hero Section-->
     <div th:replace="~{fragments/hero::hero(${product.getName()})}"></div>

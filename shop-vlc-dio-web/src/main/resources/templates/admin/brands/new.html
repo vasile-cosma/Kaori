@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<header th:replace="~{fragments/header::header}"></header>
+<header th:insert="~{fragments/headers::adminHeader}"></header>
 <div class="mb-5">
   <h1 th:replace="~{fragments/hero::hero('Nueva marca')}"></h1>
 </div>
@@ -32,5 +32,6 @@
 <div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>

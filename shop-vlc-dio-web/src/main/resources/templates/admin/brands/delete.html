@@ -6,7 +6,7 @@
     <link th:replace="~{fragments/styles::styles}"/>
 </head>
 <body>
-<header th:replace="~{fragments/header::header}"></header>
+<header th:insert="~{fragments/headers::adminHeader}"></header>
 <div th:replace="~{fragments/hero::hero('Borrar marca')}"></div>
 
 <th:block th:if="${error}">
@@ -26,6 +26,6 @@
 </form>
 
 <footer th:replace="~{fragments/footer::footer}"></footer>
-<script th:replace="~{fragments/scripts::scripts}"></script>
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>

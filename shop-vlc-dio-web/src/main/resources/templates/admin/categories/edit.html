@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<header th:replace="~{fragments/header::header}"></header>
+<header th:insert="~{fragments/headers::adminHeader}"></header>
 <div class="mb-5">
     <h1 th:replace="~{fragments/hero::hero(|Editar ${category.name}|)}"></h1>
 </div>

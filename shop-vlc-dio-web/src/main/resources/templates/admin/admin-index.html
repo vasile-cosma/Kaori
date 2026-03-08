@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Administración</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link th:replace="~{fragments/styles::styles}"/>
 </head>
 <body>
+<header th:insert="~{fragments/headers::adminHeader}"></header>
 <h1 class="display-1 text-center">Administración</h1>
 <nav>
     <ul class="list-group text-center">
@@ -14,5 +15,6 @@
         <li class="list-group-item"><a th:href="@{/admin/products}">Productos</a></li>
     </ul>
 </nav>
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>
