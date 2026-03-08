@@ -1,4 +1,6 @@
 
+insert into app_user (username, password, name, last_name, email, phone_number, birth_date, registration_date) values
+    ('admin', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','Vasiego', 'Cosla', 'admin@tienda.com', null, null, CURRENT_TIMESTAMP);
 
 insert into category (description, image, name) values
     ('Fresco y vegetal, se elabora con hojas mínimamente oxidadas para preservar su color verde y sus matices herbales. es conocido por su suavidad y su perfil ligero.', 'green-tea.webp', 'Té verde');

@@ -18,7 +18,7 @@
     </div>
 </th:block>
 
-<form method="post" th:object="${brand}" novalidate>
+<form th:method="post" th:object="${brand}" th:action="@{/admin/brands/edit/{id}(id=${id})}" novalidate>
     <div class="container">
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>

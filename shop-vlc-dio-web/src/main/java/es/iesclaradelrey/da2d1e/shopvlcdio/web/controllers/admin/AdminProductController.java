@@ -132,6 +132,7 @@ public class AdminProductController {
             Product product = productService.findById(id).orElseThrow();
             NewProductDto newProductDto = productMapper.map(product);
             model.addAttribute("product", newProductDto);
+            model.addAttribute("id", id);
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
 
@@ -147,14 +148,17 @@ public class AdminProductController {
         } catch (DataIntegrityViolationException e) {
             model.addAttribute("error", "ERROR: Datos inválidos");
             model.addAttribute("product", newProductDto);
+            model.addAttribute("id", id);
             return "/admin/products/edit";
         } catch (InvalidDataAccessApiUsageException e) {
             model.addAttribute("error", "ERROR: No se ha encontrado la referencia");
             model.addAttribute("product", newProductDto);
+            model.addAttribute("id", id);
             return "/admin/products/edit";
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
             model.addAttribute("product", newProductDto);
+            model.addAttribute("id", id);
             return "/admin/products/edit";
         }
     }

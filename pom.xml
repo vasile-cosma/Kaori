@@ -24,6 +24,7 @@
     <modules>
         <module>shop-vlc-dio-common</module>
         <module>shop-vlc-dio-web</module>
+        <module>shop-vlc-dio-security</module>
     </modules>
     <scm>
         <connection/>

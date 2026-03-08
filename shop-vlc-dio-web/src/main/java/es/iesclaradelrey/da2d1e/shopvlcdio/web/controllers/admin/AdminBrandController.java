@@ -92,6 +92,7 @@ public class AdminBrandController {
             Brand brand = brandService.findById(id).orElseThrow();
             NewBrandDto newBrandDto = BrandMapper.map(brand);
             model.addAttribute("brand", newBrandDto);
+            model.addAttribute("id", id);
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
 
@@ -107,6 +108,7 @@ public class AdminBrandController {
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
             model.addAttribute("brand", newBrandDto);
+            model.addAttribute("id", id);
             return "/admin/brands/edit";
         }
     }

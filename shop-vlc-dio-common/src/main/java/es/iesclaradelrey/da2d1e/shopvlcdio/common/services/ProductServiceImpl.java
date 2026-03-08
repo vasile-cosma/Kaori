@@ -98,9 +98,9 @@ public class ProductServiceImpl implements ProductService {
        return normalized
                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
                .toLowerCase()
-               .replaceAll("[^a-z0-9\\s]", "")
-               .trim()
-               .replaceAll("\\s+", "-");
+               .replaceAll(" ", "-")
+               .replaceAll("[^a-z0-9-\\s]", "")
+               .trim();
 
     }
 

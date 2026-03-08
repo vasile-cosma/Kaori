@@ -8,8 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = {
         "es.iesclaradelrey.da2d1e.shopvlcdio.common",
-        "es.iesclaradelrey.da2d1e.shopvlcdio.web"})
-// Añadidas por mi
+        "es.iesclaradelrey.da2d1e.shopvlcdio.web",
+        "es.iesclaradelrey.da2d1e.shopvlcdio.security"})
+
 @EntityScan("es.iesclaradelrey.da2d1e.shopvlcdio.common")
 @EnableJpaRepositories("es.iesclaradelrey.da2d1e.shopvlcdio.common")
 public class ShopVlcDioWebApplication {

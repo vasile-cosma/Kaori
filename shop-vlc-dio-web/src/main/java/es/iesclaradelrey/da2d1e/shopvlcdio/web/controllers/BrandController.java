@@ -29,12 +29,12 @@ public class BrandController {
 
     @GetMapping({"/brands", "/brands/"})
     public ModelAndView index() {
-        return new ModelAndView("brand-grid-3-cols");
+        return new ModelAndView("/brands/brand-grid-3-cols");
     }
 
     @GetMapping("/brands/{id}")
     public ModelAndView detail(@PathVariable(name = "id") Integer id){
-        ModelAndView mv = new ModelAndView("brand-list");
+        ModelAndView mv = new ModelAndView("/brands/brand-list");
         List<Product> products = productService.findAll();
         products.sort((a, b) -> a.getName().compareTo(b.getName()));
         mv.addObject("products", products);

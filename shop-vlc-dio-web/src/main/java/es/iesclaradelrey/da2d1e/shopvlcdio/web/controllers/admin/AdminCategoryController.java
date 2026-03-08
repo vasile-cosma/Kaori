@@ -100,6 +100,7 @@ public class AdminCategoryController {
             Category category = categoryService.findById(id).orElseThrow();
             NewCategoryDto newCategoryDto = CategoryMapper.map(category);
             model.addAttribute("category", newCategoryDto);
+            model.addAttribute("id", id);
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
 
@@ -115,6 +116,7 @@ public class AdminCategoryController {
         } catch (Exception e){
             model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
             model.addAttribute("category", newCategoryDto);
+            model.addAttribute("id", id);
             return "/admin/categories/edit";
         }
 

@@ -22,7 +22,6 @@ public class ProductMapper {
     }
 
     public NewProductDto map(Product product) {
-
         Integer brandId = product.getBrand().getId();
         Set<Integer> categoriesIds =  Optional.ofNullable(product.getCategories())
                 .orElse(Collections.emptySet())

@@ -18,7 +18,7 @@
     </div>
 </th:block>
 
-<form method="post" id="myForm" class="needs-validation" th:object="${product}" novalidate>
+<form th:method="post" id="myForm" class="needs-validation" th:object="${product}" th:action="@{/admin/products/new}" novalidate>
     <div class="container">
         <div class="mb-3">
             <label for="code" class="form-label">Código de producto</label>

@@ -29,7 +29,7 @@ public class CategoryController {
 
     @GetMapping({"/categories", "/categories/"})
     public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("category-grid-3-cols");
+        ModelAndView mv = new ModelAndView("/categories/category-grid-3-cols");
 
        mv.addObject("categories", categoryService.findAll());
 
@@ -38,7 +38,7 @@ public class CategoryController {
 
     @GetMapping("/categories/{id}")
     public ModelAndView detail(@PathVariable Integer id){
-        ModelAndView mv = new ModelAndView("category-list");
+        ModelAndView mv = new ModelAndView("/categories/category-list");
         List<Product> products = productService.findAll();
         products.sort((a, b) -> a.getName().compareTo(b.getName()));
         mv.addObject("products", products);

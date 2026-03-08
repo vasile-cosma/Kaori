@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ProductController {
@@ -30,7 +29,7 @@ public class ProductController {
 
     @GetMapping({"/products", "/products/"})
     public ModelAndView index(){
-        ModelAndView mv = new ModelAndView("product-grid-6-cols");
+        ModelAndView mv = new ModelAndView("/products/product-grid-6-cols");
         List<Product> products = productService.findAll();
         products.sort((a, b) -> a.getName().compareTo(b.getName()));
 
@@ -38,17 +37,22 @@ public class ProductController {
         return mv;
     }
 
-    @GetMapping({"/products/{id}/{*}"})
-    public ModelAndView detail(@PathVariable Integer id) {
+    @GetMapping({"/products/{id}/{slug}"})
+    public ModelAndView detail(@PathVariable Integer id,
+                                @PathVariable String slug) {
 
-        ModelAndView mv = new ModelAndView("single-product");
+        ModelAndView mv = new ModelAndView("/products/single-product");
 
-        Optional<Product> product = productService.findById(id);
-        mv.addObject("isPresent", product.isPresent());
+        Product product = productService.findById(id).orElseThrow(() -> new IllegalArgumentException("No se ha encontrado el producto"));
+        mv.addObject("product", product);
 
-        if (product.isPresent()){
-            mv.addObject("product", product.orElseThrow());
+        String correctSlug = productService.generateSlug(slug);
+        if (!slug.equals(correctSlug)){
+            return new ModelAndView("redirect:/products/" + id + "/" + correctSlug);
         }
+
+
+
 
         return mv;
     }
