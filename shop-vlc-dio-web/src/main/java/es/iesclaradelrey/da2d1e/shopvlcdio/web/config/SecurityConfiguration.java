@@ -14,8 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    @Value("${shop.security.bcrypt.cost.factor}")
-    private int hashCostFactor;
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -27,7 +26,7 @@ public class SecurityConfiguration {
                         .ignoringRequestMatchers("/h2-console/**"))
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").authenticated()
+                        .requestMatchers("/h2-console", "/h2-console/**").authenticated()
                         .requestMatchers("/admin","/admin/**").authenticated()
                         .requestMatchers("/register", "/register/").anonymous()
                         .anyRequest().permitAll())

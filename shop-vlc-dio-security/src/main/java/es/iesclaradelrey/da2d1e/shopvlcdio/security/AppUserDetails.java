@@ -1,6 +1,8 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.security;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.AppUser;
+import lombok.Getter;
+import lombok.Setter;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,9 +10,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+
 public class AppUserDetails implements UserDetails {
     private String username;
     private String password;
+    //private boolean authenticated;
 
     public AppUserDetails(AppUser appUser) {
         this.username = appUser.getUsername();
@@ -28,4 +32,5 @@ public class AppUserDetails implements UserDetails {
 
     @Override
     public String getUsername() { return username;}
+
 }

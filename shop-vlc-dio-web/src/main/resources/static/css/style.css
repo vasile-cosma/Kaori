@@ -202,6 +202,12 @@ select option{
     transform: rotate( -180deg );
 }
 .nice-select .current{
+    color: #ffffff;
+    display: inline-block;
+    padding: 14px 14px 14px 0px;
+}
+
+.nice-select-form .current{
     color: #000000;
     display: inline-block;
     padding: 14px 14px 14px 0px;

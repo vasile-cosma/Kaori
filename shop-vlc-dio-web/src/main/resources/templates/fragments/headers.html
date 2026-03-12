@@ -1,3 +1,4 @@
+<html class="no-js" lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <div id="header" class="header-area style-01 layout-03" th:fragment="header">
         <div class="header-top bg-main hidden-xs">
@@ -5,7 +6,10 @@
                 <div class="top-bar left">
                     <ul class="horizontal-menu">
                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>support@kaori.com</a></li>
-                        <li><a href="#">Envíos gratis en pedidos de más de 90€</a></li>
+                        <li>
+                            <div style="color: #ffffff" sec:authorize="isAnonymous()">Envíos gratis en pedidos de más de 90€</div>
+                            <div style="color: #ffffff" sec:authorize="isAuthenticated()">¡Bienvenid@, <span sec:authentication="name"></span>!</div>
+                        </li>
                     </ul>
                 </div>
                 <div class="top-bar right">
@@ -21,8 +25,31 @@
                                 <option value="en">Inglés</option>
                             </select>
                         </li>
-                        <li><a th:href="@{/register}" class="login-link"><i
-                                class="biolife-icon icon-login"></i>Inicio/Registro</a></li>
+
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
+                            <form th:method="post" th:action="@{/logout}">
+                                <button type="submit" class="btn btn-success border-0" style="background-color: #7faf51;">Cerrar sesión</button>
+                            </form>
+                        </li>
+
+                        <th:block sec:authorize="isAnonymous()">
+                            <i class="biolife-icon icon-login"></i>
+                            <li class="nav-item">
+                                <ul>
+                                    <li>
+                                        <a class="login-link" th:href="@{/login}">
+                                            Inicio de sesión
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="login-link" th:href="@{/register}">
+                                            Registro
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </th:block>
+
                     </ul>
                 </div>
             </div>
@@ -274,34 +301,47 @@
     <div class="header-top bg-main hidden-xs">
         <div class="container">
             <div class="top-bar left">
-                <ul class="horizontal-menu horz-menu-item lang">
-                        <select name="language">
-                            <option value="es">Castellano</option>
-                            <option value="en">Inglés</option>
-                        </select>
-
-                </ul>
-                <!--<ul class="horizontal-menu">
-                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>support@kaori.com</a></li>
-                    <li><a href="#">Envíos gratis en pedidos de más de 90€</a></li>
-                </ul>-->
-            </div>
-            <div class="top-bar right">
-                <!--<ul class="social-list">
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                </ul>-->
                 <ul class="horizontal-menu">
-                    <!--<li class="horz-menu-item lang">
+                    <li>
+                        <div style="color: #ffffff" sec:authorize="isAnonymous()">Envíos gratis en pedidos de más de 90€</div>
+                        <div style="color: #ffffff" sec:authorize="isAuthenticated()">¡Bienvenid@, <span sec:authentication="name"></span>!</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="top-bar right">
+                <ul class="horizontal-menu">
+                    <li class="horz-menu-item lang">
                         <select name="language">
                             <option value="es">Castellano</option>
                             <option value="en">Inglés</option>
                         </select>
-                    </li>-->
-                    <li><a th:href="@{/register}" class="login-link"><i
-                            class="biolife-icon icon-login"></i>Inicio/Registro</a></li>
-                </ul>
+                    </li>
+
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <form th:method="post" th:action="@{/logout}">
+                            <button type="submit" class="btn btn-success border-0" style="background-color: #7faf51;">Cerrar sesión</button>
+                        </form>
+                    </li>
+
+                    <th:block sec:authorize="isAnonymous()">
+                        <i class="biolife-icon icon-login"></i>
+                        <li class="nav-item">
+                            <ul>
+                                <li>
+                                    <a class="login-link" th:href="@{/login}">
+                                        Inicio de sesión
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="login-link" th:href="@{/register}">
+                                        Registro
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </th:block>
+
             </div>
         </div>
     </div>
