@@ -3,7 +3,6 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
 
 public class BrandMapper {
     private BrandMapper() {}

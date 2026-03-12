@@ -33,6 +33,10 @@ public class SecurityConfiguration {
 
                 .formLogin(Customizer.withDefaults())
 
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/"))
+
                 .httpBasic((AbstractHttpConfigurer::disable));
 
         return http.build();

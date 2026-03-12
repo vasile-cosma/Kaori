@@ -4,6 +4,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCategoryDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryServiceImpl;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.BrandMapper;
@@ -23,15 +24,23 @@ import java.util.Optional;
 @RequestMapping("/admin/categories")
 public class AdminCategoryController {
     private final CategoryServiceImpl categoryService;
+    private final BrandService brandService;
 
-    public AdminCategoryController(CategoryServiceImpl categoryService) {
+    public AdminCategoryController(CategoryServiceImpl categoryService, BrandService brandService) {
         this.categoryService = categoryService;
+        this.brandService = brandService;
     }
 
     @ModelAttribute("categories")
     public List<Category> getAllCategories(){
         return categoryService.findAll();
     }
+
+    @ModelAttribute("brands")
+    public List<Brand> getAllBrands(){
+        return brandService.findAll();
+    }
+
 
     @GetMapping("/")
     public String redirectAdminCategories(){
