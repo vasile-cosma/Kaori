@@ -1,6 +1,15 @@
 
 insert into app_user (username, password, name, last_name, email, phone_number, birth_date, registration_date) values
-    ('admin', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','Vasiego', 'Cosla', 'admin@tienda.com', null, null, CURRENT_TIMESTAMP);
+    ('admin', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','Vasiego', 'Cosla', 'admin@tienda.com', null, null, CURRENT_TIMESTAMP),
+    ('polizon', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','El', 'Emisario', 'user@tienda.com', null, null, CURRENT_TIMESTAMP);
+
+insert into app_role (id, description) values
+                                            ('USER', 'Usuario normal'),
+                                            ('ADMIN', 'Administrador');
+
+insert into user_role (user_id, role_id) values
+                                             (1, 'ADMIN'),
+                                             (2, 'USER');
 
 insert into category (description, image, name) values
     ('Fresco y vegetal, se elabora con hojas mínimamente oxidadas para preservar su color verde y sus matices herbales. es conocido por su suavidad y su perfil ligero.', 'green-tea.webp', 'Té verde');
@@ -149,4 +158,5 @@ VALUES
     (21, 4), (6, 4),(16, 4),(10, 4),
     (4, 5),
     (2, 6), (8, 6), (25, 6), (12, 6), (14, 6), (19, 6), (22, 6), (20, 6);
+
 

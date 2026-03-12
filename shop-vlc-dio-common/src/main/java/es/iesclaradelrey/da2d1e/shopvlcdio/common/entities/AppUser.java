@@ -7,6 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -35,4 +37,12 @@ public class AppUser {
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime registrationDate;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<AppRole> roles = new HashSet<>();
 }
