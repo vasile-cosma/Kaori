@@ -307,16 +307,24 @@
                         <div style="color: #ffffff" sec:authorize="isAuthenticated()">¡Bienvenid@, <span sec:authentication="name"></span>!</div>
                     </li>
                 </ul>
+                <!--<ul class="horizontal-menu">
+                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>support@kaori.com</a></li>
+                    <li><a href="#">Envíos gratis en pedidos de más de 90€</a></li>
+                </ul>-->
             </div>
-
             <div class="top-bar right">
+                <!--<ul class="social-list">
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                </ul>-->
                 <ul class="horizontal-menu">
-                    <li class="horz-menu-item lang">
+                    <!--<li class="horz-menu-item lang">
                         <select name="language">
                             <option value="es">Castellano</option>
                             <option value="en">Inglés</option>
                         </select>
-                    </li>
+                    </li>-->
 
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <form th:method="post" th:action="@{/logout}">
