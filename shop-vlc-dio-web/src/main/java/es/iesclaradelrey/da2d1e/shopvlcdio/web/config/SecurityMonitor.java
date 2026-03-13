@@ -39,11 +39,20 @@ public class SecurityMonitor implements LogoutSuccessHandler {
     @EventListener
     public void onFailure(AbstractAuthenticationFailureEvent event){
         Authentication auth = event.getAuthentication();
-        SecurityEvent securityEvent = SecurityEvent.builder()
-                .username(auth.getName())
-                .type(SecurityEventType.ERROR)
-                .build();
-        securityEventService.save(securityEvent);
+
+        if (auth.getName().isBlank() || auth.getName() == null){
+            SecurityEvent securityEvent = SecurityEvent.builder()
+                    .type(SecurityEventType.ERROR)
+                    .build();
+            securityEventService.save(securityEvent);
+        } else {
+            SecurityEvent securityEvent = SecurityEvent.builder()
+                    .username(auth.getName())
+                    .type(SecurityEventType.ERROR)
+                    .build();
+            securityEventService.save(securityEvent);
+        }
+
     }
 
 

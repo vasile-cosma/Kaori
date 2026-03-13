@@ -17,7 +17,7 @@ public class SecurityEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, length = 30)
+    @Column(length = 30)
     private String username;
     @Column(nullable = false, length = 30)
     @Enumerated(EnumType.STRING)
