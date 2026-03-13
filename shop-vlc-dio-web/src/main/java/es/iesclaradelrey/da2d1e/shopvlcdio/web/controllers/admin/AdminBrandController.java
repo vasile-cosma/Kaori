@@ -1,6 +1,8 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.BrandMapper;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.ui.Model;
@@ -18,12 +20,17 @@ import java.util.Optional;
 @RequestMapping("/admin/brands")
 public class AdminBrandController {
     private final BrandService brandService;
+    private final CategoryService categoryService;
 
-    public AdminBrandController(BrandService brandService) {
+    public AdminBrandController(BrandService brandService, CategoryService categoryService) {
         this.brandService = brandService;
+        this.categoryService = categoryService;
     }
     @ModelAttribute("brands")
     public List<Brand> getAllBrands() { return brandService.findAll();}
+
+    @ModelAttribute("categories")
+    public List<Category> getAllCategories(){ return categoryService.findAll(); }
 
     @GetMapping("/")
     public String redirectAdminBrands() {
