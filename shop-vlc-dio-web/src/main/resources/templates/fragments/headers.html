@@ -20,20 +20,21 @@
                     </ul>
                     <ul class="horizontal-menu">
                         <li class="horz-menu-item lang">
-                            <select name="language">
+                            <label for="language"></label>
+                            <select name="language" id="language">
                                 <option value="es">Castellano</option>
                                 <option value="en">Inglés</option>
                             </select>
                         </li>
 
                         <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <form th:method="post" th:action="@{/logout}">
+                            <form method="post" th:action="@{/logout}">
                                 <button type="submit" class="btn btn-success border-0" style="background-color: #7faf51;">Cerrar sesión</button>
                             </form>
                         </li>
 
                         <th:block sec:authorize="isAnonymous()">
-                            <i class="biolife-icon icon-login"></i>
+                            <!--<i class="biolife-icon icon-login"></i>-->
                             <li class="nav-item">
                                 <ul>
                                     <li>
@@ -88,7 +89,7 @@
                     </div>
                     <div class="col-lg-2 col-md-2 col-md-6 col-xs-6">
                         <div class="biolife-cart-info">
-                            <div class="menu-item"><a href="contact.html">Contact</a></div>
+                            <div class="menu-item"><a href="#">Contact</a></div>
                             <div class="minicart-block">
                                 <div class="minicart-contain">
                                     <a href="javascript:void(0)" class="link-to">
@@ -278,11 +279,12 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-8 padding-top-2px">
                         <div class="header-search-bar layout-01">
-                            <form action="#" class="form-search" name="desktop-seacrh" method="get">
-                                <input type="text" name="s" class="input-text" value="" placeholder="Busca aquí...">
+                            <!--<form action="#" class="form-search" name="desktop-seacrh" method="get">-->
+                                <label for="search"></label>
+                                <input type="text" name="s" class="input-text" value="" id="search" placeholder="Busca aquí...">
                                 <button type="submit" class="btn-submit"><i
                                         class="biolife-icon icon-search"></i></button>
-                            </form>
+                            <!--</form>-->
                         </div>
                         <div class="live-info">
                             <p class="telephone"><i class="fa fa-phone" aria-hidden="true"></i><b
@@ -333,7 +335,7 @@
                     </li>
 
                     <th:block sec:authorize="isAnonymous()">
-                        <i class="biolife-icon icon-login"></i>
+                        <!--<i class="biolife-icon icon-login"></i>-->
                         <li class="nav-item">
                             <ul>
                                 <li>
@@ -349,7 +351,7 @@
                             </ul>
                         </li>
                     </th:block>
-
+                </ul>
             </div>
         </div>
     </div>
@@ -362,7 +364,7 @@
                 </div>
                 <div class="col-lg-8 col-md-8 hidden-sm hidden-xs">
                     <div class="primary-menu">
-                        <ul class="menu biolife-menu clone-main-menu clone-primary-menu" id="primary-menu"
+                        <ul class="menu biolife-menu clone-main-menu clone-primary-menu"
                             data-menuname="main menu">
                             <li class="menu-item menu-item-has-children has-child">
                                 <a th:href="@{/categories}" class="menu-name" data-title="Categories">Categorías</a>

@@ -8,6 +8,8 @@
 <body>
 
 <header th:insert="~{fragments/headers::adminHeader}"></header>
+
+
 <div class="mb-5">
     <h1 th:replace="~{fragments/hero::hero('Nuevo producto')}"></h1>
 </div>
@@ -21,38 +23,21 @@
 <form th:method="post" id="myForm" class="needs-validation" th:object="${product}" th:action="@{/admin/products/new}" novalidate>
 
     <div class="container">
-        <fieldset class="mb-3">
-            <legend class="mt-3 ">Detalles del producto</legend>
-            <div class="mb-3">
-                <label for="code" class="form-label">Código de producto</label>
-                <input type="number" class="form-control has-validation" id="code" aria-describedby="textHelp" th:field="*{code}">
-                <div class="invalid-feedback">
-                    Solo se admiten números.
-                </div>
+        <div class="mb-3">
+            <label for="code" class="form-label">Código de producto</label>
+            <input type="number" class="form-control has-validation" id="code" aria-describedby="textHelp" th:field="*{code}">
+            <div class="invalid-feedback">
+                Solo se admiten números.
             </div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Descripción</label>
-                <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
-            </div>
-            <div class="mb-3 mt-3">
-                <label for="price" class="form-label">Precio</label>
-                <input type="number" class="form-control" id="price" aria-describedby="numberHelp" th:field="*{price}">
-                <div class="invalid-feedback">
-                    Solo se admiten números.
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="discount" class="form-label">Descuento</label>
-                <input type="number" class="form-control" id="discount" aria-describedby="numberHelp" th:field="*{discount}">
-                <div class="invalid-feedback">
-                    Solo se admiten números.
-                </div>
-            </div>
-        </fieldset>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
+        </div>
         <fieldset class="mb-3">
             <legend class="mt-3 ">Categorías</legend>
             <div class="row">
@@ -72,28 +57,43 @@
                 </div>
             </div>
         </fieldset>
-        <fieldset class="mb-3">
-            <legend class="mt-3 ">Marca</legend>
-            <div class="row pb-3 d-flex">
-                <label for="brand-id" class="form-label ms-3">Marca</label>
-                <select class="form-select border rounded-2 text-dark ms-4" id="brand-id" th:field="*{brandId}">
-                    <option class="text-dark" value="">Seleccione...</option>
-                    <option class="text-dark" th:each="brand: ${brands}"
 
-                            th:value="${brand.id}"
-                            th:text="${brand.name}">Marca</option>
-                </select>
+        <div class="mb-3 mt-3">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="price" aria-describedby="numberHelp" th:field="*{price}">
+            <div class="invalid-feedback">
+                Solo se admiten números.
             </div>
-        </fieldset>
+        </div>
 
-        <div class="d-flex justify-content-end gap-2">
-            <button type="submit" class="btn text-light mt-3 rounded-start-pill" style="background-color: #7faf51">Confirmar</button>
-            <a class="btn btn-danger mt-3 border rounded-end-pill" th:href="@{/admin/products}">Cancelar</a>
+        <div class="row pb-3 d-flex">
+            <label for="brand-id" class="form-label ms-3">Marca</label>
+            <select class="form-select border rounded-2 text-dark ms-4 nice-select-form" id="brand-id" th:field="*{brandId}">
+                <option class="text-dark" value="">Seleccione...</option>
+                <option class="text-dark nice-select-form" th:each="brand: ${brands}"
+
+                        th:value="${brand.id}"
+                        th:text="${brand.name}">Marca</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="discount" class="form-label">Descuento</label>
+            <input type="number" class="form-control" id="discount" aria-describedby="numberHelp" th:field="*{discount}">
+            <div class="invalid-feedback">
+                Solo se admiten números.
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-start gap-2 mb-4">
+            <button type="submit" class="btn text-light mt-3" style="background-color: #7faf51">Confirmar</button>
+            <a class="btn btn-danger mt-3" th:href="@{/admin/products}">Cancelar</a>
         </div>
     </div>
+
 </form>
 
-<div class="mt-5"><footer th:replace="~{fragments/footer::adminFooter}"></footer></div>
+<div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 
 

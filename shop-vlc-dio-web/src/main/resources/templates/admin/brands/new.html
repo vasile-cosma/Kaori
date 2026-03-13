@@ -8,8 +8,8 @@
 <body>
 
 <header th:insert="~{fragments/headers::adminHeader}"></header>
-<div class="mb-5">
-  <h1 th:replace="~{fragments/hero::hero('Nueva marca')}"></h1>
+<div class="container text-center">
+  <h1 class="text-decoration-underline" style="color: #2b542c;">Nueva marca</h1>
 </div>
 
 <th:block th:if="${error}">
@@ -24,12 +24,14 @@
       <label for="name" class="form-label">Nombre</label>
       <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
     </div>
-    <button type="submit" class="btn text-light" style="background-color: #7faf51">Confirmar</button>
-    <a class="btn btn-danger" th:href="@{/admin/brands}">Cancelar</a>
+    <div class="d-flex justify-content-end gap-2 mb-4">
+      <button type="submit" class="btn text-light mt-3 rounded-start-pill" style="background-color: #7faf51">Confirmar</button>
+      <a class="btn btn-danger mt-3 border rounded-end-pill" th:href="@{/admin/brands}">Cancelar</a>
+    </div>
   </div>
 </form>
 
-<div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
+<footer th:insert="~{fragments/footer::adminFooter}"></footer>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 
 <div th:replace="~{fragments/scripts::scripts}"></div>

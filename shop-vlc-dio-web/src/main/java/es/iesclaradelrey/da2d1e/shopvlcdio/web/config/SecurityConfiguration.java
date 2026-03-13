@@ -15,8 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-
-
     private final AppUserDetailsService appUserDetailsService;
 
     public SecurityConfiguration(AppUserDetailsService appUserDetailsService) {
@@ -42,7 +40,8 @@ public class SecurityConfiguration {
                         .requestMatchers("/register", "/register/").anonymous()
                         .anyRequest().permitAll())
 
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form
+                        .loginPage("/login").permitAll())
 
                 .logout(logout -> logout
                         .logoutUrl("/logout")

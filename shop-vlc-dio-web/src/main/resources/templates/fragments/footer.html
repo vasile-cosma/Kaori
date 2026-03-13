@@ -7,7 +7,7 @@
 <body>
 <!-- FOOTER -->
 <div th:fragment="footer">
-  <footer id="footer" class="footer layout-03">
+  <div id="footer" class="footer layout-03">
     <div class="footer-content background-footer-03">
       <div class="container">
         <div class="row">
@@ -121,7 +121,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </div>
 
   <!--Footer For Mobile-->
   <div class="mobile-footer">
@@ -294,7 +294,7 @@
 </div>
 
 <div th:fragment="adminFooter">
-    <footer id="adminFooter" class="footer layout-02">
+    <div id="adminFooter" class="footer layout-02">
         <div class="footer-content background-footer-03">
             <div class="container">
                 <div class="row">
@@ -312,6 +312,9 @@
                         </section>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 md-margin-top-5px sm-margin-top-50px xs-margin-top-40px">
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 md-margin-top-5px sm-margin-top-50px xs-margin-top-40px">
                         <section class="footer-item">
                             <h3 class="section-title">Administración del sitio</h3>
                             <div class="row">
@@ -327,54 +330,6 @@
                             </div>
                         </section>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 md-margin-top-5px sm-margin-top-50px xs-margin-top-40px">
-                        <section class="footer-item">
-                            <h3 class="section-title">Nuestra sede</h3>
-                            <div class="contact-info-block footer-layout xs-padding-top-10px">
-                                <ul class="contact-lines">
-                                    <li>
-                                        <p class="info-item">
-                                            <i class="biolife-icon icon-location"></i>
-                                            <b class="desc">7563 St. Vicent Place, Glasgow, Greater Newyork NH7689, UK
-                                            </b>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="info-item">
-                                            <i class="biolife-icon icon-phone"></i>
-                                            <b class="desc">Móvil: +34 678 90 12 34</b>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="info-item">
-                                            <i class="biolife-icon icon-letter"></i>
-                                            <b class="desc">Email: contact@kaori.com</b>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="info-item">
-                                            <i class="biolife-icon icon-clock"></i>
-                                            <b class="desc">Horario: L-V de 7:00 a 21:00</b>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="biolife-social inline">
-                                <ul class="socials">
-                                    <li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter"
-                                                                                          aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook"
-                                                                                           aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest"
-                                                                                            aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube"
-                                                                                          aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="instagram" class="socail-btn"><i class="fa fa-instagram"
-                                                                                            aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </section>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -385,7 +340,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 
     <!--Footer For Mobile-->
     <div class="mobile-footer">
@@ -556,5 +511,7 @@
         </div>
     </div>
 </div>
+
+
 </body>
 </html>

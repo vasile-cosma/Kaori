@@ -7,7 +7,9 @@
 </head>
 <body>
 <header th:insert="~{fragments/headers::adminHeader}"></header>
-<div th:replace="~{fragments/hero::hero('Borrar categoría')}"></div>
+<div class="container text-center">
+    <h1 class="text-decoration-underline" style="color: #2b542c;" th:text="|Borrar ${category.name}|">Nuevo producto</h1>
+</div>
 
 <th:block th:if="${error}">
     <div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
@@ -28,7 +30,7 @@
         </div>
     </div>
 </form>
-<footer th:replace="~{fragments/footer::footer}"></footer>
+<footer th:insert="~{fragments/footer::adminFooter}"></footer>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>
