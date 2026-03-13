@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.jspecify.annotations.Nullable;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.authentication.event.AbstractAuthenticationFailureEvent;
+import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -37,27 +38,22 @@ public class SecurityMonitor implements LogoutSuccessHandler {
     }
 
     @EventListener
-    public void onFailure(AbstractAuthenticationFailureEvent event){
+    public void onFailure(AuthenticationFailureBadCredentialsEvent event){
         Authentication auth = event.getAuthentication();
+        System.out.println("ENTRANDO AL FALLO EN LOGIN");
 
-        if (auth.getName().isBlank() || auth.getName() == null){
-            SecurityEvent securityEvent = SecurityEvent.builder()
-                    .type(SecurityEventType.ERROR)
-                    .build();
-            securityEventService.save(securityEvent);
-        } else {
-            SecurityEvent securityEvent = SecurityEvent.builder()
-                    .username(auth.getName())
-                    .type(SecurityEventType.ERROR)
-                    .build();
-            securityEventService.save(securityEvent);
-        }
+        SecurityEvent securityEvent = SecurityEvent.builder()
+                .username(auth.getName())
+                .type(SecurityEventType.ERROR)
+                .build();
+        securityEventService.save(securityEvent);
 
     }
 
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, @Nullable Authentication authentication) throws IOException, ServletException {
+        System.out.println("LOGOUT DE " + authentication.getName());
         if (authentication != null){
             SecurityEvent securityEvent = SecurityEvent.builder()
                     .username(authentication.getName())
@@ -65,6 +61,7 @@ public class SecurityMonitor implements LogoutSuccessHandler {
                     .build();
             securityEventService.save(securityEvent);
         }
+        response.sendRedirect("/");
     }
 
 }
