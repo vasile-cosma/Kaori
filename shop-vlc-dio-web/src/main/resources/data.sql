@@ -1,14 +1,15 @@
 
-insert into app_user (username, password, name, last_name, email, phone_number, birth_date, registration_date) values
+insert into users (username, password, name, last_name, email, phone_number, birth_date, registration_date) values
     ('admin', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','Vasiego', 'Cosla', 'admin@tienda.com', null, null, CURRENT_TIMESTAMP),
     ('polizon', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','El', 'Emisario', 'user@tienda.com', null, null, CURRENT_TIMESTAMP);
 
-insert into app_role (id, description) values
+insert into roles (id, description) values
                                             ('USER', 'Usuario normal'),
                                             ('ADMIN', 'Administrador');
 
 insert into user_role (user_id, role_id) values
                                              (1, 'ADMIN'),
+                                             (1, 'USER'),
                                              (2, 'USER');
 
 insert into category (description, image, name) values

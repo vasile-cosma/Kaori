@@ -1,15 +1,20 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.AppUser;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewUserDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.AppUserRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.AppUserService;
+import es.iesclaradelrey.da2d1e.shopvlcdio.security.AppUserDetails;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -22,6 +27,26 @@ public class AppUserController {
     public AppUserController(AppUserService appUserService, PasswordEncoder passwordEncoder) {
         this.appUserService = appUserService;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @PreAuthorize("hasRole('ADMIN') or #id == principal.id")
+     @GetMapping("users/profile/{id}")
+     public String showUserProfileById(Model model, @PathVariable("id") Integer id) {
+         AppUser appUser = appUserService.findById(id).orElseThrow(() -> new IllegalArgumentException("No se ha encontrado el usuario"));
+
+         model.addAttribute("user", appUser);
+
+
+        return "users/profile";
+     }
+
+
+     @PreAuthorize("isAuthenticated()")
+     @GetMapping("users/profile")
+     public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails user) {
+        AppUserDetails appUser = (AppUserDetails) user;
+
+        return showUserProfileById(model, appUser.getId());
     }
 
 

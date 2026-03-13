@@ -5,6 +5,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewUserDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.AppUserRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.AppUserMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -23,6 +24,8 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public Optional<AppUser> findByUsername(String username) { return appUserRepository.findByUsername(username);}
+
+    public  Optional<AppUser> findById(@PathVariable Integer id){ return appUserRepository.findById(id);}
 
     @Override
     public Optional<AppUser> findByEmail(String email) { return appUserRepository.findByEmail(email);}
