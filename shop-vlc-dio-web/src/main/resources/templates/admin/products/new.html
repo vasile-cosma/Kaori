@@ -81,17 +81,17 @@
             </select>
         </div>
 
-        <div class="d-flex justify-content-end gap-2">
+        <div class="d-flex justify-content-start gap-2">
             <button type="submit" class="btn text-light mt-3" style="background-color: #7faf51">Confirmar</button>
             <a class="btn btn-danger mt-3" th:href="@{/admin/products}">Cancelar</a>
         </div>
     </div>
 </form>
 
-<div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
+<div class="mt-5"><footer th:insert="~{fragments/footer::footer}"></footer></div>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 
-<!--
+
 <script>
     // Obtener formulario y campos
     const form = document.getElementById("myForm");
@@ -124,6 +124,6 @@
             });
         }
     });
-</script>-->
+</script>
 </body>
 </html>

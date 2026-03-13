@@ -1,5 +1,6 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.web.config;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.security.services.AppUserDetailsService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,15 @@ public class SecurityConfiguration {
 
 
 
+    private final AppUserDetailsService appUserDetailsService;
+
+    public SecurityConfiguration(AppUserDetailsService appUserDetailsService) {
+        this.appUserDetailsService = appUserDetailsService;
+    }
+
+    @Value("${shop.security.bcrypt.cost.factor}")
+    private int hashCostFactor;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("securityFilterChain");
@@ -26,8 +36,9 @@ public class SecurityConfiguration {
                         .ignoringRequestMatchers("/h2-console/**"))
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console", "/h2-console/**").authenticated()
-                        .requestMatchers("/admin","/admin/**").authenticated()
+                        .requestMatchers("/h2-console/**").hasRole("ADMIN")
+                        .requestMatchers("/admin","/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/users/profile", "/users/profile/**").hasRole("ADMIN")
                         .requestMatchers("/register", "/register/").anonymous()
                         .anyRequest().permitAll())
 

@@ -93,6 +93,38 @@ public class AdminProductController {
         return "redirect:/admin/products";
     }
 
+
+    @GetMapping({"/newB", "/newB/"})
+    public String newProductGetB(Model model){
+        model.addAttribute("product",new  NewProductDto());
+        return "/admin/products/newB";
+    }
+
+    @PostMapping({"/newB", "/newB/"})
+    public String newProductPostB(@ModelAttribute("product") NewProductDto newProductDto, Model model){
+        try {
+            if (newProductDto.getName().isBlank() ||
+                    newProductDto.getCode().isBlank() ||
+                    newProductDto.getDescription().isBlank()){
+                throw new Exception("Debe completar los campos obligatorios con datos válidos");
+            }
+            productService.createNew(newProductDto);
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "ERROR: Datos inválidos");
+            System.out.println(e.getClass());
+            return "/admin/products/newB";
+        } catch (InvalidDataAccessApiUsageException e) {
+            model.addAttribute("error", "ERROR: No se ha encontrado la referencia");
+            System.out.println(e.getClass());
+            return "/admin/products/newB";
+        } catch (Exception e) {
+            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
+            System.out.println(e.getClass());
+            return "/admin/products/newB";
+        }
+        return "redirect:/admin/products";
+    }
+
     @GetMapping({"/delete/{id}", "/delete/{id}/"})
     public String deleteProductGet(@PathVariable Integer id, Model model){
         Optional<Product> product = productService.findById(id);
