@@ -8,7 +8,7 @@
                         <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>support@kaori.com</a></li>
                         <li>
                             <div style="color: #ffffff" sec:authorize="isAnonymous()">Envíos gratis en pedidos de más de 90€</div>
-                            <div style="color: #ffffff" sec:authorize="isAuthenticated()">¡Bienvenid@, <span sec:authentication="name"></span>!</div>
+                            <div style="color: #ffffff" sec:authorize="isAuthenticated()">¡Bienvenid@, <span sec:authentication="name"></span>! <a th:href="@{/users/profile}">Acceder a mi cuenta</a>.</div>
                         </li>
                     </ul>
                 </div>

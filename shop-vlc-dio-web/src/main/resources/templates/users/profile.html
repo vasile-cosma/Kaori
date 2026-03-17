@@ -47,28 +47,28 @@
                     <p class="text-muted" th:text="${user.username}">@username</p>
                 </div>
 
-                <div class="row">
+                <div class="row mb-5 pb-5">
 
-                    <div class="col-md-6 profile-section">
+                    <div class="col-md-5 text-center profile-section ms-4">
                         <div class="profile-label">Email</div>
                         <div class="profile-value" th:text="${user.email}"></div>
                     </div>
 
-                    <div class="col-md-6 profile-section">
+                    <div class="col-md-6 text-center profile-section me-4">
                         <div class="profile-label">Teléfono</div>
                         <div class="profile-value"
                              th:text="${user.phoneNumber != null ? user.phoneNumber : 'No especificado'}">
                         </div>
                     </div>
 
-                    <div class="col-md-6 profile-section">
+                    <div class="col-md-5 text-center profile-section ms-4">
                         <div class="profile-label">Fecha de nacimiento</div>
                         <div class="profile-value"
                              th:text="${user.birthDate != null ? user.birthDate : 'No especificada'}">
                         </div>
                     </div>
 
-                    <div class="col-md-6 profile-section">
+                    <div class="col-md-6 text-center profile-section me-4">
                         <div class="profile-label">Fecha de registro</div>
                         <div class="profile-value"
                              th:text="${#temporals.format(user.registrationDate,'dd/MM/yyyy HH:mm')}">
@@ -76,13 +76,6 @@
                     </div>
 
                 </div>
-
-                <div class="text-center mt-4">
-                    <a href="/profile/edit" class="btn btn-primary">
-                        Editar perfil
-                    </a>
-                </div>
-
             </div>
 
         </div>
