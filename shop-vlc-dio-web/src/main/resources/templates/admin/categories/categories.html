@@ -7,8 +7,10 @@
 </head>
 <body>
 <header th:insert="~{fragments/headers::adminHeader}"></header>
-<h1 class="display-1 text-center"><a th:href="@{/admin}" style="text-decoration:none;" class="text-dark">Administración</a></h1>
-<h5 class="display-5 text-center">Categorías</h5>
+<div class="container text-center">
+    <h1 class="display-1 text-center"><a th:href="@{/admin}" style="text-decoration:none; color: #2b542c" class="text-decoration-underline">Administración</a></h1>
+    <h5 class="display-5 text-center" style="color: #2b542c">Categorías</h5>
+</div>
 <div class="container">
     <div class="d-flex justify-content-between mb-3">
         <div><a th:href="@{/admin/}" class="btn btn-danger mb-3">Volver</a></div>
@@ -36,6 +38,7 @@
         </tbody>
     </table>
 </div>
+<footer th:insert="~{fragments/footer::adminFooter}"></footer>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>

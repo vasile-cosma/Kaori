@@ -2,30 +2,35 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.web.config;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.security.services.AppUserDetailsService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-
-
     private final AppUserDetailsService appUserDetailsService;
+    private final SecurityMonitor securityMonitor;
 
-    public SecurityConfiguration(AppUserDetailsService appUserDetailsService) {
-        this.appUserDetailsService = appUserDetailsService;
+    public SecurityConfiguration(AppUserDetailsService appUserDetailsService, SecurityMonitor securityMonitor) {
+        this.appUserDetailsService = appUserDetailsService;;
+        this.securityMonitor = securityMonitor;
     }
 
-    @Value("${shop.security.bcrypt.cost.factor}")
-    private int hashCostFactor;
-
+    @Bean
+    public DefaultAuthenticationEventPublisher authenticationEventPublisher(
+            ApplicationEventPublisher applicationEventPublisher) {
+        return new DefaultAuthenticationEventPublisher(applicationEventPublisher);
+    }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("securityFilterChain");
@@ -42,11 +47,16 @@ public class SecurityConfiguration {
                         .requestMatchers("/register", "/register/").anonymous()
                         .anyRequest().permitAll())
 
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form
+                        .loginPage("/login").permitAll())
 
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/"))
+                        .logoutSuccessHandler(securityMonitor))
+
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+
 
                 .httpBasic((AbstractHttpConfigurer::disable));
 

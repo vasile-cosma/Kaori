@@ -9,15 +9,11 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -31,25 +27,26 @@ public class AppUserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-     @PreAuthorize("hasRole('ADMIN') or #id == authentication.principal.id")
+     //@PreAuthorize("hasRole('ADMIN') or #id == principal.id")
      @GetMapping("users/profile/{id}")
-     public String showUserProfileById(Model model, @PathVariable("id") Integer id, Authentication authentication) {
-
-         System.out.println(authentication.getPrincipal());
-
+     public String showUserProfileById(Model model, @PathVariable("id") Integer id) {
          AppUser appUser = appUserService.findById(id).orElseThrow(() -> new IllegalArgumentException("No se ha encontrado el usuario"));
 
          model.addAttribute("user", appUser);
 
+
         return "users/profile";
      }
 
+
      @PreAuthorize("isAuthenticated()")
      @GetMapping("users/profile")
-     public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails user, Authentication authentication) {
+     public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails user) {
         AppUserDetails appUser = (AppUserDetails) user;
-        return showUserProfileById(model, appUser.getId(), authentication);
+
+        return showUserProfileById(model, appUser.getId());
     }
+
 
     @GetMapping({"/register", "/register/"})
     public String newUserGet(Model model){
@@ -109,6 +106,22 @@ public class AppUserController {
         return "redirect:/index";
     }
 
+    @GetMapping({"/login", "/login/"})
+    public String loginGet(Model model, @RequestParam(value = "error", required = false) String error, Authentication authentication){
 
+            // Si el usuario ya está autenticado, redirigir a inicio
+            if (authentication != null
+                    && authentication.isAuthenticated()
+                    && !(authentication.getPrincipal() instanceof String)) {
+                return "redirect:/";
+            }
 
+            // Mostrar mensaje de error si el login falla
+            if (error != null) {
+                model.addAttribute("error", "Usuario y/o contraseña incorrectos");
+            }
+
+            // Mostrar la página login
+            return "users/login";
+    }
 }
