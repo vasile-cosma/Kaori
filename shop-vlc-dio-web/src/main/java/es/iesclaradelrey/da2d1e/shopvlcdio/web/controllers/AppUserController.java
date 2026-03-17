@@ -7,7 +7,9 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.AppUserService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.security.AppUserDetails;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -29,26 +31,25 @@ public class AppUserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PreAuthorize("hasRole('ADMIN') or #id == principal.id")
+     @PreAuthorize("hasRole('ADMIN') or #id == authentication.principal.id")
      @GetMapping("users/profile/{id}")
-     public String showUserProfileById(Model model, @PathVariable("id") Integer id) {
+     public String showUserProfileById(Model model, @PathVariable("id") Integer id, Authentication authentication) {
+
+         System.out.println(authentication.getPrincipal());
+
          AppUser appUser = appUserService.findById(id).orElseThrow(() -> new IllegalArgumentException("No se ha encontrado el usuario"));
 
          model.addAttribute("user", appUser);
 
-
         return "users/profile";
      }
 
-
      @PreAuthorize("isAuthenticated()")
      @GetMapping("users/profile")
-     public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails user) {
+     public String showUserProfile(Model model, @AuthenticationPrincipal UserDetails user, Authentication authentication) {
         AppUserDetails appUser = (AppUserDetails) user;
-
-        return showUserProfileById(model, appUser.getId());
+        return showUserProfileById(model, appUser.getId(), authentication);
     }
-
 
     @GetMapping({"/register", "/register/"})
     public String newUserGet(Model model){

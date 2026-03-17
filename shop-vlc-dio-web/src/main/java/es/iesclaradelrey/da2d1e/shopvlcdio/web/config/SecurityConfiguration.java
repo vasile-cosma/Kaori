@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").hasRole("ADMIN")
                         .requestMatchers("/admin","/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/users/profile", "/users/profile/**").hasRole("ADMIN")
+                        .requestMatchers("/users/profile", "/users/profile/**").authenticated()
                         .requestMatchers("/register", "/register/").anonymous()
                         .anyRequest().permitAll())
 
