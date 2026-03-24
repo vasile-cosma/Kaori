@@ -20,11 +20,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    private final AppUserDetailsService appUserDetailsService;
     private final SecurityMonitor securityMonitor;
 
-    public SecurityConfiguration(AppUserDetailsService appUserDetailsService, SecurityMonitor securityMonitor) {
-        this.appUserDetailsService = appUserDetailsService;;
+    public SecurityConfiguration(SecurityMonitor securityMonitor) {
         this.securityMonitor = securityMonitor;
     }
 
