@@ -10,6 +10,8 @@ import java.util.Optional;
 public interface ProductService {
     List<Product> findAll();
 
+    List<Product> findAllByAlphabeticalOrder();
+
     Optional<Product> findById(@PathVariable Integer id);
 
     Product save(Product item);

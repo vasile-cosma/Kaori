@@ -9,6 +9,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.ProductMapper
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
@@ -34,6 +35,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAll() { return productRepository.findAll(); }
+
+    @Override
+    public List<Product> findAllByAlphabeticalOrder() { return productRepository.findAll(Sort.by("name")); }
 
     @Override
     public Optional<Product> findById(Integer id) { return productRepository.findById(id); }

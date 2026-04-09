@@ -1,7 +1,7 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.api.controllers;
 
 
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.api.dto.CategoryDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.api.models.CategoryDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +13,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/categories")
-public class CategoryController {
+public class CategoryRestController {
 
     private final CategoryService categoryService;
 
-    public CategoryController(CategoryService categoryService) {
+    public CategoryRestController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 

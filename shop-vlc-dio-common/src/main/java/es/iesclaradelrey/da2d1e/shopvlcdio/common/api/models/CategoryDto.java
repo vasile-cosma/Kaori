@@ -1,7 +1,5 @@
-package es.iesclaradelrey.da2d1e.shopvlcdio.common.api.dto;
+package es.iesclaradelrey.da2d1e.shopvlcdio.common.api.models;
 
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
