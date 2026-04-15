@@ -13,12 +13,13 @@ import java.util.Set;
 @Builder
 public class ProductDto {
     private Integer id;
+    private String code;
     private String name;
     private String description;
     private String img;
     private Double price;
     private Integer discount;
-    // private Brand brand;
-    // private Set<Category> categories;
+    private BrandDto brand;
+    private Set<CategoryDto> categories;
 
 }

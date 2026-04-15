@@ -1,23 +1,39 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.api.configuration;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.api.filters.JwtAuthenticacionFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SecurityConfiguration {
     @Bean
-    SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception{
+    SecurityFilterChain apiSecurityFilterChain(HttpSecurity http, JwtAuthenticacionFilter jwtAuthenticacionFilter) throws Exception{
         http
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.NEVER))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+                .csrf(AbstractHttpConfigurer::disable)
+                .formLogin(AbstractHttpConfigurer::disable)
+                .httpBasic(AbstractHttpConfigurer::disable)
+                .logout(AbstractHttpConfigurer::disable)
+                .addFilterBefore(jwtAuthenticacionFilter, UsernamePasswordAuthenticationFilter.class)
 
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll());
-
-
+                        .requestMatchers("/api/v*/auth/**", "/swagger-ui/**", "/v3/api-docs/**")
+                        .permitAll()
+                        .anyRequest().authenticated());
         return http.build();
 
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config){
+        return config.getAuthenticationManager();
     }
 }

@@ -37,10 +37,18 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAll() { return productRepository.findAll(); }
 
     @Override
-    public List<Product> findAllByAlphabeticalOrder() { return productRepository.findAll(Sort.by("name")); }
+    public List<Product> findAllByAlphabeticalOrder() { return productRepository.findAll(Sort.by("name".toLowerCase()).ascending()); }
 
     @Override
     public Optional<Product> findById(Integer id) { return productRepository.findById(id); }
+
+    @Override
+    public List<Product> findByCategoryId(Integer id){
+       /* Category categoria = categoryRepository.findById(id).orElseThrow();
+        Set<Category> set = Set.of(categoria);
+        return productRepository.findProductsByCategories(set, Sort.by("name"));*/
+        return productRepository.findAllByCategoriesId(id, Sort.by("name"));
+    }
 
     @Override
     public Product save(Product item) { return productRepository.save(item);

@@ -14,6 +14,8 @@ public interface ProductService {
 
     Optional<Product> findById(@PathVariable Integer id);
 
+    List<Product> findByCategoryId(Integer id);
+
     Product save(Product item);
 
     void delete(Product item);

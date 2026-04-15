@@ -13,6 +13,8 @@ import java.util.Optional;
 public interface CategoryService{
     List<Category> findAll();
 
+    List<Category> findAllByAlphabeticalOrder();
+
     Optional<Category> findById(@PathVariable Integer id);
 
     Category save(Category item);

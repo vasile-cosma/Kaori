@@ -5,6 +5,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CategoryMappe
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCategoryDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CategoryRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.findAll();
     }
 
+    @Override
+    public List<Category> findAllByAlphabeticalOrder() { return categoryRepository.findAll(Sort.by("name").ascending());}
 
     public Optional<Category> findById(Integer id) {
         return categoryRepository.findById(id);

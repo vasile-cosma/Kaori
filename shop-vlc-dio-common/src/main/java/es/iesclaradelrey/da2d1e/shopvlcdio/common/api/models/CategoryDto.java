@@ -20,5 +20,4 @@ public class CategoryDto {
 
     private String image;
 
-    private Set<ProductDto> products = new HashSet<>();;
 }

@@ -25,7 +25,6 @@ public class ProductRestController {
     }
 
     @GetMapping
-    // TODO cambiar de Product a ProductDTO
     ResponseEntity<List<ProductDto>> findAll(){
        /*  List<Product> products = productService.findAllByAlphabeticalOrder();
           for (Product product : products){
