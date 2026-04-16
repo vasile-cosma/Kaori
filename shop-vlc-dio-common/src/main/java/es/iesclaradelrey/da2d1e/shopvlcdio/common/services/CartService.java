@@ -1,6 +1,7 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.CartItem;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCartItemDto;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public interface CartService {
     CartItem createNew(NewCartItemDto newCartItemDto);
 
 
-
+    CartItem addProduct(Product product);
 }
