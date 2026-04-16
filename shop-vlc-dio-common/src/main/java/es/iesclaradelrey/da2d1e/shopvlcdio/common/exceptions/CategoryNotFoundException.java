@@ -1,0 +1,7 @@
+package es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions;
+
+public class CategoryNotFoundException extends RuntimeException {
+    public CategoryNotFoundException(String message) {
+        super(message);
+    }
+}
