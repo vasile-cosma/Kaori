@@ -18,9 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NewCartItemDto {
-    private Long id;
-    private NewProductDto product;
+    private ProductDto product;
     private NewUserDto user;
     private Integer quantity;
-    private LocalDateTime updatedAt;
 }
