@@ -3,9 +3,10 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.CartItem;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CartItemRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CartItemServiceImpl implements CartItemService {
     private CartItemRepository cartItemRepository;
 
@@ -23,6 +24,14 @@ public class CartItemServiceImpl implements CartItemService {
     public void emptyCart(Integer id) {
         cartItemRepository.deleteByUser_Id(id);
     }
+
+    @Override
+    @Transactional
+    public void deleteItem(Integer id) {
+
+    }
+
+
 
 
 }
