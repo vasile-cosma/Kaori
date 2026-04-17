@@ -7,10 +7,9 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,12 +21,33 @@ public class CartRestController {
         this.productRepository = productRepository;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<NewCartItemDto> addToCart(Authentication authentication, Integer id, Integer units) {
-        UserDetails user = (UserDetails) authentication.getPrincipal();
+    @PostMapping
+    public ResponseEntity<NewCartItemDto> addToCart(Integer id, Integer units) {
 
-        Optional<Product> product = productRepository.findById(id).orElseThrow(new ProductNotFoundException());
+        // TODO
+        /*UserDetails user = (UserDetails) authentication.getPrincipal();
+
+        Optional<Product> product = productRepository.findById(id).orElseThrow(new ProductNotFoundException());*/
         return null;
 
     }
+
+    @GetMapping
+    public ResponseEntity<List<NewCartItemDto>> getCart() {
+        return ResponseEntity.ok()
+    }
+
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<NewCartItemDto> removeFromCart(@PathVariable Integer productId) {
+        return null;
+    }
+
+    @DeleteMapping
+    public ResponseEntity<NewCartItemDto> emptyCart() {
+        return null;
+    }
+
+
+
+
 }
