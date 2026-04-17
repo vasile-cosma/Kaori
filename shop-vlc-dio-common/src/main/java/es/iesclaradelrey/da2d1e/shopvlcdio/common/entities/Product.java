@@ -29,9 +29,10 @@ public class Product {
     @Column(nullable = false)
     //columnDefinition  para campos calculados
     private Double price;
-    //Todo Añadir validación
     @Column(nullable = false, length = 99)
     private Integer discount;
+    @Column(nullable = false, length = 99)
+    private Integer stock;
 
     @ManyToOne
     @JoinColumn(name = "brand_id", nullable=false)

@@ -22,10 +22,11 @@ public class CartRestController {
     }
 
     @PostMapping
-    public ResponseEntity<NewCartItemDto> addToCart(Integer id, Integer units) {
+    public ResponseEntity<NewCartItemDto> addToCart(Authentication authenticacion, Integer id, Integer units) {
 
-        // TODO
-        /*UserDetails user = (UserDetails) authentication.getPrincipal();
+
+        UserDetails user = (UserDetails) authenticacion.getPrincipal();
+
 
         Optional<Product> product = productRepository.findById(id).orElseThrow(new ProductNotFoundException());*/
         return null;
@@ -34,7 +35,7 @@ public class CartRestController {
 
     @GetMapping
     public ResponseEntity<List<NewCartItemDto>> getCart() {
-        return ResponseEntity.ok()
+        //return ResponseEntity.ok()
     }
 
     @DeleteMapping("/{productId}")

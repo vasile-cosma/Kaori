@@ -19,6 +19,5 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class NewCartItemDto {
     private ProductDto product;
-    private NewUserDto user;
-    private Integer quantity;
+    private Integer units;
 }

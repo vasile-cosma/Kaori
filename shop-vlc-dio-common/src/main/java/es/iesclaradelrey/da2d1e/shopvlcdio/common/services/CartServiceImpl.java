@@ -3,6 +3,8 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.AppUser;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.CartItem;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.ClientNotFoundException;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.InsufficientStockException;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.ProductNotFoundException;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCartItemDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.AppUserRepository;
@@ -12,21 +14,23 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CartItemMappe
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CartServiceImpl implements CartService {
     private final CartRepository cartItemRepository;
-    private final CartItemMapper cartItemMapper;
     private final ProductRepository productRepository;
     private final AppUserRepository appUserRepository;
+    private final CartItemMapper cartItemMapper;
 
-    public CartServiceImpl(CartRepository cartItemRepository, CartItemMapper cartItemMapper, ProductRepository productRepository, AppUserRepository appUserRepository) {
+    public CartServiceImpl(CartRepository cartItemRepository, ProductRepository productRepository, AppUserRepository appUserRepository, CartItemMapper cartItemMapper) {
         this.cartItemRepository = cartItemRepository;
-        this.cartItemMapper = cartItemMapper;
         this.productRepository = productRepository;
         this.appUserRepository = appUserRepository;
+        this.cartItemMapper = cartItemMapper;
     }
 
     @Override
@@ -46,32 +50,43 @@ public class CartServiceImpl implements CartService {
         cartItemRepository.deleteCartItemByUser_Id_AndProduct_Id(userId, productId);
     }
 
-    @Override
     @Transactional
-    public CartItem addOrUpdateItem(NewCartItemDto newCartItemDto) {
-        CartItem cartItem = cartItemMapper.map(newCartItemDto);
+    @Override
+    public CartItem addOrUpdateItem(Integer userId, NewCartItemDto newCartItemDto) {
 
-        Optional<CartItem> cartItemOptional = cartItemRepository.findCartItemById(cartItem.getId());
+        AppUser appUser = appUserRepository.findById(userId).orElseThrow(ClientNotFoundException::new);
+        Product product = productRepository.findById(newCartItemDto.getProduct().getId()).orElseThrow(ProductNotFoundException::new);
+        Optional<CartItem> originalCartItem = cartItemRepository.findByUser_IdAndProduct_Id(userId, product.getId());
 
-        if(cartItemOptional.isPresent()){
-            cartItem.setQuantity(cartItem.getQuantity() + cartItemOptional.get().getQuantity());
-            return cartItemRepository.save(cartItem);
+        int stock = product.getStock();
+        if (stock < 1) throw new InsufficientStockException();
+
+        if (originalCartItem.isPresent()) {
+            CartItem cartItem = originalCartItem.get();
+            cartItem.setUnits(newCartItemDto.getUnits() + cartItem.getUnits());
+
+            if (stock < cartItem.getUnits()) throw new InsufficientStockException();
+
+            cartItem.setUpdatedAt(LocalDateTime.now());
+            cartItemRepository.save(cartItem);
+
+        } else {
+            if (stock < newCartItemDto.getUnits()) throw new InsufficientStockException();
+
+            CartItem cartItem = cartItemMapper.map(newCartItemDto);
+            cartItem.setUser(appUser);
+
+            cartItem.setUpdatedAt(LocalDateTime.now());
+            cartItemRepository.save(cartItem);
         }
 
-        cartItemRepository.save(cartItem);
-        return cartItem;
 
-
-    }
-
-    @Override
-    public CartItem addProduct(Integer userId, NewCartItemDto newCartItemDto) {
-        Product product = productRepository.findById(newCartItemDto.getProduct().getId()).orElseThrow();
-        AppUser user = appUserRepository.findById(userId).orElseThrow();
 
 
 
         return null;
+
+
     }
 
 
