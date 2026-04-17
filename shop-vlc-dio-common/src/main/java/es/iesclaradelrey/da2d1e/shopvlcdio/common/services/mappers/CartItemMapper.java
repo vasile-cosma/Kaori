@@ -5,10 +5,11 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.CartItemDto;
 import org.springframework.stereotype.Component;
 
-@Component
-public interface CartItemMapper {
 
-     default CartItemDto toDetailDto(CartItem item) {
+@Component
+public class CartItemMapper {
+
+     public CartItemDto toDetailDto(CartItem item) {
         if (item == null || item.getProduct() == null) {
             return null;
         }
@@ -24,4 +25,6 @@ public interface CartItemMapper {
                 .totalPrice(item.getUnits() * product.calculatePrice())
                 .build();
     }
+
+
 }

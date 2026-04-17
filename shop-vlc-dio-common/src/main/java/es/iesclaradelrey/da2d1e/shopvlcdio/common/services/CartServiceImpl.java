@@ -4,6 +4,8 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.AppUser;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.CartItem;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.ProductNotFoundException;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.CartItemDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.CartResponseDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCartItemDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.AppUserRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CartRepository;
@@ -19,14 +21,10 @@ import java.util.Optional;
 public class CartServiceImpl implements CartService {
     private final CartRepository cartItemRepository;
     private final CartItemMapper cartItemMapper;
-    private final ProductRepository productRepository;
-    private final AppUserRepository appUserRepository;
 
-    public CartServiceImpl(CartRepository cartItemRepository, CartItemMapper cartItemMapper, ProductRepository productRepository, AppUserRepository appUserRepository) {
+    public CartServiceImpl(CartRepository cartItemRepository, CartItemMapper cartItemMapper) {
         this.cartItemRepository = cartItemRepository;
         this.cartItemMapper = cartItemMapper;
-        this.productRepository = productRepository;
-        this.appUserRepository = appUserRepository;
     }
 
     @Override
@@ -47,32 +45,31 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    @Transactional
     public CartItem addOrUpdateItem(NewCartItemDto newCartItemDto) {
-        CartItem cartItem = cartItemMapper.map(newCartItemDto);
-
-        Optional<CartItem> cartItemOptional = cartItemRepository.findCartItemById(cartItem.getId());
-
-        if(cartItemOptional.isPresent()){
-            cartItem.setQuantity(cartItem.getQuantity() + cartItemOptional.get().getQuantity());
-            return cartItemRepository.save(cartItem);
-        }
-
-        cartItemRepository.save(cartItem);
-        return cartItem;
+        return null;
+    }
 
 
+    @Override
+    public CartItem addProduct(Product product) {
+        return null;
     }
 
     @Override
-    public CartItem addProduct(Integer userId, NewCartItemDto newCartItemDto) {
-        Product product = productRepository.findById(newCartItemDto.getProduct().getId()).orElseThrow();
-        AppUser user = appUserRepository.findById(userId).orElseThrow();
+    public CartResponseDto getCartList(Integer userid) {
+        List<CartItem> items =  cartItemRepository.findByUser_Id(userid);
+        List<CartItemDto> itemsDetails = items.stream().map(cartItemMapper::toDetailDto).toList();
 
 
-
-        return null;
+        return CartResponseDto.builder()
+                .items(itemsDetails)
+                .distinctProducts(cartItemRepository.countDistinctProductsByUser(userid))
+                .totalUnits(cartItemRepository.sumTotalUnitsByUser(userid))
+                .build();
     }
+
+
+
 
 
 
