@@ -30,7 +30,7 @@ public class CartItem {
     private AppUser user;
 
     @Column(nullable = false)
-    private Integer quantity;
+    private Integer units;
 
     @Column(nullable = false)
     private LocalDateTime updatedAt;

@@ -20,5 +20,5 @@ import java.time.LocalDateTime;
 public class NewCartItemDto {
     private ProductDto product;
     private NewUserDto user;
-    private Integer quantity;
+    private Integer units;
 }
