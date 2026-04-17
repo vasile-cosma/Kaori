@@ -13,6 +13,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -40,15 +41,27 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    @Transactional
     public void deleteItem(Integer userId, Integer productId) {
         cartItemRepository.deleteCartItemByUser_Id_AndProduct_Id(userId, productId);
     }
 
     @Override
-    public CartItem createNew(NewCartItemDto newCartItemDto) {
+    @Transactional
+    public CartItem addOrUpdateItem(NewCartItemDto newCartItemDto) {
         CartItem cartItem = cartItemMapper.map(newCartItemDto);
+
+        Optional<CartItem> cartItemOptional = cartItemRepository.findCartItemById(cartItem.getId());
+
+        if(cartItemOptional.isPresent()){
+            cartItem.setQuantity(cartItem.getQuantity() + cartItemOptional.get().getQuantity());
+            return cartItemRepository.save(cartItem);
+        }
+
         cartItemRepository.save(cartItem);
         return cartItem;
+
+
     }
 
     @Override

@@ -13,7 +13,7 @@ public interface CartService {
 
     void deleteItem(Integer userId, Integer productId);
 
-    CartItem createNew(NewCartItemDto newCartItemDto);
+    CartItem addOrUpdateItem(NewCartItemDto newCartItemDto);
 
 
     CartItem addProduct(Product product);
