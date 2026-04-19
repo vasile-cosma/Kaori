@@ -2,6 +2,7 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.api.controllers;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.ProductNotFoundException;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.CartResponseDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCartItemDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository;
 import org.springframework.http.ResponseEntity;
@@ -22,20 +23,20 @@ public class CartRestController {
     }
 
     @PostMapping
-    public ResponseEntity<NewCartItemDto> addToCart(Authentication authenticacion, Integer id, Integer units) {
+    public ResponseEntity<CartResponseDto> addToCart(Authentication authenticacion, Integer id, Integer units) {
 
 
         UserDetails user = (UserDetails) authenticacion.getPrincipal();
 
 
-        Optional<Product> product = productRepository.findById(id).orElseThrow(new ProductNotFoundException());*/
+        Product product = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
         return null;
 
     }
 
     @GetMapping
     public ResponseEntity<List<NewCartItemDto>> getCart() {
-        //return ResponseEntity.ok()
+        return null;
     }
 
     @DeleteMapping("/{productId}")

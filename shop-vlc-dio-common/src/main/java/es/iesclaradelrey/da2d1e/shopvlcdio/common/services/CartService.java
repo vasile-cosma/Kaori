@@ -1,7 +1,6 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.CartItem;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCartItemDto;
 import jakarta.transaction.Transactional;
 
@@ -15,5 +14,5 @@ public interface CartService {
     void deleteItem(Integer userId, Integer productId);
 
     @Transactional
-    CartItem addOrUpdateItem(Integer userId, NewCartItemDto newCartItemDto);
+    void addCartItem(Integer userId, NewCartItemDto newCartItemDto);
 }

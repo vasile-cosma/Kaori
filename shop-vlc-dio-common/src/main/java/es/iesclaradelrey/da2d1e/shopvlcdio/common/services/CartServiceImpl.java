@@ -52,7 +52,7 @@ public class CartServiceImpl implements CartService {
 
     @Transactional
     @Override
-    public CartItem addOrUpdateItem(Integer userId, NewCartItemDto newCartItemDto) {
+    public void addCartItem(Integer userId, NewCartItemDto newCartItemDto) {
 
         AppUser appUser = appUserRepository.findById(userId).orElseThrow(ClientNotFoundException::new);
         Product product = productRepository.findById(newCartItemDto.getProduct().getId()).orElseThrow(ProductNotFoundException::new);
@@ -69,6 +69,7 @@ public class CartServiceImpl implements CartService {
 
             cartItem.setUpdatedAt(LocalDateTime.now());
             cartItemRepository.save(cartItem);
+            System.out.printf("GUARDADO: %s", cartItem);
 
         } else {
             if (stock < newCartItemDto.getUnits()) throw new InsufficientStockException();
@@ -78,13 +79,14 @@ public class CartServiceImpl implements CartService {
 
             cartItem.setUpdatedAt(LocalDateTime.now());
             cartItemRepository.save(cartItem);
+            System.out.printf("GUARDADO: %s", cartItem);
         }
 
 
 
 
 
-        return null;
+
 
 
     }
