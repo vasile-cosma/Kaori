@@ -6,15 +6,17 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.ClientNotFoundException;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.InsufficientStockException;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.ProductNotFoundException;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.CartItemDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.CartResponseDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCartItemDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.AppUserRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CartRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CartItemMapper;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CartItemMapperStruct;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -25,12 +27,14 @@ public class CartServiceImpl implements CartService {
     private final ProductRepository productRepository;
     private final AppUserRepository appUserRepository;
     private final CartItemMapper cartItemMapper;
+    private final CartItemMapperStruct cartItemMapperStruct;
 
-    public CartServiceImpl(CartRepository cartItemRepository, ProductRepository productRepository, AppUserRepository appUserRepository, CartItemMapper cartItemMapper) {
+    public CartServiceImpl(CartRepository cartItemRepository, CartItemMapper cartItemMapper, ProductRepository productRepository, AppUserRepository appUserRepository, CartItemMapperStruct cartItemMapperStruct) {
         this.cartItemRepository = cartItemRepository;
+        this.cartItemMapper = cartItemMapper;
         this.productRepository = productRepository;
         this.appUserRepository = appUserRepository;
-        this.cartItemMapper = cartItemMapper;
+        this.cartItemMapperStruct = cartItemMapperStruct;
     }
 
     @Override
@@ -52,7 +56,7 @@ public class CartServiceImpl implements CartService {
 
     @Transactional
     @Override
-    public void addCartItem(Integer userId, NewCartItemDto newCartItemDto) {
+    public CartResponseDto addCartItem(Integer userId, NewCartItemDto newCartItemDto) {
 
         AppUser appUser = appUserRepository.findById(userId).orElseThrow(ClientNotFoundException::new);
         Product product = productRepository.findById(newCartItemDto.getProduct().getId()).orElseThrow(ProductNotFoundException::new);
@@ -74,7 +78,7 @@ public class CartServiceImpl implements CartService {
         } else {
             if (stock < newCartItemDto.getUnits()) throw new InsufficientStockException();
 
-            CartItem cartItem = cartItemMapper.map(newCartItemDto);
+            CartItem cartItem = cartItemMapperStruct.map(newCartItemDto);
             cartItem.setUser(appUser);
 
             cartItem.setUpdatedAt(LocalDateTime.now());
@@ -82,14 +86,28 @@ public class CartServiceImpl implements CartService {
             System.out.printf("GUARDADO: %s", cartItem);
         }
 
-
-
-
-
-
-
+        return getCartList(userId);
 
     }
+
+
+
+
+    @Override
+    public CartResponseDto getCartList(Integer userId) {
+        List<CartItem> items =  cartItemRepository.findByUser_Id(userId);
+        List<CartItemDto> itemsDetails = items.stream().map(cartItemMapper::toDetailDto).toList();
+
+
+        return CartResponseDto.builder()
+                .items(itemsDetails)
+                .distinctProducts(cartItemRepository.countDistinctProductsByUser(userId))
+                .totalUnits(cartItemRepository.sumTotalUnitsByUser(userId))
+                .build();
+    }
+
+
+
 
 
 
