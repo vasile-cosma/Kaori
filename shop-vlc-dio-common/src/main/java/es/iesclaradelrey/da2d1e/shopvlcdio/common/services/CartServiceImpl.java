@@ -51,7 +51,11 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional
     public void deleteItem(Integer userId, Integer productId) {
+        AppUser appUser = appUserRepository.findById(userId).orElseThrow(ClientNotFoundException::new);
+        Product product = productRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
+        List<CartItem> cart = cartItemRepository.findByUser_Id(userId);
         cartItemRepository.deleteCartItemByUser_Id_AndProduct_Id(userId, productId);
+
     }
 
     @Transactional
@@ -59,7 +63,7 @@ public class CartServiceImpl implements CartService {
     public CartResponseDto addCartItem(Integer userId, NewCartItemDto newCartItemDto) {
 
         AppUser appUser = appUserRepository.findById(userId).orElseThrow(ClientNotFoundException::new);
-        Product product = productRepository.findById(newCartItemDto.getProduct().getId()).orElseThrow(ProductNotFoundException::new);
+        Product product = productRepository.findById(newCartItemDto.getProductId()).orElseThrow(ProductNotFoundException::new);
         Optional<CartItem> originalCartItem = cartItemRepository.findByUser_IdAndProduct_Id(userId, product.getId());
 
         int stock = product.getStock();
@@ -72,6 +76,7 @@ public class CartServiceImpl implements CartService {
             if (stock < cartItem.getUnits()) throw new InsufficientStockException();
 
             cartItem.setUpdatedAt(LocalDateTime.now());
+            System.out.println("MI ITEM: " + cartItem);
             cartItemRepository.save(cartItem);
             System.out.printf("GUARDADO: %s", cartItem);
 
@@ -83,15 +88,13 @@ public class CartServiceImpl implements CartService {
 
             cartItem.setUpdatedAt(LocalDateTime.now());
             cartItemRepository.save(cartItem);
+            System.out.println("MI ITEM: " + cartItem);
             System.out.printf("GUARDADO: %s", cartItem);
         }
 
         return getCartList(userId);
 
     }
-
-
-
 
     @Override
     public CartResponseDto getCartList(Integer userId) {

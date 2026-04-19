@@ -18,6 +18,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NewCartItemDto {
-    private ProductDto product;
+    private Integer productId;
     private Integer units;
 }

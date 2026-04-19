@@ -1,5 +1,6 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.AppUser;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
