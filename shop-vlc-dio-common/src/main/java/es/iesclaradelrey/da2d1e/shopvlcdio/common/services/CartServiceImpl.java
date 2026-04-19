@@ -13,7 +13,6 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.AppUserRepository
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.CartRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.ProductRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CartItemMapper;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CartItemMapperStruct;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -27,14 +26,12 @@ public class CartServiceImpl implements CartService {
     private final ProductRepository productRepository;
     private final AppUserRepository appUserRepository;
     private final CartItemMapper cartItemMapper;
-    private final CartItemMapperStruct cartItemMapperStruct;
 
-    public CartServiceImpl(CartRepository cartItemRepository, CartItemMapper cartItemMapper, ProductRepository productRepository, AppUserRepository appUserRepository, CartItemMapperStruct cartItemMapperStruct) {
+    public CartServiceImpl(CartRepository cartItemRepository, CartItemMapper cartItemMapper, ProductRepository productRepository, AppUserRepository appUserRepository) {
         this.cartItemRepository = cartItemRepository;
         this.cartItemMapper = cartItemMapper;
         this.productRepository = productRepository;
         this.appUserRepository = appUserRepository;
-        this.cartItemMapperStruct = cartItemMapperStruct;
     }
 
     @Override
@@ -44,17 +41,21 @@ public class CartServiceImpl implements CartService {
 
     @Override
     @Transactional
-    public void emptyCart(Integer id) {
-        cartItemRepository.deleteByUser_Id(id);
+    public CartResponseDto emptyCart(Integer userId) {
+        cartItemRepository.deleteByUser_Id(userId);
+        return getCartList(userId);
     }
 
     @Override
     @Transactional
-    public void deleteItem(Integer userId, Integer productId) {
+    public CartResponseDto deleteItem(Integer userId, Integer productId) {
         AppUser appUser = appUserRepository.findById(userId).orElseThrow(ClientNotFoundException::new);
         Product product = productRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
         List<CartItem> cart = cartItemRepository.findByUser_Id(userId);
+
         cartItemRepository.deleteCartItemByUser_Id_AndProduct_Id(userId, productId);
+
+        return getCartList(userId);
 
     }
 
@@ -76,19 +77,20 @@ public class CartServiceImpl implements CartService {
             if (stock < cartItem.getUnits()) throw new InsufficientStockException();
 
             cartItem.setUpdatedAt(LocalDateTime.now());
-            System.out.println("MI ITEM: " + cartItem);
             cartItemRepository.save(cartItem);
             System.out.printf("GUARDADO: %s", cartItem);
 
         } else {
             if (stock < newCartItemDto.getUnits()) throw new InsufficientStockException();
+            CartItem cartItem = CartItem.builder()
+                    .product(product)
+                    .user(appUser)
+                    .units(newCartItemDto.getUnits())
+                    .updatedAt(LocalDateTime.now())
+                    .build();
 
-            CartItem cartItem = cartItemMapperStruct.map(newCartItemDto);
-            cartItem.setUser(appUser);
 
-            cartItem.setUpdatedAt(LocalDateTime.now());
             cartItemRepository.save(cartItem);
-            System.out.println("MI ITEM: " + cartItem);
             System.out.printf("GUARDADO: %s", cartItem);
         }
 

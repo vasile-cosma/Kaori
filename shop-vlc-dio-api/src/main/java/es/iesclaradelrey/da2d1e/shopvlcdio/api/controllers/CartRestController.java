@@ -20,12 +20,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/cart")
 public class CartRestController {
-    private final ProductRepository productRepository;
     private final CartService cartService;
     private final AppUserRepository appUserRepository;
 
-    public CartRestController(ProductRepository productRepository, CartService cartService, AppUserRepository appUserRepository) {
-        this.productRepository = productRepository;
+    public CartRestController(CartService cartService, AppUserRepository appUserRepository) {
         this.cartService = cartService;
         this.appUserRepository = appUserRepository;
     }
@@ -50,13 +48,15 @@ public class CartRestController {
     }
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<CartResponseDto> removeFromCart(@PathVariable Integer productId) {
-        return null;
+    public ResponseEntity<CartResponseDto> removeFromCart(Authentication authentication, @PathVariable Integer productId) {
+        AppUser appUser = appUserRepository.findByUsername(authentication.getName()).orElseThrow(ClientNotFoundException::new);
+        return ResponseEntity.ok(cartService.deleteItem(appUser.getId(), productId));
     }
 
     @DeleteMapping
-    public ResponseEntity<CartResponseDto> emptyCart() {
-        return null;
+    public ResponseEntity<CartResponseDto> emptyCart(Authentication authentication) {
+        AppUser appUser = appUserRepository.findByUsername(authentication.getName()).orElseThrow(ClientNotFoundException::new);
+        return ResponseEntity.ok(cartService.emptyCart(appUser.getId()));
     }
 
 

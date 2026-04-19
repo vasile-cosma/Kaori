@@ -11,9 +11,9 @@ import java.util.List;
 public interface CartService {
     List<CartItem> findCartList(Integer AppUserid);
 
-    void emptyCart(Integer id);
+    CartResponseDto emptyCart(Integer id);
 
-    void deleteItem(Integer userId, Integer productId);
+    CartResponseDto deleteItem(Integer userId, Integer productId);
 
     @Transactional
     CartResponseDto addCartItem(Integer userId, NewCartItemDto newCartItemDto);
