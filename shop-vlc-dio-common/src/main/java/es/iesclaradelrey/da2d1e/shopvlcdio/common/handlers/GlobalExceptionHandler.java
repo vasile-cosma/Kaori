@@ -39,17 +39,4 @@ public class GlobalExceptionHandler {
         pd.setTitle("Producto no encontrado");
         return pd;
     }
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ProblemDetail resourceNotFound(ResourceNotFoundException e){
-        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
-        pd.setTitle("Fichero no encontrado");
-        return pd;
-    }
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ProblemDetail XmlCreation(XmlCreationException e){
-        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
-        pd.setTitle("No ha sido posible crear el XML");
-        return pd;
-    }
-
 }

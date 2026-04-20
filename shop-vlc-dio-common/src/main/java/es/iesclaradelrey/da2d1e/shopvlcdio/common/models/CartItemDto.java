@@ -1,10 +1,13 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.models;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CartItemDto {
     private String productName;
     private Double unitPrice;

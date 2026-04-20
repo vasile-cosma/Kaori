@@ -16,6 +16,7 @@ public class NewProductDto {
     private String description;
     private Double price;
     private Integer discount;
+    private Integer stock;
     private Integer brandId;
     private Set<Integer> categoriesIds;
 }

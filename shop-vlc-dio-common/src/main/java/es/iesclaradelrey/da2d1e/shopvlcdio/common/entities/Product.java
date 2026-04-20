@@ -17,7 +17,8 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true, nullable = false, length = 13)
+    //Quito el unique para pruebas
+    @Column( nullable = false, length = 13)
     //Todo Añadir validación
     private String code;
     @Column(length = 200, nullable = false)

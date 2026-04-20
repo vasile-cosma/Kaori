@@ -35,6 +35,7 @@ public class ProductMapper {
                 .description(product.getDescription())
                 .price(product.getPrice())
                 .discount(product.getDiscount())
+                .stock(product.getStock())
                 .brandId(brandId)
                 .categoriesIds(categoriesIds)
                 .build();
@@ -54,6 +55,7 @@ public class ProductMapper {
                 .description(newProductDto.getDescription())
                 .price(newProductDto.getPrice())
                 .discount(newProductDto.getDiscount())
+                .stock(newProductDto.getStock())
                 .brand(brand)
                 .categories(categories)
                 .build();

@@ -19,6 +19,7 @@ public class ProductDto {
     private String img;
     private Double price;
     private Integer discount;
+    private Integer stock;
     private BrandDto brand;
     private Set<CategoryDto> categories;
 
