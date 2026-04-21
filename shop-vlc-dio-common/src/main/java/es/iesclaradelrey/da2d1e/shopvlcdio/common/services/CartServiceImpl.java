@@ -3,9 +3,7 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.common.services;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.AppUser;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.CartItem;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Product;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.ClientNotFoundException;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.InsufficientStockException;
-import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.ProductNotFoundException;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.*;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.CartItemDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.CartResponseDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCartItemDto;
@@ -49,9 +47,19 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional
     public CartResponseDto deleteItem(Integer userId, Integer productId) {
+        boolean notFound = true;
         AppUser appUser = appUserRepository.findById(userId).orElseThrow(ClientNotFoundException::new);
         Product product = productRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
         List<CartItem> cart = cartItemRepository.findByUser_Id(userId);
+
+        for(CartItem cartItem : cart) {
+            if(cartItem.getProduct().getId().equals(product.getId())) {
+                notFound = false;
+                break;
+            }
+        }
+
+        if(notFound) throw new ProductNotInCartException();
 
         cartItemRepository.deleteCartItemByUser_Id_AndProduct_Id(userId, productId);
 
@@ -72,8 +80,10 @@ public class CartServiceImpl implements CartService {
 
         if (originalCartItem.isPresent()) {
             CartItem cartItem = originalCartItem.get();
+
             cartItem.setUnits(newCartItemDto.getUnits() + cartItem.getUnits());
 
+            if(cartItem.getUnits() <= 0) throw new InvalidUnitsException();
             if (stock < cartItem.getUnits()) throw new InsufficientStockException();
 
             cartItem.setUpdatedAt(LocalDateTime.now());
@@ -89,6 +99,7 @@ public class CartServiceImpl implements CartService {
                     .updatedAt(LocalDateTime.now())
                     .build();
 
+            if(cartItem.getUnits() < 0) throw new InvalidUnitsException();
 
             cartItemRepository.save(cartItem);
             System.out.printf("GUARDADO: %s", cartItem);

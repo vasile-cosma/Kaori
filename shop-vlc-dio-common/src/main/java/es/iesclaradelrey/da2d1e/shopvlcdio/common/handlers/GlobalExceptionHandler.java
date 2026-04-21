@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(InsufficientStockException.class)
     public ProblemDetail insufficientStock(InsufficientStockException e){
-        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage());
         pd.setTitle("Stock insuficiente");
         return pd;
     }
@@ -37,6 +37,18 @@ public class GlobalExceptionHandler {
     public ProblemDetail productNotFound(ProductNotFoundException e){
         ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
         pd.setTitle("Producto no encontrado");
+        return pd;
+    }
+    @ExceptionHandler(InvalidUnitsException.class)
+    public ProblemDetail invalidUnits(InvalidUnitsException e){
+            ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+            pd.setTitle("Debes introducir unidades válidas (>0)");
+            return pd;
+        }
+    @ExceptionHandler(ProductNotInCartException.class)
+    public ProblemDetail productNotInCard(ProductNotInCartException e){
+        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage());
+        pd.setTitle("Este producto no se encuentra en el carrito");
         return pd;
     }
 }
