@@ -1,11 +1,11 @@
 
 insert into users (username, password, name, last_name, email, phone_number, birth_date, registration_date) values
-    ('admin', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','Vasiego', 'Cosla', 'admin@tienda.com', null, null, CURRENT_TIMESTAMP),
-    ('polizon', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','El', 'Emisario', 'user@tienda.com', null, null, CURRENT_TIMESTAMP);
+                                                                                                                ('admin', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','Vasiego', 'Cosla', 'admin@tienda.com', null, null, CURRENT_TIMESTAMP),
+                                                                                                                ('polizon', '$2a$12$ZtwTzyhTQmDByUBWuCu4HOYwJe4/Jk.53nzWJP8ktVJNZZwLtSbAe','El', 'Emisario', 'user@tienda.com', null, null, CURRENT_TIMESTAMP);
 
 insert into roles (id, description) values
-                                            ('USER', 'Usuario normal'),
-                                            ('ADMIN', 'Administrador');
+                                        ('USER', 'Usuario normal'),
+                                        ('ADMIN', 'Administrador');
 
 insert into user_role (user_id, role_id) values
                                              (1, 'ADMIN'),
@@ -32,21 +32,21 @@ insert into category (description, image, name) values
 
 
 INSERT INTO brand (name, image) VALUES
-                             ('Twinings', 'brand-01.webp'),
-                             ('Tetley', 'brand-02.webp'),
-                             ('Tazo', 'brand-03.webp'),
-                             ('Harney & Sons', 'brand-04.webp'),
-                             ('Dilmah', 'brand-05.webp'),
-                             ('Bigelow', 'brand-06.webp'),
-                             ('Yogi Tea', 'brand-07.webp'),
-                             ('Pukka Herbs', 'brand-08.webp'),
-                             ('Mariage Frères', 'brand-09.webp'),
-                             ('Kusmi Tea', 'brand-10.webp'),
-                             ('Fortnum & Mason', 'brand-11.webp'),
-                             ('The Republic of Tea', 'brand-12.webp'),
-                             ('Teavana', 'brand-13.webp'),
-                             ('Hornimans', 'brand-14.webp'),
-                             ('Pompadour', 'brand-15.webp');
+                                    ('Twinings', 'brand-01.webp'),
+                                    ('Tetley', 'brand-02.webp'),
+                                    ('Tazo', 'brand-03.webp'),
+                                    ('Harney & Sons', 'brand-04.webp'),
+                                    ('Dilmah', 'brand-05.webp'),
+                                    ('Bigelow', 'brand-06.webp'),
+                                    ('Yogi Tea', 'brand-07.webp'),
+                                    ('Pukka Herbs', 'brand-08.webp'),
+                                    ('Mariage Frères', 'brand-09.webp'),
+                                    ('Kusmi Tea', 'brand-10.webp'),
+                                    ('Fortnum & Mason', 'brand-11.webp'),
+                                    ('The Republic of Tea', 'brand-12.webp'),
+                                    ('Teavana', 'brand-13.webp'),
+                                    ('Hornimans', 'brand-14.webp'),
+                                    ('Pompadour', 'brand-15.webp');
 
 INSERT INTO product
 (brand_id, code, description, discount, img, name, price, stock)
@@ -152,8 +152,8 @@ VALUES
      5,NULL,'Caramelo',5.60, 5445);
 
 
- INSERT INTO product_category (product_id, category_id)
- VALUES
+INSERT INTO product_category (product_id, category_id)
+VALUES
     (1, 1),(5, 1),(10, 1),(13, 1),(15, 1),(20, 1),(23, 1),(7, 1), (17, 1),
     (3,3),(11,3),(18,3),(24,3),
     (21, 4), (6, 4),(16, 4),(10, 4),
