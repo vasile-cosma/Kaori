@@ -19,7 +19,7 @@
     </div>
 </th:block>
 
-<form th:method="post" id="myForm" class="needs-validation" th:object="${product}" th:action="@{/admin/products/new}" novalidate>
+<form th:method="post" id="myForm" class="needs-validation" th:object="${product}" th:action="@{/admin/products/new}" th:novalidate="${!clientValidationEnabled}">
     <div class="container">
         <fieldset class="mb-3">
             <legend class="mt-3 ">Detalles del producto</legend>

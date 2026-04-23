@@ -18,7 +18,7 @@
     </div>
 </th:block>
 
-<form th:method="post" id="myForm" class="needs-validation" th:object="${product}" th:action="@{/admin/products/edit/{id}(id=${id})}" novalidate>
+<form th:method="post" id="myForm" class="needs-validation" th:object="${product}" th:action="@{/admin/products/edit/{id}(id=${id})}" th:novalidate="${!clientValidationEnabled}">
     <div class="container">
         <div class="mb-3">
             <label for="code" class="form-label">Código de producto</label>
