@@ -1,11 +1,13 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.handlers;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.exceptions.*;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.parsing.Problem;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -51,4 +53,5 @@ public class GlobalExceptionHandler {
         pd.setTitle("Este producto no se encuentra en el carrito");
         return pd;
     }
+
 }

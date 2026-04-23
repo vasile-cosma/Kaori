@@ -5,6 +5,7 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewUserDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.repositories.AppUserRepository;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.AppUserService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.security.AppUserDetails;
+import jakarta.validation.Valid;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class AppUserController {
         return "/users/register";
     }
 
-    @PostMapping({"/register", "/register/"})
+    /*@PostMapping({"/register", "/register/"})
     public String newUserPost(@ModelAttribute("user") NewUserDto newUserDto, Model model){
         ArrayList<String> errors = new ArrayList<>();
         if (newUserDto.getUsername().isBlank() ||
@@ -102,6 +104,22 @@ public class AppUserController {
             model.addAttribute("errors", errors);
             return "/users/register";
         }
+
+        return "redirect:/index";
+    }*/
+
+    @PostMapping({"/register", "/register/"})
+    public String newUserPost(
+            @Valid @ModelAttribute("user") NewUserDto newUserDto,
+            BindingResult bindingResult,
+            Model model){
+
+        if (bindingResult.hasErrors()) {
+            return "/users/register";
+        }
+
+        newUserDto.setPassword(passwordEncoder.encode(newUserDto.getPassword()));
+        appUserService.createNew(newUserDto);
 
         return "redirect:/index";
     }

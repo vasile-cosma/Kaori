@@ -54,7 +54,7 @@
         <!--Form Sign In-->
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="signin-container">
-            <form name="frm-login" id="myForm" class="needs-validation" th:method="post" th:action="@{/login}">
+            <form name="frm-login" id="myForm" class="needs-validation" th:method="post" th:action="@{/login}" th:novalidate="${!clientValidationEnabled}">
               <p class="form-row">
                 <label for="username">Nombre de usuario:<span class="requite">*</span></label>
                 <input type="text" id="username" name="username" class="txt-input">
