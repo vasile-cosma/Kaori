@@ -57,7 +57,7 @@ public class ProductXmlController {
 
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .header("Content-Disposition", "attachement; " + fileName)
+                    .header("Content-Disposition", "attachment; " + fileName)
                     .body(writer.toString());
         }
     }
