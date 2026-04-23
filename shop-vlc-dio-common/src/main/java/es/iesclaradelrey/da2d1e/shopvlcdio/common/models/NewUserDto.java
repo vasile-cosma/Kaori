@@ -11,22 +11,22 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewUserDto {
-    @NotBlank
+    @NotBlank(message = "Debe introducir un nombre de usuario")
     @Size(min = 4, max = 50)
     private String username;
-    @NotBlank
+    @NotBlank(message = "Debe introducir una contraseña")
     @Size(min = 4, max = 50)
     private String password;
-    @NotBlank
+    @NotBlank(message = "Debe confirmar la contraseña")
     @Size(min = 8, max = 100)
     private String passwordConfirmation;
-    @NotBlank
+    @NotBlank(message = "Debe indicar su nombre")
     @Size(min = 4, max = 50)
     private String name;
-    @NotBlank
+    @NotBlank(message = "Debe indicar su(s) apellido(s)")
     @Size(min = 4, max = 50)
     private String lastName;
-    @NotBlank
+    @NotBlank(message = "Debe introducir un email")
     @Email
     @Size(min = 6, max = 50)
     private String email;
@@ -34,6 +34,6 @@ public class NewUserDto {
     private String phoneNumber;
     @Past
     private LocalDate birthDate;
-    @AssertTrue
+    @AssertTrue(message = "Debe aceptar los términos y condiicones")
     private boolean termsAccepted;
 }

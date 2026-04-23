@@ -118,8 +118,17 @@ public class AppUserController {
             return "/users/register";
         }
 
-        newUserDto.setPassword(passwordEncoder.encode(newUserDto.getPassword()));
-        appUserService.createNew(newUserDto);
+        try {
+            newUserDto.setPassword(passwordEncoder.encode(newUserDto.getPassword()));
+            appUserService.createNew(newUserDto);
+        } catch (Exception e) {
+            bindingResult.reject("ejecucion", "Error al registrar");
+            return "/users/register";
+        }
+
+        if (bindingResult.hasErrors()) {
+            return "/users/register";
+        }
 
         return "redirect:/index";
     }
