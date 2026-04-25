@@ -54,4 +54,9 @@ public class BrandServiceImpl implements BrandService {
         }
         return brandRepository.save(brand);
     }
+
+    @Override
+    public boolean existsByName(String name) {
+        return brandRepository.existsByName(name);
+    }
 }

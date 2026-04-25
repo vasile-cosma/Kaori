@@ -20,4 +20,6 @@ public interface BrandService{
     Brand createNew(NewBrandDto newBrandDto);
 
     Brand update(Integer brandId, NewBrandDto newBrandDto);
+
+    boolean existsByName(String name);
 }

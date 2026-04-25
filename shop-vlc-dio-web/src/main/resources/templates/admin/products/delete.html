@@ -8,16 +8,17 @@
 <body>
 <header th:insert="~{fragments/headers::adminHeader}"></header>
 <div class="container text-center">
-    <h1 class="text-decoration-underline" style="color: #2b542c;" th:text="|Borrar ${product.name}|">Nuevo producto</h1>
+    <h1 class="text-decoration-underline mb-5" style="color: #2b542c;" th:text="|Borrar ${product.name}|">Nuevo producto</h1>
 </div>
 
-<th:block th:if="${error}">
-    <div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
-        <div class="alert alert-danger" th:text="${error}">Error</div>
-    </div>
-</th:block>
 
 <form th:method="post" th:action="@{/admin/products/delete/{id}(id=${product.id})}" th:novalidate="${!clientValidationEnabled}">
+    <div class="alert alert-danger" role="alert"
+         th:if="${#fields.hasAnyErrors()}">
+        <p>Se han producido
+            errores. Por favor, corríjalos antes de volver a intentar la operación.</p>
+
+    </div>
     <div class="card container align-items-center mb-5 mt-5" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title" th:text="|¿Seguro que desea borrar el producto ${product.name}?|"></h5>

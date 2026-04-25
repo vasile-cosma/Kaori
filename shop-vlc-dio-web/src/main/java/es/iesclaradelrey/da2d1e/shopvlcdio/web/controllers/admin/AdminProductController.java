@@ -8,9 +8,11 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.ProductService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.ProductMapper;
+import jakarta.validation.Valid;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
@@ -69,6 +71,24 @@ public class AdminProductController {
     }
 
     @PostMapping({"/new", "/new/"})
+    public String newProductPost(
+            @Valid @ModelAttribute("product") NewProductDto newProductDto,
+            BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            return "/admin/products/new";
+        }
+
+        try{
+            productService.createNew(newProductDto);
+        }catch (Exception e){
+            bindingResult.reject("ejecución", "Error al guardar: " + e.getMessage());
+        }
+
+        return "redirect:/admin/products";
+    }
+
+ /*   @PostMapping({"/new", "/new/"})
     public String newProductPost(@ModelAttribute("product") NewProductDto newProductDto, Model model){
         try {
             if (newProductDto.getName().isBlank() ||
@@ -91,39 +111,9 @@ public class AdminProductController {
             return "/admin/products/new";
         }
         return "redirect:/admin/products";
-    }
+    }*/
 
 
-    @GetMapping({"/newB", "/newB/"})
-    public String newProductGetB(Model model){
-        model.addAttribute("product",new  NewProductDto());
-        return "/admin/products/newB";
-    }
-
-    @PostMapping({"/newB", "/newB/"})
-    public String newProductPostB(@ModelAttribute("product") NewProductDto newProductDto, Model model){
-        try {
-            if (newProductDto.getName().isBlank() ||
-                    newProductDto.getCode().isBlank() ||
-                    newProductDto.getDescription().isBlank()){
-                throw new Exception("Debe completar los campos obligatorios con datos válidos");
-            }
-            productService.createNew(newProductDto);
-        } catch (DataIntegrityViolationException e) {
-            model.addAttribute("error", "ERROR: Datos inválidos");
-            System.out.println(e.getClass());
-            return "/admin/products/newB";
-        } catch (InvalidDataAccessApiUsageException e) {
-            model.addAttribute("error", "ERROR: No se ha encontrado la referencia");
-            System.out.println(e.getClass());
-            return "/admin/products/newB";
-        } catch (Exception e) {
-            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
-            System.out.println(e.getClass());
-            return "/admin/products/newB";
-        }
-        return "redirect:/admin/products";
-    }
 
     @GetMapping({"/delete/{id}", "/delete/{id}/"})
     public String deleteProductGet(@PathVariable Integer id, Model model){
@@ -139,6 +129,7 @@ public class AdminProductController {
         return "/admin/products/delete";
     }
 
+    //Al borrado no hace falta añadirle validación
     @PostMapping({"/delete/{id}", "/delete/{id}/"})
     public String deleteProductPost(@PathVariable Integer id, Model model){
         Optional<Product> product = productService.findById(id);
@@ -171,6 +162,23 @@ public class AdminProductController {
     }
 
     @PostMapping({"/edit/{id}", "/edit/{id}/"})
+    public String editProductPost(@PathVariable Integer id,  @Valid @ModelAttribute("product") NewProductDto newProductDto,
+                                  BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "/admin/products/edit";
+        }
+
+        try{
+            productService.update(id, newProductDto);
+        }catch (Exception e){
+            bindingResult.reject("ejecución", "Error al editar: " + e.getMessage());
+        }
+
+        return "redirect:/admin/products";
+
+    }
+
+/*    @PostMapping({"/edit/{id}", "/edit/{id}/"})
     public String editProductPost(@PathVariable Integer id, Model model, @ModelAttribute NewProductDto newProductDto) {
         try {
             productService.update(id, newProductDto);
@@ -191,6 +199,6 @@ public class AdminProductController {
             model.addAttribute("id", id);
             return "/admin/products/edit";
         }
-    }
+    }*/
 
 }

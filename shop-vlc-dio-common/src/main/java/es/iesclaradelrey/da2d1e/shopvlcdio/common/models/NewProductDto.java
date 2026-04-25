@@ -1,5 +1,7 @@
 package es.iesclaradelrey.da2d1e.shopvlcdio.common.models;
 
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.validation.Ean13;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.validation.UniqueNewProductCode;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -13,6 +15,8 @@ import java.util.Set;
 @NoArgsConstructor
 public class NewProductDto {
     @NotBlank(message = "Debe rellenar este campo")
+    @Ean13
+    @UniqueNewProductCode
     @Size(min = 13, max = 13, message = "El código debe tener exactamente 13 caracteres")
     private String code;
     @NotBlank(message = "Debe rellenar este campo")
@@ -24,14 +28,16 @@ public class NewProductDto {
             @Size(min = 50, message = "La descripción debe ser mayor a 50 caracteres")
     })
     private String description;
-    @NotBlank(message = "Debe rellenar este campo")
-
+    @NotNull(message = "Debe rellenar este campo")
+    @Positive(message = "El precio debe ser mayor a 0")
     private Double price;
-    @NotBlank(message = "Debe rellenar este campo")
+    @NotNull(message = "Debe rellenar este campo")
+    @Min(value = 0, message = "El descuento no puede ser negativo")
+    @Max(value = 100, message = "El descuento no puede ser superior al 100%")
     private Integer discount;
     private Integer stock = 100;
-    @NotBlank(message = "Debe rellenar este campo")
+    @NotNull(message = "Debes seleccionar una marca")
     private Integer brandId;
-    @NotBlank(message = "Debe rellenar este campo")
+    @NotEmpty(message = "Debes seleccionar al menos una categoría")
     private Set<Integer> categoriesIds;
 }

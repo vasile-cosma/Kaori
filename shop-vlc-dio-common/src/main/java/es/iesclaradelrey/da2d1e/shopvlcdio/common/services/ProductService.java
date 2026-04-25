@@ -20,6 +20,11 @@ public interface ProductService {
 
     void delete(Product item);
 
+    boolean existsByCode(String code);
+
+    boolean existsByCodeAndId(String code, Integer id);
+
+
     void createNew(NewProductDto newProductDto);
 
     Product update(Integer productId, NewProductDto newProductDto);

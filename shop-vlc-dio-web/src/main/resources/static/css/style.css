@@ -62,6 +62,14 @@
 /************************
 * Global Settings       *
 *************************/
+/* Color del texto seleccionado (el que se ve cuando el menú está cerrado) */
+/* Ataca al texto actual solo del select de marcas */
+#brand-id + .nice-select .current {
+    color: #000000 !important;
+}
+
+
+
 body{
     font-family: 'Cairo', sans-serif;
     font-size: 15px;

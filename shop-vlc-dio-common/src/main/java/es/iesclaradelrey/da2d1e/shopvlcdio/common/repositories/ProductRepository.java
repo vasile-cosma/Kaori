@@ -13,6 +13,8 @@ import java.util.Set;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findProductsByCategories(Set<Category> categories, Sort sort);
     List<Product> findAllByCategoriesId(Integer categoryId, Sort sort);
+    boolean existsByCode(String code);
+    boolean existsByCode_AndId(String code, Integer id);
 
 
 }

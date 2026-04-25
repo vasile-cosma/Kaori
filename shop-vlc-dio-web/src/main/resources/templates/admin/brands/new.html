@@ -9,20 +9,25 @@
 
 <header th:insert="~{fragments/headers::adminHeader}"></header>
 <div class="container text-center">
-  <h1 class="text-decoration-underline" style="color: #2b542c;">Nueva marca</h1>
+  <h1 class="text-decoration-underline mb-5" style="color: #2b542c;">Nueva marca</h1>
 </div>
 
-<th:block th:if="${error}">
-  <div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
-    <div class="alert alert-danger" th:text="${error}">Error</div>
-  </div>
-</th:block>
 
-<form th:method="post" th:object="${brand}" th:action="@{/admin/brands/new}" th:novalidate="${!clientValidationEnabled}">
+<form th:method="post" id="my-form" th:object="${brand}" th:action="@{/admin/brands/new}" th:novalidate="${!clientValidationEnabled}">
   <div class="container">
+      <div class="alert alert-danger" role="alert"
+           th:if="${#fields.hasAnyErrors()}">
+          <p>Se han producido
+              errores. Por favor, corríjalos antes de volver a intentar la operación.</p>
+
+      </div>
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
+      <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}" th:errorclass = "is-invalid">
+        <div class="invalid-feedback"
+             th:if="${#fields.hasErrors('name')}"
+             th:errors="*{name}">Error en el nombre
+        </div>
     </div>
     <div class="d-flex justify-content-end gap-2 mb-4">
       <button type="submit" class="btn text-light mt-3 rounded-start-pill" style="background-color: #7faf51">Confirmar</button>
@@ -32,8 +37,41 @@
 </form>
 
 <footer th:insert="~{fragments/footer::adminFooter}"></footer>
-<div th:replace="~{fragments/scripts::scripts}"></div>
 
 <div th:replace="~{fragments/scripts::scripts}"></div>
+
+<script>
+    // Obtener formulario y campos
+    const form = document.getElementById("myForm");
+    const campos = form.querySelectorAll("input");
+
+
+    // Validación en tiempo real
+    campos.forEach((campo) => {
+        campo.addEventListener("input", () => {
+            if (campo.checkValidity()) {
+                campo.classList.remove("is-invalid");
+                campo.classList.add("is-valid");
+            } else {
+                campo.classList.remove("is-valid");
+                campo.classList.add("is-invalid");
+            }
+        });
+    });
+
+    // Validación al enviar
+    form.addEventListener("submit", (e) => {
+        if (!form.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            campos.forEach((campo) => {
+                if (!campo.checkValidity()) {
+                    campo.classList.add("is-invalid");
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>

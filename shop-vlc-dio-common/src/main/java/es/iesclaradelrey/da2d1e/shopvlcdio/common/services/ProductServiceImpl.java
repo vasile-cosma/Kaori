@@ -60,6 +60,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public boolean existsByCode(String code) {
+        return productRepository.existsByCode(code);
+    }
+
+    @Override
+    public boolean existsByCodeAndId(String code, Integer id) {
+        return productRepository.existsByCode_AndId(code, id);
+    }
+
+    @Override
     public void createNew(NewProductDto newProductDto) {
 
         Product product = productMapper.map(newProductDto);

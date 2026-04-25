@@ -2,13 +2,17 @@ package es.iesclaradelrey.da2d1e.shopvlcdio.web.controllers.admin;
 
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Category;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewBrandDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewCategoryDto;
+import es.iesclaradelrey.da2d1e.shopvlcdio.common.models.NewProductDto;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.BrandMapper;
+import jakarta.validation.Valid;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.ui.Model;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.entities.Brand;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.BrandService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,16 +53,19 @@ public class AdminBrandController {
     }
 
     @PostMapping({"/new", "/new/"})
-    public String newBrandPost(@ModelAttribute("brand") NewBrandDto newBrandDto, Model model) {
-        try {
-            if (newBrandDto.getName().isBlank()){
-               throw new Exception("Debe completar los campos obligatorios");
-            }
-            brandService.createNew(newBrandDto);
-        } catch (Exception e) {
-            model.addAttribute("error", String.format("ERROR: %s", e.getMessage()));
+    public String newBrandPost(@Valid @ModelAttribute("brand")NewBrandDto newBrandDto,
+                               BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
             return "/admin/brands/new";
         }
+
+        try{
+            brandService.createNew(newBrandDto);
+        }catch (Exception e){
+            bindingResult.reject("ejecución", "Error al guardar: " + e.getMessage());
+        }
+
         return "redirect:/admin/brands";
     }
 

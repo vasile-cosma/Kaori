@@ -9,32 +9,65 @@
 
 <header th:insert="~{fragments/headers::adminHeader}"></header>
 <div class="container text-center">
-    <h1 class="text-decoration-underline" style="color: #2b542c;" th:text="|Editar ${product.name}|">Nuevo producto</h1>
+    <h1 class="text-decoration-underline mb-5" style="color: #2b542c;" th:text="|Editar ${product.name}|">Nuevo producto</h1>
 </div>
-
-<th:block th:if="${error}">
-    <div class="container"> <i class="bi bi-exclamation-triangle-fill me-2"></i>
-        <div class="alert alert-danger" th:text="${error}">Error</div>
-    </div>
-</th:block>
 
 <form th:method="post" id="myForm" class="needs-validation" th:object="${product}" th:action="@{/admin/products/edit/{id}(id=${id})}" th:novalidate="${!clientValidationEnabled}">
     <div class="container">
+        <div class="alert alert-danger" role="alert"
+             th:if="${#fields.hasAnyErrors()}">
+            <p>Se han producido
+                errores. Por favor, corríjalos antes de volver a intentar la operación.</p>
+
+        </div>
+        <fieldset class="mb-3">
+            <legend class="mt-3 ">Detalles del producto</legend>
         <div class="mb-3">
             <label for="code" class="form-label">Código de producto</label>
-            <input type="number" class="form-control has-validation" id="code" aria-describedby="textHelp" th:field="*{code}">
-            <div class="invalid-feedback">
-                Solo se admiten números.
+            <input type="number" class="form-control has-validation" id="code" aria-describedby="textHelp" th:field="*{code}"
+                   th:errorclass = "is-invalid">
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('code')}"
+                 th:errors="*{code}">Error en el Código Ean
             </div>
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}">
+            <input type="text" class="form-control" id="name" aria-describedby="textHelp" th:field="*{name}"
+                   th:errorclass = "is-invalid">
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('name')}"
+                 th:errors="*{name}">Error en el Código Ean
+            </div>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descripción</label>
-            <textarea class="form-control" id="description" rows="3" th:field="*{description}"></textarea>
+            <textarea class="form-control" id="description" rows="3" th:field="*{description}"
+                      th:errorclass = "is-invalid"></textarea>
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('description')}"
+                 th:errors="*{description}">Error en la descripción
+            </div>
         </div>
+        <div class="mb-3 mt-3">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="price" aria-describedby="numberHelp" th:field="*{price}"
+                   th:errorclass = "is-invalid">
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('price')}"
+                 th:errors="*{price}">Error en el precio
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="discount" class="form-label">Descuento</label>
+            <input type="number" class="form-control" id="discount" aria-describedby="numberHelp" th:field="*{discount}"
+                   th:errorclass = "is-invalid">
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('discount')}"
+                 th:errors="*{discount}">Error en el descuento
+            </div>
+        </div>
+        </fieldset>
         <fieldset class="mb-3">
             <legend class="mt-3 ">Categorías</legend>
             <div class="row">
@@ -43,7 +76,8 @@
                            id="category-check"
                            th:field="*{categoriesIds}"
                            th:value="${category.id}"
-                           th:id="|'category-check'${category.id}|">
+                           th:id="|'category-check'${category.id}|"
+                           th:errorclass="is-invalid">
 
                     <label class="form-check-label"
                            for="category-check"
@@ -52,34 +86,27 @@
                         Categoría
                     </label>
                 </div>
+                <div class="text-danger small"
+                     th:if="${#fields.hasErrors('categoriesIds')}"
+                     th:errors="*{categoriesIds}">Error en las categorías
+                </div>
             </div>
         </fieldset>
-
-        <div class="mb-3 mt-3">
-            <label for="price" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="price" aria-describedby="numberHelp" th:field="*{price}">
-            <div class="invalid-feedback">
-                Solo se admiten números.
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="discount" class="form-label">Descuento</label>
-            <input type="number" class="form-control" id="discount" aria-describedby="numberHelp" th:field="*{discount}">
-            <div class="invalid-feedback">
-                Solo se admiten números.
-            </div>
-        </div>
-
+        <fieldset class="mb-3">
+            <legend class="mt-3 ">Marca</legend>
         <div class="row pb-3 d-flex">
-            <label for="brand-id" class="form-label ms-3">Marca</label>
-            <select class="form-select border rounded-2 text-dark ms-4" id="brand-id" th:field="*{brandId}">
+            <select class="form-select border rounded-2 text-dark ms-4" id="brand-id" th:field="*{brandId}" th:errorclass="is-invalid">
                 <option class="text-dark" value="">Seleccione...</option>
                 <option class="text-dark" th:each="brand: ${brands}"
                         th:value="${brand.id}"
                         th:text="${brand.name}">Marca</option>
             </select>
+            <div class="text-danger small"
+                 th:if="${#fields.hasErrors('brandId')}"
+                 th:errors="*{brandId}">Error en la marca
+            </div>
         </div>
-
+        </fieldset>
         <div class="d-flex justify-content-end gap-2 mb-4">
             <button type="submit" class="btn text-light mt-3 rounded-start-pill" style="background-color: #7faf51">Confirmar</button>
             <a class="btn btn-danger mt-3 border rounded-end-pill" th:href="@{/admin/products}">Cancelar</a>
