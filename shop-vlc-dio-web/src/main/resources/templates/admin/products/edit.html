@@ -117,39 +117,5 @@
 <footer th:insert="~{fragments/footer::adminFooter}"></footer>
 <div th:replace="~{fragments/scripts::scripts}"></div>
 
-<script>
-    // Obtener formulario y campos
-    const form = document.getElementById("myForm");
-    const campos = form.querySelectorAll("input");
-
-
-    // Validación en tiempo real
-    campos.forEach((campo) => {
-        campo.addEventListener("input", () => {
-            if (campo.checkValidity()) {
-                campo.classList.remove("is-invalid");
-                campo.classList.add("is-valid");
-            } else {
-                campo.classList.remove("is-valid");
-                campo.classList.add("is-invalid");
-            }
-        });
-    });
-
-    // Validación al enviar
-    form.addEventListener("submit", (e) => {
-        if (!form.checkValidity()) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            campos.forEach((campo) => {
-                if (!campo.checkValidity()) {
-                    campo.classList.add("is-invalid");
-                }
-            });
-        }
-    });
-</script>
-
 </body>
 </html>

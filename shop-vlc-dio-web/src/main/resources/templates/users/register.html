@@ -21,15 +21,12 @@ ANTIGUO BLOQUE DE ERRORES:
 </th:block>
 -->
 
-<form th:method="post" id="myForm" class="needs-validation" th:object="${user}" th:action="@{/register}" th:novalidate="${!clientValidationEnabled}">
-    <div class="alert alert-danger" role="alert"
-         th:if="${#fields.hasAnyErrors()}">
-        <p>Se han producido errores:</p>
-        <ul>
-            <li th:each="error : ${#fields.errors()}" th:text="${error}">Mensaje de error</li>
-        </ul>
-    </div>
+<form th:method="post" id="myForm" th:object="${user}" th:action="@{/register}" th:novalidate="${!clientValidationEnabled}">
     <div class="container">
+        <div class="alert alert-danger" role="alert"
+             th:if="${#fields.hasAnyErrors()}">
+            <p>Se han producido errores. Por favor, corríjalos antes de continuar</p>
+        </div>
         <div class="mb-3">
             <label for="username" class="form-label">Nombre de usuario*</label>
             <input type="text" class="form-control has-validation" id="username" aria-describedby="textHelp" th:field="*{username}" required th:errorclass="is-invalid">
@@ -41,34 +38,53 @@ ANTIGUO BLOQUE DE ERRORES:
         <div class="mb-3">
             <label for="name" class="form-label">Nombre*</label>
             <input type="text" class="form-control" id="name" aria-describedby="textHelp" required th:field="*{name}" th:errorclass="is-invalid">
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('name')}"
+                 th:errors="*{name}">Error en el nombre
+            </div>
             <label for="last-name" class="form-label">Apellidos*</label>
             <input type="text" class="form-control" id="last-name" aria-describedby="textHelp" required th:field="*{lastName}" th:errorclass="is-invalid">
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('lastName')}"
+                 th:errors="*{lastName}">Error en los apellidos
+            </div>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña*</label>
             <input type="password" class="form-control" id="password" aria-describedby="textHelp" required th:field="*{password}" th:errorclass="is-invalid">
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('password')}"
+                 th:errors="*{password}">Error en la contraseña
+            </div>
             <label for="password-confirmation" class="form-label">Confirme la contraseña*</label>
             <input type="password" class="form-control" id="password-confirmation" aria-describedby="textHelp" required th:field="*{passwordConfirmation}" th:errorclass="is-invalid">
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('passwordConfirmation')}"
+                 th:errors="*{passwordConfirmation}">Error al confirmar la contraseña
+            </div>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Correo electrónico*</label>
             <input type="email" class="form-control has-validation" id="email" aria-describedby="textHelp" required th:field="*{email}" th:errorclass="is-invalid">
-            <div class="invalid-feedback">
-                Debe introducir un email válido
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('email')}"
+                 th:errors="*{email}">Error en el email
             </div>
         </div>
         <div class="mb-3">
             <label for="phone-number" class="form-label">Número de teléfono</label>
             <input type="tel" class="form-control has-validation" id="phone-number" aria-describedby="textHelp" th:field="*{phoneNumber}" th:errorclass="is-invalid">
-            <div class="invalid-feedback">
-                El número de teléfono introducido no es válido
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('phoneNumber')}"
+                 th:errors="*{phoneNumber}">Error en el número de tlfno
             </div>
         </div>
         <div class="mb-3">
             <label for="birth-date" class="form-label">Fecha de nacimiento</label>
             <input type="date" class="form-control has-validation" id="birth-date" aria-describedby="textHelp" th:field="*{birthDate}" th:errorclass="is-invalid">
-            <div class="invalid-feedback">
-                Introduzca su fecha de nacimiento
+            <div class="invalid-feedback"
+                 th:if="${#fields.hasErrors('birthDate')}"
+                 th:errors="*{birthDate}">Error la fecha de nacimiento
             </div>
         </div>
         <fieldset class="mb-3">
@@ -88,6 +104,10 @@ ANTIGUO BLOQUE DE ERRORES:
                             th:target="_blank">
                         Acepto los términos y condiciones
                     </label>
+                    <div class="text-danger small"
+                         th:if="${#fields.hasErrors('termsAccepted')}"
+                         th:errors="*{termsAccepted}">Error en los términos y condiciones
+                    </div>
                 </div>
             </div>
         </fieldset>
@@ -99,6 +119,8 @@ ANTIGUO BLOQUE DE ERRORES:
 </form>
 
 <div class="mt-5"><footer th:replace="~{fragments/footer::footer}"></footer></div>
+
+
 <div th:replace="~{fragments/scripts::scripts}"></div>
 
 

@@ -24,4 +24,6 @@ public interface CategoryService{
     Category createNew(NewCategoryDto newCategoryDto);
 
     Category update(Integer brandId, NewCategoryDto newnewCategoryDto);
+
+    boolean existsByName(String name);
 }

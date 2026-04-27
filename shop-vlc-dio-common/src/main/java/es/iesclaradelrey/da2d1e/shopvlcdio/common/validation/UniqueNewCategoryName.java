@@ -7,11 +7,11 @@ import java.lang.annotation.*;
 
 
 @Documented
-@Constraint(validatedBy = UniqueNewBrandNameValidator.class)
+@Constraint(validatedBy = UniqueNewCategoryNameValidator.class)
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueNewBrandName {
-    String message() default "Esta marca ya existe. Por favor, use otro nombre";
+public @interface UniqueNewCategoryName {
+    String message() default "Esta categoría ya existe. Por favor, use otro nombre";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

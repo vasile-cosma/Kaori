@@ -5,13 +5,16 @@ import jakarta.validation.Payload;
 
 import java.lang.annotation.*;
 
-
 @Documented
-@Constraint(validatedBy = UniqueNewBrandNameValidator.class)
-@Target({ ElementType.FIELD, ElementType.PARAMETER })
+@Constraint(validatedBy = MinAgeValidator.class)
+@Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueNewBrandName {
-    String message() default "Esta marca ya existe. Por favor, use otro nombre";
+public @interface MinAge {
+    String message() default "No se alcanza la edad mínima";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
+
+    int value();
 }

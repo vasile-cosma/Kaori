@@ -35,4 +35,19 @@ public class AppUserServiceImpl implements AppUserService {
         AppUser user = AppUserMapper.map(newUserDto);
         return appUserRepository.save(user);
     }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return appUserRepository.existsByUsername(username);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return appUserRepository.existsByEmail(email);
+    }
+
+    @Override
+    public boolean existsByPhoneNumber(String phoneNumber) {
+        return appUserRepository.existsByPhoneNumber(phoneNumber);
+    }
 }

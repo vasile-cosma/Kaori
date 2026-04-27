@@ -58,4 +58,9 @@ public class CategoryServiceImpl implements CategoryService {
         }
         return categoryRepository.save(category);
     }
+
+    @Override
+    public boolean existsByName(String name) {
+        return categoryRepository.existsByName(name);
+    }
 }

@@ -16,4 +16,8 @@ public interface AppUserService {
     Optional<AppUser> findByEmail(String email);
 
     AppUser createNew(NewUserDto newUserDto);
+
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
+    boolean existsByPhoneNumber(String phoneNumber);
 }

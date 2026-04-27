@@ -111,8 +111,7 @@ public class AppUserController {
     @PostMapping({"/register", "/register/"})
     public String newUserPost(
             @Valid @ModelAttribute("user") NewUserDto newUserDto,
-            BindingResult bindingResult,
-            Model model){
+            BindingResult bindingResult){
 
         if (bindingResult.hasErrors()) {
             return "/users/register";

@@ -9,9 +9,11 @@ import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryService;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.CategoryServiceImpl;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.BrandMapper;
 import es.iesclaradelrey.da2d1e.shopvlcdio.common.services.mappers.CategoryMapper;
+import jakarta.validation.Valid;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -59,6 +61,23 @@ public class AdminCategoryController {
     }
 
     @PostMapping({"/new", "/new/"})
+    public String newCategoryPost(@Valid @ModelAttribute("category")NewCategoryDto newCategoryDto,
+                               BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            return "/admin/categories/new";
+        }
+
+        try{
+            categoryService.createNew(newCategoryDto);
+        }catch (Exception e){
+            bindingResult.reject("ejecución", "Error al guardar: " + e.getMessage());
+        }
+
+        return "redirect:/admin/categories";
+    }
+
+  /*  ANTIGUO @PostMapping({"/new", "/new/"})
     public String newCategoryPost(@ModelAttribute("category") NewCategoryDto newCategoryDto, Model model){
         try {
             if (newCategoryDto.getName().isBlank() || newCategoryDto.getDescription().isBlank()){
@@ -70,7 +89,7 @@ public class AdminCategoryController {
             return "/admin/categories/new";
         }
         return "redirect:/admin/categories";
-    }
+    }*/
 
     @GetMapping({"/delete/{id}", "/delete/{id}/"})
     public String deleteCategoryGet(@PathVariable Integer id, Model model){
