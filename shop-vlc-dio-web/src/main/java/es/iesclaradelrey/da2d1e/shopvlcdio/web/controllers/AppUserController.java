@@ -27,7 +27,7 @@ public class AppUserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-     //@PreAuthorize("hasRole('ADMIN') or #id == principal.id")
+     @PreAuthorize("hasRole('ADMIN') or #id == authentication.principal.id")
      @GetMapping("users/profile/{id}")
      public String showUserProfileById(Model model, @PathVariable("id") Integer id) {
          AppUser appUser = appUserService.findById(id).orElseThrow(() -> new IllegalArgumentException("No se ha encontrado el usuario"));

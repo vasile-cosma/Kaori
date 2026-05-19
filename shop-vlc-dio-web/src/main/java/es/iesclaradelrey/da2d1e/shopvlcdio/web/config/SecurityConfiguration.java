@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -16,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfiguration {
 
     private final AppUserDetailsService appUserDetailsService;
@@ -43,7 +45,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").hasRole("ADMIN")
                         .requestMatchers("/admin","/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/users/profile", "/users/profile/**").hasRole("ADMIN")
+                        .requestMatchers("/users/profile", "/users/profile/**").authenticated()
                         .requestMatchers("/register", "/register/").anonymous()
                         .anyRequest().permitAll())
 

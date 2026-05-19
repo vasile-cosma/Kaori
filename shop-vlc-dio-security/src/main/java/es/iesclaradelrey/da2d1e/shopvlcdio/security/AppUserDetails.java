@@ -13,30 +13,25 @@ import java.util.List;
 
 
 public class AppUserDetails implements UserDetails {
+    private final AppUser appUser;
     private Integer id;
-    private String username;
-    private String password;
     //private boolean authenticated;
 
     public AppUserDetails(AppUser appUser) {
-        this.id = appUser.getId();
-        this.username = appUser.getUsername();
-        this.password = appUser.getPassword();
+        this.appUser = appUser;
+        id = appUser.getId();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(
-                new SimpleGrantedAuthority("ROLE_USER"),
-                new SimpleGrantedAuthority("ROLE_ADMIN")
-        );
+        return appUser.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getId())).toList();
     }
 
     @Override
-    public @Nullable String getPassword() { return password; }
+    public @Nullable String getPassword() { return appUser.getPassword(); }
 
     @Override
-    public String getUsername() { return username;}
+    public String getUsername() { return appUser.getUsername();}
 
-    public Integer getId() { return id;}
+    public Integer getId() { return appUser.getId(); }
 }

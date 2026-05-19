@@ -39,7 +39,7 @@ public class AppUser {
     @Column(nullable = false, updatable = false)
     private LocalDateTime registrationDate;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
